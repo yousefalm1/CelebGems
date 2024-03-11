@@ -1,4 +1,5 @@
-.hero-background {
+/* Home Page */
+body {
   min-height: 1000px;
   background: linear-gradient(
       to bottom right,
@@ -7,4 +8,10 @@
     ),
     url("/media/header-background.jpg") center center no-repeat;
   background-size: cover;
+}
+
+.carousel-item img {
+  max-height: 500px; /* Set the maximum height as needed */
+  max-width: 200%; /* Set the maximum width to maintain aspect ratio */
+  object-fit: cover;
 }
