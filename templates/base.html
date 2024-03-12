@@ -52,9 +52,9 @@
         <div class="container">
             <a href="{% url 'home' %}" class="navbar-brand text-white">Celeb Gems</a>
 
-            <form class="d-flex" role="search">
-                <input class="form-control me-2 rounded-5" type="search" placeholder="Search" aria-label="Search"
-                    style="width: 300px;">
+            <form class="d-flex" role="search" method="GET" action="">
+                <input class="form-control me-2 rounded-5" type="text" name="q" placeholder="Search our site"
+                    aria-label="Search" style="width: 300px;">
                 <button class="btn btn-success" type="submit"><i class="fas fa-search"></i></button>
             </form>
 
@@ -113,7 +113,23 @@
                             {% endif %}
                         </ul>
                     </li>
-                </ul>
+
+                    <li class="list-inline-item">
+                        <a href=""
+                            class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link">
+                            <div class="text-white">
+                                <div><i class="fas fa-shopping-bag fa-lg"></i></div>
+                                <p class="my-0">
+                                    {% if grand_total %}
+                                    ${{ grand_total|floatformat:2 }}
+                                    {% else %}
+                                    $0.00
+                                    {% endif %}
+                                </p>
+                            </div>
+                        </a>
+                    </li>
+
             </div>
         </div>
     </nav>
@@ -159,7 +175,6 @@
                     <div class="d-flex gap-3 ">
                         <a href="#"><i class="fab fa-facebook fa-3x text-white"></i></a>
                         <a href="#"><i class="fab fa-twitter fa-3x text-white"></i></a>
-                        <a href="#"><i class="fab fa-linkedin fa-3x text-white"></i></a>
                         <a href="#"><i class="fab fa-instagram fa-3x text-white"></i></a>
                         <a href="#"><i class="fab fa-youtube fa-3x text-white"></i></a>
                     </div>
