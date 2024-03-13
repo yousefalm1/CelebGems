@@ -15,3 +15,9 @@ body {
   max-width: 200%; /* Set the maximum width to maintain aspect ratio */
   object-fit: cover;
 }
+
+/* Main Css for most pages */
+
+.header-style {
+  color: white;
+}
