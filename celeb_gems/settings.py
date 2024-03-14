@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     'home',
     'products',
+    'celeb_profile',
 ]
 
 MIDDLEWARE = [
