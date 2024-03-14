@@ -21,3 +21,8 @@ body {
 .header-style {
   color: white;
 }
+
+/* product detail */
+.cards-wrapper {
+  display: flex;
+}

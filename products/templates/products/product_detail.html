@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+
+
+{% block content %}
+
+
+<section class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="image-container">
+                <a href="{{ product.image.url }}" target="_blank">
+                    <img class="img-fluid" src="{{ product.image_url }}" alt="{{ product.name}}" ">
+                </a>
+            </div>
+        </div>
+        <div class=" col-md-6">
+                    <h2 class="my-5">{{ product.name}}</h2>
+                    <p class="my-5">{{ product.description }}</p>
+                    <button type="button" class="btn btn-danger text-center" disabled>${{ product.price }}</button>
+                    <div class="d-flex flex-column my-5">
+                        <button class="btn btn-primary mb-3">Add to cart</button>
+                        <button class="btn btn-primary">Add to cart</button>
+                    </div>
+            </div>
+        </div>
+
+
+        <!-- product specifications  -->
+        <div class="row my-5">
+            <div class="col-12">
+                <h1>Product Specifications</h1>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibusdam soluta non natus enim possimus
+                    animi,
+                    tenetur praesentium. Magni esse eveniet ducimus praesentium autem fugit quos optio pariatur alias
+                    illum!
+                    Corporis?Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt numquam eligendi quidem
+                    sunt
+                    accusamus, inventore suscipit minima beatae aut optio neque animi consectetur, impedit ipsa eos
+                    nobis et
+                    recusandae ullam.</p>
+            </div>
+        </div>
+
+        <!-- Availability and Shipping Information -->
+        <div class="row my-5">
+            <div class="col-12">
+                <h1>Availability and Shipping Information</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, dicta eum. Sunt, iste qui dolore totam
+                    voluptate praesentium in veritatis? Vel ex incidunt totam, quos repudiandae molestiae odit excepturi
+                    quidem.lorem</p>
+            </div>
+        </div>
+
+
+        <!-- other products from the celeb -->
+        <div class="row my-5">
+            <div class="col-12">
+                <h1 class="">Other Product From ______</h1>
+            </div>
+        </div>
+
+
+</section>
+
+
+
+
+{% endblock %}

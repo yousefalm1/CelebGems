@@ -14,17 +14,22 @@
 
         <div class="row">
             {% for product in products %}
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-lg-4 mb-4">
                 <div class="card">
                     <div>
-                        <img src="{{ product.image_url }}" class="w-100" alt="{{ product.name }}" />
+                        <a href="{% url 'product_detail' product.product_id %}">
+                            <img src="{{ product.image_url }}" class="w-100" alt="{{ product.name }}" />
+                        </a>
                     </div>
+
                     <div class="card-body">
                         <h5 class="card-title mb-3">{{ product.name }}</h5>
                         <p>{{ product.description }}</p>
                         <h6 class="mb-3">${{ product.price }}</h6>
                         <div class="d-flex flex-column mt-4">
-                            <button class="btn btn-primary">Go To Product</button>
+                            <a href="{% url 'product_detail' product.product_id%}">
+                                <button class="btn btn-primary">Go To Product</button>
+                            </a>
                         </div>
                     </div>
                 </div>
