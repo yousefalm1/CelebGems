@@ -4,9 +4,8 @@ from django.db import models
 
 # Create your models here.
 
-
 class CelebRequest(models.Model):
-    user = models.ForeignKey
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)  # Assuming 1 is the ID of an existing user
     occupation = models.CharField(max_length=100)
     reasons = models.TextField()
     social_media = models.URLField(max_length=200, blank=True, null=True)
