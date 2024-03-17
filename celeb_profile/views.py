@@ -1,9 +1,34 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import CelebRequest, CelebProfile
 from products.models import Product
-from .forms import CelebRequestForm, CelebProfileForm , CelebAddProductFrom
+from .forms import CelebRequestForm, CelebProfileForm , CelebAddProductFrom, EditProductForm
 
 # Create your views here.
+
+
+
+# the product_id is to identify what product will be edited
+def edit_product(request, product_id):
+
+    # gets the product based on the product_id
+    product = get_object_or_404(Product, pk=product_id)
+    
+    # When the user clicks submit this will execute
+    if request.method == 'POST':
+        # the instance=products is there to ensure that the form updates the existing Product instance with the edited data instead of creating a new one 
+        form = EditProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            return redirect('') 
+        
+    # this is executed first when the user clicks edit product and it will load the data on the product
+    form = EditProductForm(instance=product)
+    
+    return render(request, 'celeb_profile/edit_product.html', {'form': form, 'product': product})
+
+
+
+
 
 
 def add_product(request):
@@ -66,14 +91,24 @@ def edit_celeb_profile_confirmation(request):
 def celeb_profile_page(request,):
     """ A view to display the user's CelebProfile """
 
+
     # Check if a CelebProfile already exists for the current user
     existing_celeb_profile = CelebProfile.objects.filter(user=request.user).exists()
 
     if existing_celeb_profile:
         # If a CelebProfile exists, retrieve it
         celeb_profile = get_object_or_404(CelebProfile, user=request.user)
+
+
+        products_added = celeb_profile.products_added.all()
+
+        context = {
+            'celeb_profile': celeb_profile,
+            'products_added': products_added,
+        }
+
         # Render the CelebProfile using the 'celeb_profile.html' template
-        return render(request, 'celeb_profile/celeb_profile.html' , {'celeb_profile': celeb_profile})
+        return render(request, 'celeb_profile/celeb_profile.html', context)
     else:
         # If no CelebProfile exists, redirect the user to create one
         return redirect('create_celeb_profile_page')

@@ -13,7 +13,7 @@ class Product(models.Model):
     product_id = models.AutoField(primary_key=True)
     # 'celeb_profile.CelebProfile' this is the app and where the model is 
     celeb_profile = models.ForeignKey('celeb_profile.CelebProfile', on_delete=models.CASCADE, related_name='products', blank=True, null=True)
-
+    
 
     def __str__(self):
         return self.name

@@ -24,6 +24,26 @@
     <a href="{% url 'add_product' %}">
         <button>Add product</button>
     </a>
+
+</div>
+
+<div class="container">
+    <div class="row my-5 text-white ">
+        <h1>Products you added to your Profile </h1>
+        <hr>
+
+        <div class="row">
+            {% for product in products_added %}
+            <h1>{{ product.name }}</h1>
+            <p>{{ product.description}}</p>
+            <img src="{{ product.image_url }}" class="bd-placeholder-img card-img-top">
+            <a href="{% url 'edit_product' product.product_id %}" class="btn btn-sm btn-outline-secondary">Edit</a>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
 </div>
 
 
