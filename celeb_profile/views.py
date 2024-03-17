@@ -1,8 +1,31 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import CelebRequest, CelebProfile
-from .forms import CelebRequestForm, CelebProfileForm
+from products.models import Product
+from .forms import CelebRequestForm, CelebProfileForm , CelebAddProductFrom
 
 # Create your views here.
+
+
+def add_product(request):
+    # Checks if the incoming request is a POST 
+    if request.method == 'POST':
+        #  initializes a form instance with the data submitted in the POST request
+        form = CelebAddProductFrom(request.POST)
+        # Checks if form is valid and if the form is valid 
+        if form.is_valid():
+            product = form.save() # saves form data to the product variable 
+            celeb_profile = request.user.celeb_profile #  retrieves the CelebProfile instance associated with the current user.
+            celeb_profile.products_added.add(product) # Adds the saved product to the products_added in the celeb profile 
+            return redirect('add_product_success') 
+    else:
+        form = CelebAddProductFrom()
+    return render(request, 'celeb_profile/add_product.html', {'form': form})
+
+
+def add_product_success(request):
+    """ A view to show a success page once the user has added there product """
+
+    return render(request, 'celeb_profile/added_product_success.html')
 
 def edit_celeb_profile(request):
     """ A view to edit the celeb profile and be given a confirmation """
