@@ -9,3 +9,8 @@ class CelebRequestAdmin(admin.ModelAdmin):
     list_filter = ['approved']
     search_fields = ['user__username', 'occupation']
     list_per_page = 20
+
+@admin.register(CelebProfile)
+class CelebProfileAdmin(admin.ModelAdmin):
+    list_display = ('user', 'profile_name', 'bio')  # Specify which fields to display in the list view
+    search_fields = ('user__username', 'profile_name')

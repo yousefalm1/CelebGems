@@ -100,13 +100,16 @@
                             <li>
                                 <a class="dropdown-item" href="{}">My Profile</a>
                             </li>
+                            {% if has_approved_request %}
+                            <li>
+                                <a class="dropdown-item" href="{% url 'celeb_profile_page' %}">Celeb Profile</a>
+                            </li>
+                            {% else %}
                             <li>
                                 <a class="dropdown-item" href="{% url 'request_celeb_profile_page' %}">Request Celebrity
                                     Profile</a>
                             </li>
-                            <li>
-                                <a class="dropdown-item">Celebrity Profile</a>
-                            </li>
+                            {% endif %}
                             <li>
                                 <a class="dropdown-item" href="#">Log Out</a>
                             </li>
