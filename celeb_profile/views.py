@@ -1,4 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
+
+
 from .models import CelebRequest, CelebProfile
 from products.models import Product
 from .forms import CelebRequestForm, CelebProfileForm , CelebAddProductFrom, EditProductForm
@@ -9,7 +12,7 @@ from .forms import CelebRequestForm, CelebProfileForm , CelebAddProductFrom, Edi
 
 # the product_id is to identify what product will be edited
 def edit_product(request, product_id):
-
+    """ A view to edit a product that a user clicked to edit on celeb profile """
     # gets the product based on the product_id
     product = get_object_or_404(Product, pk=product_id)
     
@@ -19,7 +22,9 @@ def edit_product(request, product_id):
         form = EditProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             form.save()
-            return redirect('') 
+            # the kwargs is so when the user submits the edit the product id is added to the <Int:> and passed into the success view to load the specific product in the success page
+            return redirect(reverse('edit_product_success', kwargs={'product_id': product_id}))
+
         
     # this is executed first when the user clicks edit product and it will load the data on the product
     form = EditProductForm(instance=product)
@@ -27,8 +32,11 @@ def edit_product(request, product_id):
     return render(request, 'celeb_profile/edit_product.html', {'form': form, 'product': product})
 
 
+def edit_product_success(request, product_id):
+    """ A view to to show the success of editing a product"""
 
-
+    product = get_object_or_404(Product, pk=product_id)
+    return render(request, 'celeb_profile/edit_product_success.html', {'product': product})
 
 
 def add_product(request):
