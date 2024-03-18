@@ -9,7 +9,7 @@
 
 
 <section class="container-fluid">
-    <div class="row">
+    <div class="row text-white">
         <div class="col-md-6">
             <div class="image-container">
                 <a href="{{ product.image.url }}" target="_blank">
@@ -30,28 +30,18 @@
 
 
         <!-- product specifications  -->
-        <div class="row my-5">
+        <div class="row my-5 text-white">
             <div class="col-12">
                 <h1>Product Specifications</h1>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibusdam soluta non natus enim possimus
-                    animi,
-                    tenetur praesentium. Magni esse eveniet ducimus praesentium autem fugit quos optio pariatur alias
-                    illum!
-                    Corporis?Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt numquam eligendi quidem
-                    sunt
-                    accusamus, inventore suscipit minima beatae aut optio neque animi consectetur, impedit ipsa eos
-                    nobis et
-                    recusandae ullam.</p>
+                <p class="lead">{{ product.product_specifications}}</p>
             </div>
         </div>
 
         <!-- Availability and Shipping Information -->
-        <div class="row my-5">
+        <div class="row my-5 text-white">
             <div class="col-12">
                 <h1>Availability and Shipping Information</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, dicta eum. Sunt, iste qui dolore totam
-                    voluptate praesentium in veritatis? Vel ex incidunt totam, quos repudiandae molestiae odit excepturi
-                    quidem.lorem</p>
+                <p class="lead">{{ product.availability_shipping_info }}</p>
             </div>
         </div>
 
@@ -60,6 +50,11 @@
         {% for product in celeb_profile_products %}
         <div class="row my-5">
             <div class="col-12">
+                <h1>Other products by this {{ product.celeb_profile}}</h1>
+
+
+
+
                 <h1>{{ product.name}}</h1>
 
             </div>

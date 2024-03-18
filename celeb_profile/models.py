@@ -28,5 +28,5 @@ class CelebProfile(models.Model):
 
 
     def __str__(self):
-        return self.user.username + "'s Celeb Profile"
+        return self.user.username 
 
