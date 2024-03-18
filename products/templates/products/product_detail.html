@@ -57,12 +57,14 @@
 
 
         <!-- other products from the celeb -->
+        {% for product in celeb_profile_products %}
         <div class="row my-5">
             <div class="col-12">
-                <h1 class="">Other Product From ______</h1>
+                <h1>{{ product.name}}</h1>
+
             </div>
         </div>
-
+        {% endfor %}
 
 </section>
 
