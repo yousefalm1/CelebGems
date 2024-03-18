@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import request_celeb_profile_page, request_celeb_profile_submitted, request_already_submitted, celeb_profile_page, create_celeb_profile_page, edit_celeb_profile, edit_celeb_profile_confirmation, add_product, edit_product, edit_product_success, delete_product
+from .views import request_celeb_profile_page, request_celeb_profile_submitted, request_already_submitted, celeb_profile_page, create_celeb_profile_page, edit_celeb_profile, edit_celeb_profile_confirmation, add_product, edit_product, edit_product_success, delete_product, add_product_success
 
 urlpatterns = [
 
@@ -19,6 +19,7 @@ urlpatterns = [
 
     # Celeb Add Product
     path('add-product/', add_product, name='add_product'),
+    path('add-product/success', add_product_success, name='add_product_success'),
 
     # Celeb Edit Product
     path('edit-product/<int:product_id>/', edit_product, name='edit_product'),

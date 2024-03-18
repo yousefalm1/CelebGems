@@ -10,6 +10,7 @@ from .forms import CelebRequestForm, CelebProfileForm , CelebAddProductFrom, Edi
 
 
 
+
 def delete_product(request, product_id):
     """ A view to delete the product in the celeb profile page """
 
@@ -17,9 +18,12 @@ def delete_product(request, product_id):
 
     if request.method == 'POST':
         product.delete()
-        return redirect('edit_product_success')
+        return redirect('delete_product_success')
 
+def delete_product_success(request):
+    """ A view to display a success page once the user """
 
+    return render(request, 'celeb_profile/delete_product_success.html')
 
 # the product_id is to identify what product will be edited
 def edit_product(request, product_id):
@@ -69,7 +73,7 @@ def add_product(request):
 def add_product_success(request):
     """ A view to show a success page once the user has added there product """
 
-    return render(request, 'celeb_profile/added_product_success.html')
+    return render(request, 'celeb_profile/add_product_success.html')
 
 def edit_celeb_profile(request):
     """ A view to edit the celeb profile and be given a confirmation """
