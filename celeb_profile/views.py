@@ -10,6 +10,17 @@ from .forms import CelebRequestForm, CelebProfileForm , CelebAddProductFrom, Edi
 
 
 
+def delete_product(request, product_id):
+    """ A view to delete the product in the celeb profile page """
+
+    product = get_object_or_404(Product, pk=product_id)
+
+    if request.method == 'POST':
+        product.delete()
+        return redirect('edit_product_success')
+
+
+
 # the product_id is to identify what product will be edited
 def edit_product(request, product_id):
     """ A view to edit a product that a user clicked to edit on celeb profile """

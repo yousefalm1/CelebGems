@@ -39,8 +39,11 @@
             <img src="{{ product.image_url }}" class="bd-placeholder-img card-img-top">
             <a href="{% url 'edit_product' product.product_id %}" class="btn btn-sm btn-outline-secondary">Edit</a>
 
+            <form action="{% url 'delete_product' product.product_id %}" method="POST">
+                {% csrf_token %}
+                <button class="btn btn-danger" type="submit">Delete</button>
+            </form>
             {% endfor %}
-
         </div>
 
     </div>
