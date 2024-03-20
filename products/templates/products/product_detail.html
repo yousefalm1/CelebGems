@@ -22,8 +22,14 @@
                     <p class="my-5">{{ product.description }}</p>
                     <button type="button" class="btn btn-danger text-center" disabled>${{ product.price }}</button>
                     <div class="d-flex flex-column my-5">
-                        <button class="btn btn-primary mb-3">Add to cart</button>
-                        <button class="btn btn-primary">Add to cart</button>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Quantity:</span>
+                            <input type="number" class="form-control" value="{{ product.quantity }}" min="1"
+                                id="quantity-input">
+                        </div>
+                        <button type="button" class="col-12 py-2 btn text-white ">
+                            <i class="fa fa-shopping-bag"> Add to cart</i>
+                        </button>
                     </div>
             </div>
         </div>
@@ -41,25 +47,64 @@
         <div class="row my-5 text-white">
             <div class="col-12">
                 <h1>Availability and Shipping Information</h1>
+                <hr>
                 <p class="lead">{{ product.availability_shipping_info }}</p>
             </div>
         </div>
 
 
-        <!-- other products from the celeb -->
-        {% for product in celeb_profile_products %}
-        <div class="row my-5">
+
+
+        <div class="row text-white">
             <div class="col-12">
-                <h1>Other products by this {{ product.celeb_profile}}</h1>
-
-
-
-
-                <h1>{{ product.name}}</h1>
-
+                <h1>Other products by <strong>{{ product.celeb_profile }}</strong></h1>
+                <hr>
             </div>
         </div>
-        {% endfor %}
+        <div class="row">
+            <div class="col-12 text-center">
+                <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+                    <i class="fa fa-arrow-left"></i>
+                </a>
+                <a class="btn btn-primary mb-3" href="#carouselExampleIndicators2" role="button" data-slide="next">
+                    <i class="fa fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row">
+                                {% for product in celeb_profile_products %}
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="100%x280"
+                                            src="https://images.unsplash.com/photo-1532781914607-2031eca2f00d?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=7c625ea379640da3ef2e24f20df7ce8d">
+                                        <div class="card-body">
+                                            <h4 class="card-title">{{ product.name }}</h4>
+                                            <p class="card-text">{{ product.description }}</p>
+                                            <span class="product-price">${{ product.price}}</span>
+
+                                            <button type="button" class="col-12 py-2">
+                                                <i class="fa fa-binoculars"> View</i>
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
 
 </section>
 

@@ -19,10 +19,10 @@ class CelebProfileForm(forms.ModelForm):
 class CelebAddProductFrom(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ['name', 'description','product_specifications','availability_shipping_info', 'price', 'quantity', 'image_url', 'image']
+        fields = ['name', 'description','product_specifications','availability_shipping_info', 'price', 'quantity_in_stock', 'image_url', 'image']
 
 
 class EditProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ['name', 'description','product_specifications','availability_shipping_info', 'price', 'quantity', 'image_url', 'image']
+        fields = ['name', 'description','product_specifications','availability_shipping_info', 'price', 'quantity_in_stock', 'image_url', 'image']
