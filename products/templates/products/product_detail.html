@@ -22,20 +22,36 @@
                     <p class="my-5">{{ product.description }}</p>
                     <button type="button" class="btn btn-danger text-center" disabled>${{ product.price }}</button>
                     <div class="d-flex flex-column my-5">
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">Quantity:</span>
-                            <input type="number" class="form-control" value="{{ product.quantity }}" min="1"
-                                id="quantity-input">
-                        </div>
-                        <h1>{{ product.product_id}}</h1>
+                        <form method="POST" action="{% url 'add_to_bag' product.product_id %}">
+                            {% csrf_token %}
+                            <div class="form-row">
+                                <div class="col-12">
+                                    <p><strong>Quantity:</strong></p>
+                                    <div class="form-group w-50">
+                                        <input name="quantity" type="number" class="form-control qty_input" value="1"
+                                            min="1" max="99" data-item_id="{{ product.product_id}}"
+                                            id="id_qty{{product.product_id}}">
+                                    </div>
+                                </div>
+                            </div>
 
-                        <button type="button" class="col-12 py-2 btn text-white ">
-                            <i class="fa fa-shopping-bag"> Add to cart</i>
-                        </button>
+                            <div class="col-12">
+                                <a href="{% url 'products' %}" class="btn btn-outline mty-5">
+                                    <span class="text-uppercase">Keep shopping</span>
+                                </a>
+                                <input type="submit" class="btn btn-success mt-5 rounded-0" value="Add to Bag">
+                            </div>
+                            <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                        </form>
                     </div>
             </div>
         </div>
 
+
+
+        <button type="button" class="col-12 py-2 btn text-white ">
+            <i class="fa fa-shopping-bag"> Add to cart</i>
+        </button>
 
         <!-- product specifications  -->
         <div class="row my-5 text-white">
