@@ -32,8 +32,15 @@
                     <td class="p-3 w-25">
                         <img class="img-fluid rounded" src="{{ product.proudct.image }}" alt="">
                     </td>
-                    <td class="p-3">
+                    <td class="p-3 ">
                         <p class="my-0"><strong>{{ product.product.name}}</strong></p>
+                        <p class="my-0"><strong>Size: </strong>
+                            {% if product.product.has_sizes %}
+                            {{ product.size|upper }}
+                            {% else %}
+                            N/A
+                            {% endif %}
+                        </p>
                     </td>
                     <td class="p-3">
                         <p class="my-0">${{ product.product.price}}</p>
