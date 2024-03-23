@@ -40,7 +40,7 @@ def bag_contents(request):
                 # appends the info about product and size to bag_products list 
                 bag_products.append({
                     'product_id': product_id,
-                    'quantity': product_data,
+                    'quantity': quantity,
                     'product': product,
                     'size': size,
                 })
