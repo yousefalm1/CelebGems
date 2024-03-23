@@ -40,107 +40,134 @@
                                 </div>
                                 {% endif %}
                                 <div class="col-12">
-                                    <p><strong>Quantity:</strong></p>
+                                    <p class="mt-3"><strong>Quantity:</strong></p>
                                     <div class="form-group w-50">
-                                        <input name="quantity" type="number" class="form-control qty_input" value="1"
-                                            min="1" max="99" data-item_id="{{ product.product_id }}"
-                                            id="id_qty{{ product.product_id }}">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <button class="decrement-qty btn btn-black rounded-0"
+                                                    data-item_id="{{ product.id }}" id="decrement-qty_{{ product.id }}">
+                                                    <span class="icon text-white">
+                                                        <i class="fas fa-minus"></i>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                            <input class="form-control qty_input" type="number" name="quantity"
+                                                value="1" min="1" max="99" data-item_id="{{ product.id }}"
+                                                id="id_qty_{{ product.id }}">
+                                            <div class="input-group-append">
+                                                <button class="increment-qty btn btn-black rounded-0"
+                                                    data-item_id="{{ product.id }}" id="increment-qty_{{ product.id }}">
+                                                    <span class="icon text-white">
+                                                        <i class="fas fa-plus"></i>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="col-12">
-                                <a href="{% url 'products' %}" class="btn btn-outline mty-5">
-                                    <span class="text-uppercase">Keep shopping</span>
-                                </a>
-                                <input type="submit" class="btn btn-success mt-5 rounded-0" value="Add to Bag">
+
                             </div>
-                            <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                            {% endwith %}
-                        </form>
                     </div>
             </div>
+            <div class="col-12">
+                <a href="{% url 'products' %}" class="btn btn-outline mty-5">
+                    <span class="text-uppercase">Keep shopping</span>
+                </a>
+                <input type="submit" class="btn btn-success mt-5 rounded-0" value="Add to Bag">
+            </div>
+            <input type="hidden" name="redirect_url" value="{{ request.path }}">
+            {% endwith %}
+            </form>
         </div>
     </div>
+</div>
+</div>
 
 
 
-    <button type="button" class="col-12 py-2 btn text-white ">
-        <i class="fa fa-shopping-bag"> Add to cart</i>
-    </button>
+<button type="button" class="col-12 py-2 btn text-white ">
+    <i class="fa fa-shopping-bag"> Add to cart</i>
+</button>
 
-    <!-- product specifications  -->
-    <div class="row my-5 text-white">
-        <div class="col-12">
-            <h1>Product Specifications</h1>
-            <p class="lead">{{ product.product_specifications}}</p>
-        </div>
+<!-- product specifications  -->
+<div class="row my-5 text-white">
+    <div class="col-12">
+        <h1>Product Specifications</h1>
+        <p class="lead">{{ product.product_specifications}}</p>
     </div>
+</div>
 
-    <!-- Availability and Shipping Information -->
-    <div class="row my-5 text-white">
-        <div class="col-12">
-            <h1>Availability and Shipping Information</h1>
-            <hr>
-            <p class="lead">{{ product.availability_shipping_info }}</p>
-        </div>
+<!-- Availability and Shipping Information -->
+<div class="row my-5 text-white">
+    <div class="col-12">
+        <h1>Availability and Shipping Information</h1>
+        <hr>
+        <p class="lead">{{ product.availability_shipping_info }}</p>
     </div>
+</div>
 
 
 
 
-    <div class="row text-white">
-        <div class="col-12">
-            <h1>Other products by <strong>{{ product.celeb_profile }}</strong></h1>
-            <hr>
-        </div>
+<div class="row text-white">
+    <div class="col-12">
+        <h1>Other products by <strong>{{ product.celeb_profile }}</strong></h1>
+        <hr>
     </div>
-    <div class="row">
-        <div class="col-12 text-center">
-            <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
-                <i class="fa fa-arrow-left"></i>
-            </a>
-            <a class="btn btn-primary mb-3" href="#carouselExampleIndicators2" role="button" data-slide="next">
-                <i class="fa fa-arrow-right"></i>
-            </a>
-        </div>
+</div>
+<div class="row">
+    <div class="col-12 text-center">
+        <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+            <i class="fa fa-arrow-left"></i>
+        </a>
+        <a class="btn btn-primary mb-3" href="#carouselExampleIndicators2" role="button" data-slide="next">
+            <i class="fa fa-arrow-right"></i>
+        </a>
     </div>
-    <div class="row">
-        <div class="col-12">
-            <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="row">
-                            {% for product in celeb_profile_products %}
-                            <div class="col-md-4 mb-3">
-                                <div class="card">
-                                    <img class="img-fluid" alt="100%x280"
-                                        src="https://images.unsplash.com/photo-1532781914607-2031eca2f00d?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=7c625ea379640da3ef2e24f20df7ce8d">
-                                    <div class="card-body">
-                                        <h4 class="card-title">{{ product.name }}</h4>
-                                        <p class="card-text">{{ product.description }}</p>
-                                        <span class="product-price">${{ product.price}}</span>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row">
+                        {% for product in celeb_profile_products %}
+                        <div class="col-md-4 mb-3">
+                            <div class="card">
+                                <img class="img-fluid" alt="100%x280"
+                                    src="https://images.unsplash.com/photo-1532781914607-2031eca2f00d?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=7c625ea379640da3ef2e24f20df7ce8d">
+                                <div class="card-body">
+                                    <h4 class="card-title">{{ product.name }}</h4>
+                                    <p class="card-text">{{ product.description }}</p>
+                                    <span class="product-price">${{ product.price}}</span>
 
-                                        <button type="button" class="col-12 py-2">
-                                            <i class="fa fa-binoculars"> View</i>
-                                        </button>
-                                    </div>
-
+                                    <button type="button" class="col-12 py-2">
+                                        <i class="fa fa-binoculars"> View</i>
+                                    </button>
                                 </div>
+
                             </div>
-                            {% endfor %}
                         </div>
+                        {% endfor %}
                     </div>
-
                 </div>
+
             </div>
         </div>
     </div>
+</div>
 
 
 
 
-    </section>
+</section>
 
 
-    {% endblock %}
+{% endblock %}
+
+{% block postloadjs%}
+{{ block.super }}
+{% include 'products/includes/quantity_input_script.html' %}
+
+{% endblock %}

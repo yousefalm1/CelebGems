@@ -1,0 +1,25 @@
+<script type="text/javascript">
+    // ensures the code inside is run only after the html document is loaded 
+    $(document).ready(function () {
+        // Selects all the elements with the class increment-qty and attaches a click event listener and when its clicked the function inside the click() is executed
+        $('.increment-qty').click(function (e) {
+            // prevents the default action associated with the clicked element 
+            e.preventDefault();
+            // $(this) refers to the clicked button and the closest() goes up the dom tree to find the nearest element with the class group then the find() searches within that ancestor element  
+            var closestInput = $(this).closest('.input-group').find('.qty_input');
+            // this gets the current value by using parseInt to convent the closestInput to a integer
+            var currentValue = parseInt($(closestInput).val());
+            // Updated the closest input by 1 using .val which when uses like this sets the closestInput to whats inside val()
+            $(closestInput).val(currentValue + 1);
+        });
+
+        $('.decrement-qty').click(function (e) {
+            e.preventDefault();
+            var closestInput = $(this).closest('.input-group').find('.qty_input');
+            var currentValue = parseInt($(closestInput).val());
+            if (currentValue > 1) {
+                $(closestInput).val(currentValue - 1);
+            }
+        });
+    });
+</script>
