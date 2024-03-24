@@ -26,3 +26,11 @@ body {
 .cards-wrapper {
   display: flex;
 }
+
+/* Bag.html */
+/* Update and remove cursor  */
+
+.update-link,
+.remove-product {
+  cursor: pointer;
+}
