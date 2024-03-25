@@ -46,7 +46,8 @@
                         <p class="my-0">${{ product.product.price}}</p>
                     </td>
                     <td class="p-3">
-                        <form action="" method="POST" class="form update-form">
+                        <form action="{% url 'adjust_bag' product.product.product_id %}" method="POST"
+                            class="form update-form">
                             {% csrf_token %}
                             <div class="form-group w-50">
                                 <div class="input-group">
@@ -138,39 +139,40 @@
 {{ block.super }}
 {% include 'products/includes/quantity_input_script.html' %}
 <script type="text/javascript">
-    // Update quantity on click
-    $('.update-link').click(function (e) {
-        // selects the immediately preceding sibling element of the clicked link that has the class .update-form
-        var form = $(this).prev('.update-form');
-        form.submit();
-    })
+    $(document).ready(function () {
+        // Update quantity on click
+        $('.update-link').click(function (e) {
+            e.preventDefault();
+            // selects the immediately preceding sibling element of the clicked link that has the class .update-form
+            var form = $(this).prev('.update-form');
+            form.submit();
+        });
 
-    // Remove the product and reload on click
+        // Remove the product and reload on click
+        // attaches click function to the remove-product when its clicked the code is executed
+        $('.remove-product').click(function (e) {
+            e.preventDefault();
+            // Gets the csrf token from the django template (csrf_token is a security  prevent Cross-Site Request Forgery)
+            var csrfToken = "{{ csrf_token }}";
+            // Gets the id from from the clicked element
+            // it then uses the splits the id attribute as a array and then selects the second element and using the remove_ means there will be only two
+            var productId = $(this).attr('id').split('remove_')[1];
+            // Gets the size from the clicked element 
+            var size = $(this).data('size');
+            // Constructs the which the post request will be sent it also includes the productID
+            var url = `/bag/remove/${productId}`;
+            // Creates an object data containing  CSRF token and the size of the product. This data will be sent along with the POST request.
+            var data = { 'csrfmiddlewaretoken': csrfToken, 'size': size };
 
-    // attaches click function to the remove-product when its clicked the code is executed
-    $('.remove-product').click(function (e) {
-        // Gets the csrf token from the django template (csrf_token is a security  prevent Cross-Site Request Forgery)
-        var csrfToken = "{{ csrf_token }}";
-        // Gets the id from from the clicked element
-        // it then uses the splits the id attribute as a array and then selects the second element and using the remove_ means there will be only two
-        var productId = $(this).attr('id').split('remove_')[1];
-        // Gets the size from the clicked element 
-        var size = $(this).data('size');
-        // Constructs the which the post request will be sent it also includes the productID
-        var url = `/bag/remove/${productId}`;
-        // Creates an object data containing  CSRF token and the size of the product. This data will be sent along with the POST request.
-        var data = { 'csrfmiddlewaretoken': csrfToken, 'size': size }
-
-        // sends a post request with the url constructed in url and the the data
-        // and when the request completes successfully the page reloads using location.reload()
-        // which refreshes the page after removing the product
-        $.post(url, data)
-            .done(function () {
-                location.reload();
-            });
-
-    })
-
+            // sends a post request with the url constructed in url and the the data
+            // and when the request completes successfully the page reloads using location.reload()
+            // which refreshes the page after removing the product
+            $.post(url, data)
+                .done(function () {
+                    location.reload();
+                })
+        });
+    });
 </script>
 
 {% endblock %}
