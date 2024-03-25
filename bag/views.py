@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from products.models import Product
 
 # Create your views here.
@@ -56,11 +56,44 @@ def add_to_bag(request, product_id):
     # Redirects the user to a url after adding the product
     return redirect(redirect_url)
 
+def adjust_bag(request, product_id):
+    """ Adjust the quantity of the product """
 
+    # Gets the quantity of the product from the post request sent by the user then converts it to an integer
+    quantity = int(request.POST.get('quantity'))
 
+    size = None
 
-def delete_bag(request):
-    pass
+    # check if product_size is in the post request (If it does then user has selected a size )
+    if 'product_size' in request.POST:
+        # if the size is there it gets the size from the POST request 
+        # it accesses the value associated with the 'product_size' key in the request.POST dictionary 
+        size = request.POST['product_size']
+    # gets the shopping bag using the 'bag' key in the session dict if not there it returns an empty dict 
+    bag = request.session.get('bag', {})
 
-def update_bag(request):
-    pass
+    # Checks if the size variable has a value
+    if size:
+        # is size is provided and has a quantity of greater than 0 
+        if quantity > 0:
+            # it sets the quantity of the product with the given size in th bag dict 
+            # It accesses 'bag' dict by using the product_id as the key then accesses the nested dict 'product_by_size' to store the quantity for the specified size.
+            bag[product_id]['product_by_size'][size] = quantity
+        else:
+            # If the quantity is 0 less it removes the product
+            del bag[product_id]['product_by_size'][size]
+            
+    #  if the product has no size 
+    else:
+        # If the product is greater then 0 it sets the quantity directly in the bag dict using the product_id as the key 
+        if quantity > 0:
+            bag[product_id] = quantity
+        else:
+            # if the product is 0 or less it removes it from the bag using the pop method on the bag dict with the product_id as the key 
+            bag.pop[product_id]
+
+    # After adjusting the contents of the bag dict it updates the session variable 'bag' with the modified 'bag' dict
+    request.session['bag'] = bag
+    # The code redirects the user to bag to the bag which will be updated 
+    return redirect(reverse('view_bag'))
+
