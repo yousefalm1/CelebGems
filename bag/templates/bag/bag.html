@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load bag_tools %}
 
 {% block content %}
 
@@ -84,7 +85,7 @@
                             data-product_size="{{ product.product.size }}"><small>Remove</small></a>
 
                     <td class="p-3">
-                        <p class="my-0">{{ product.product.price}}</p>
+                        <p class="my-0">{{ product.product.price | calc_subtotal:product.quantity }}</p>
                     </td>
                 </tr>
                 {% endfor %}
