@@ -98,26 +98,29 @@ def adjust_bag(request, product_id):
     # The code redirects the user to bag to the bag which will be updated 
     return redirect(reverse('view_bag'))
 
-
-
 def remove_from_bag(request, product_id):
-    """ Remove products from bag """
-    
+    """Remove the item from the shopping bag"""
+
     try:
         size = None
-        if 'product_size' in request.POST:
-            size = request.POST['product_size']
+        if 'size' in request.POST:
+            size = request.POST['size']
+
         bag = request.session.get('bag', {})
 
-
-        if size:
-            del bag[product_id]['product_by_size'][size]
-            if not bag[product_id]['product_by_size']:    
-                bag.pop(product_id)
-        else:
-            bag.pop(product_id)
-
+        # Check if product_id exists in the bag dictionary
+        if str(product_id) in bag:  # Convert product_id to string for comparison
+            if size:
+                del bag[str(product_id)]['products_by_size'][size]
+                if not bag[str(product_id)]['products_by_size']:
+                    bag.pop(str(product_id))
+            else:
+                bag.pop(str(product_id))
+       
         request.session['bag'] = bag
-        return HttpResponse(status = 200)
+
+        return HttpResponse(status=200)
+
     except Exception as e:
-        return HttpResponse(status = 500)
+        return HttpResponse(status=500)
+
