@@ -2,8 +2,22 @@ from django.contrib import admin
 from .models import Order, OrderLineItem
 # Register your models here.
 
+# tabularinline allows to display and edit related objects on the same page as the parent object in a table format
+class OrderAdminOrderLineItem(admin.TabularInline):
+    # this will make it so we dont have to go to the OrderLineItem interface to edit we can do it thru thew order interface
+    
+    model = OrderLineItem
+
+    readonly_fields = ('lineitem_total',)
+
+
+
+
 
 class OrderAdmin(admin.ModelAdmin):
+    # Add to the order admin interface
+    inlines = (OrderAdminOrderLineItem)
+
     # specifies the fields in the admin interface that should be displayed as read-only,
     readonly_fields = ('order_number', 'data', 'delivery_cost', 'order_total', 'grand_total',)
 
