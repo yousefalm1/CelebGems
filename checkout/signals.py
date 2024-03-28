@@ -14,3 +14,12 @@ def update_on_save(sender, instance, created, **kwargs):
 
     # Access the order this specific item is related to and call the update_total method
     instance.order.update_total()
+
+@receiver(post_delete, sender=OrderLineItem)
+def update_on_save(sender, instance, **kwargs):
+    """ 
+    Update order total on lineitem delete
+    """
+
+    # Access the order this specific item is related to and call the update_total method
+    instance.order.update_total()
