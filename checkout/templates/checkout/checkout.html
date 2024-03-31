@@ -6,10 +6,9 @@
 <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
 {% endblock %}
 
-
 {% block content %}
 <div class="overlay"></div>
-<div class="container">
+<div class="container text-white">
     <div class="row">
         <div class="col">
             <hr>
@@ -29,25 +28,25 @@
                     <p class="mb-1 mt-0 small text-muted">Subtotal</p>
                 </div>
             </div>
-            {% for item in bag_items %}
+            {% for product in bag_products %}
             <div class="row">
                 <div class="col-2 mb-1">
-                    <a href="{% url 'product_detail' item.product.id %}">
-                        {% if item.product.image %}
-                        <img class="w-100" src="{{ item.product.image.url }}" alt="{{ product.name }}">
+                    <a href="{% url 'product_detail'  product.product.product_id %}">
+                        {% if product.product.image %}
+                        <img class="w-100" src="{{ product.product.image.url }}" alt="{{ product.product.name }}">
                         {% else %}
-                        <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                        <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.product.name }}">
                         {% endif %}
                     </a>
                 </div>
                 <div class="col-7">
-                    <p class="my-0"><strong>{{ item.product.name }}</strong></p>
-                    <p class="my-0 small">Size: {% if item.product.has_sizes %}{{ item.size|upper }}{% else %}N/A{%
-                        endif %}</p>
-                    <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
+                    <p class="my-0"><strong>{{ product.product.name }}</strong></p>
+                    <p class="my-0 small">Size: {% if product.product.has_sizes %}{{ product.size|upper }}{% else
+                        %}N/A{% endif %}</p>
+                    <p class="my-0 small text-muted">Qty: {{ product.quantity }}</p>
                 </div>
                 <div class="col-3 text-right">
-                    <p class="my-0 small text-muted">${{ item.product.price | calc_subtotal:item.quantity }}</p>
+                    <p class="my-0 small text-muted">${{ product.product.price | calc_subtotal:product.quantity }}</p>
                 </div>
             </div>
             {% endfor %}
@@ -70,12 +69,12 @@
             <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                 {% csrf_token %}
                 <fieldset class="rounded px-3 mb-5">
-                    <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
+                    <legend class="fieldset-label small text-white px-2 w-auto">Details</legend>
                     {{ order_form.full_name | as_crispy_field }}
                     {{ order_form.email | as_crispy_field }}
                 </fieldset>
-                <fieldset class="rounded px-3 mb-5">
-                    <legend class="fieldset-label small text-black px-2 w-auto">Delivery</legend>
+                <fieldset class="text-white rounded px-3 mb-5">
+                    <legend class="fieldset-label small text-white px-2 w-auto">Delivery</legend>
                     {{ order_form.phone_number | as_crispy_field }}
                     {{ order_form.country | as_crispy_field }}
                     {{ order_form.postcode | as_crispy_field }}
