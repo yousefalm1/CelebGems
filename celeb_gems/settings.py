@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'celeb_profile',
     'bag',
     'checkout',
+    'profiles',
 
     'crispy_forms',
 
