@@ -1,16 +1,18 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+
 from .models import UserProfile
 
-# Create your views here.
+
 def profile(request):
-    """
-    Display user profile 
-    """
+    """ Display the user's profile. """
 
-    profile = UserProfile.objects.get(user=request.user) 
+    # query userprofile to find where user field matches the currently logged in user 
+    # if userprofile is not found render 404 page
+    profile = get_object_or_404(UserProfile, user=request.user)
 
+    template = 'profiles/profile.html'
     context = {
-        'profile': profile 
+        'profile': profile,
     }
 
-    return render(request, 'templates/profiles/profile.html', context)
+    return render(request, template, context)
