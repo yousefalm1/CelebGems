@@ -27,7 +27,7 @@
                             profile.street_address2|default:"" }}, {{ profile.town_or_city }}, {{
                             profile.county|default:"" }}, {{ profile.postcode|default:"" }}</p>
                     </div>
-                    <a href="" class="btn btn-primary mt-3">Edit Profile</a>
+                    <a href="{% url 'edit_profile' %}" class="btn btn-primary mt-3">Edit Profile</a>
                 </div>
             </div>
         </div>
