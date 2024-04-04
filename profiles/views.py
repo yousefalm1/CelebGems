@@ -1,7 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
 from .models import UserProfile
-from .forms import UserProfileFrom
+from .forms import UserProfileForm
 
 
 def profile(request):
@@ -14,11 +14,29 @@ def profile(request):
     orders = profile.orders.all()
 
     # Instance puts the userprofile pre existing details in the form for when editing 
-    form = UserProfileFrom(instance=profile)
     template = 'profiles/profile.html'
     context = {
-        'form': form,
+        'profile': profile,
         'orders': orders,
+    }
+
+    return render(request, template, context)
+
+
+
+def edit_profile(request):
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, instance=request.user.userprofile)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = UserProfileForm(instance=request.user.userprofile)
+            
+
+    template = 'profiles/edit_profile.html'
+    context = {
+        'form': form,
     }
 
     return render(request, template, context)
