@@ -9,6 +9,25 @@ from .forms import CelebRequestForm, CelebProfileForm , CelebAddProductFrom, Edi
 # Create your views here.
 
 
+def celeb_profile(request, user_id):
+    # Retrieve the CelebProfile object with the given username
+    celeb_profile = get_object_or_404(CelebProfile, user_id=user_id)
+    
+    # Pass the celeb_profile object to the template
+    return render(request, 'celeb_profile/celeb_profile_consumer.html', {'celeb_profile': celeb_profile})
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 def delete_product(request, product_id):
@@ -191,13 +210,5 @@ def request_already_submitted(request):
     """ A view to render the request already submitted """
     return render(request, 'celeb_profile/request_already_submitted.html')
 
-
-
-def view_celeb_profile(request, username):
-    """ Users can view celeb profile """
-
-    celeb_profile = get_object_or_404(CelebProfile, user__username=username)
-    
-    return render(request, 'celeb_profile/view_celeb_profile.html', {'celeb_profile': celeb_profile})
 
 

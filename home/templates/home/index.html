@@ -102,7 +102,7 @@
                 <div class="card-body text-center">
                     <h3 class="card-title">{{ celeb_profile.profile_name }}</h3>
                     <p class="card-text">{{ celeb_profile.bio}}</p>
-                    <a class="btn btn-dark" href="{{ celeb_profile}}">Go to ______ page</a>
+                    <a href="{% url 'celeb_profile' user_id=celeb_profile.user_id %}">View Profile</a>
                 </div>
             </div>
         </div>
@@ -151,18 +151,5 @@
         </div>
     </div>
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 {% endblock %}

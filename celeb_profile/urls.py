@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import request_celeb_profile_page, request_celeb_profile_submitted, request_already_submitted, celeb_profile_page, create_celeb_profile_page, edit_celeb_profile, edit_celeb_profile_confirmation, add_product, edit_product, edit_product_success, delete_product, add_product_success
+from .views import request_celeb_profile_page, request_celeb_profile_submitted, request_already_submitted, celeb_profile_page, create_celeb_profile_page, edit_celeb_profile, edit_celeb_profile_confirmation, add_product, edit_product, edit_product_success, delete_product, add_product_success, celeb_profile
 
 urlpatterns = [
 
@@ -7,13 +7,14 @@ urlpatterns = [
     path('request-celeb-profile/submitted/',request_celeb_profile_submitted, name='request_celeb_profile_submitted'),
     path('request-celeb-profile/already-submitted/', request_already_submitted, name='request_already_submitted'),
 
+
+    path('view-profile/<int:user_id>/', celeb_profile, name='celeb_profile'),
+
     # Celeb Profile Main Page
     path('celeb-profile/', celeb_profile_page, name='celeb_profile_page'),
 
     # Create Celeb Profile
-    # path('create-celeb-profile/', create_celeb_profile_page, name='create_celeb_profile_page'),
-    path('celeb-profile/<str:username>/', celeb_profile_page, name='celeb_profile_page'),
-
+    path('create-celeb-profile/', create_celeb_profile_page, name='create_celeb_profile_page'),
 
     # Edit Celeb Profile
     path('edit-celeb-profile/', edit_celeb_profile, name='edit_celeb_profile'),
