@@ -190,3 +190,14 @@ def request_celeb_profile_submitted(request ):
 def request_already_submitted(request):
     """ A view to render the request already submitted """
     return render(request, 'celeb_profile/request_already_submitted.html')
+
+
+
+def view_celeb_profile(request, username):
+    """ Users can view celeb profile """
+
+    celeb_profile = get_object_or_404(CelebProfile, user__username=username)
+    
+    return render(request, 'celeb_profile/view_celeb_profile.html', {'celeb_profile': celeb_profile})
+
+

@@ -11,7 +11,9 @@ urlpatterns = [
     path('celeb-profile/', celeb_profile_page, name='celeb_profile_page'),
 
     # Create Celeb Profile
-    path('create-celeb-profile/', create_celeb_profile_page, name='create_celeb_profile_page'),
+    # path('create-celeb-profile/', create_celeb_profile_page, name='create_celeb_profile_page'),
+    path('celeb-profile/<str:username>/', celeb_profile_page, name='celeb_profile_page'),
+
 
     # Edit Celeb Profile
     path('edit-celeb-profile/', edit_celeb_profile, name='edit_celeb_profile'),

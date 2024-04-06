@@ -95,45 +95,19 @@
 
     <!-- row 1 -->
     <div class="row">
+        {% for celeb_profile in celeb_profiles %}
         <div class="col-md-4">
             <div class="card mb-4 rounded-0 border-0 p-3">
                 <img src="..." class="card-img-top" alt="...">
                 <div class="card-body text-center">
-                    <h3 class="card-title">Celebrity 1</h3>
-                    <p class="card-text">Discover the enigmatic world of CelebX! With a mesmerizing blend of talent and
-                        charisma, CelebX captivates audiences worldwide."</p>
-                    <a class="btn btn-dark" href="">Go to ______ page</a>
+                    <h3 class="card-title">{{ celeb_profile.profile_name }}</h3>
+                    <p class="card-text">{{ celeb_profile.bio}}</p>
+                    <a class="btn btn-dark" href="{{ celeb_profile}}">Go to ______ page</a>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card mb-4 rounded-0 border-0 p-3">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Celebrity 2</h5>
-                    <p class="card-text">
-                        Discover the importance of cybersecurity and learn how to
-                        protect yourself and your digital assets from cyber threats.
-                    </p>
-                    <a class="btn btn-dark" href="">Go to ______ page</a>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="card mb-4 rounded-0 border-0 p-3">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Celebrity 3</h5>
-                    <p class="card-text">
-                        Discover the importance of cybersecurity and learn how to
-                        protect yourself and your digital assets from cyber threats.
-                    </p>
-                    <a class="btn btn-dark" href="">Go to ______ page</a>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
+    </div>
 </section>
 
 
