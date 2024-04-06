@@ -40,3 +40,6 @@ def edit_profile(request):
     }
 
     return render(request, template, context)
+
+
+
