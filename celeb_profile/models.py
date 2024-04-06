@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.core.exceptions import ValidationError
 
 
 
@@ -29,6 +30,16 @@ class CelebProfile(models.Model):
     display_on_home = models.BooleanField(default=False)
 
 
+    # Used help for this
+    def clean(self):
+        # Check if more than three CelebProfiles have appear_on_home set to True
+        if self.display_on_home and CelebProfile.objects.filter(display_on_home=True).count() >= 3:
+            raise ValidationError('Only three CelebProfiles can appear on the home page.')
+
+
+    def save(self, *args, **kwargs):
+        self.full_clean()  # Validate the model instance before saving
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.user.username 

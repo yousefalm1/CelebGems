@@ -1,10 +1,13 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
-from celeb_profile.models import CelebRequest
+from celeb_profile.models import CelebRequest, CelebProfile
 
 def index(request):
     """ A view to return the index page """
+
+    
+    celeb_profile =  CelebProfile.objects.all()
 
     # default value if user is not authenticated  
     has_approved_request = False
