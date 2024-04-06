@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 
 from .models import UserProfile
-from checkout import Order
+# from checkout import Order
 from .forms import UserProfileForm
 
 
