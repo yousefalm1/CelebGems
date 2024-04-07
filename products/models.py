@@ -1,5 +1,7 @@
 from django.db import models
-from celeb_profile.models import CelebProfile  # Import CelebProfile from the correct app
+from celeb_profile.models import CelebProfile  
+from django.core.exceptions import ValidationError
+
 
 
 
@@ -20,6 +22,15 @@ class Product(models.Model):
     celeb_profile = models.ForeignKey('celeb_profile.CelebProfile', on_delete=models.CASCADE, related_name='products', blank=True, null=True)
 
 
+    display_on_home = models.BooleanField(default=False)
+
+# clean() method where you can put validation logic to ensure that the data being saved is valid.
+    def clean(self):
+        # Checks if the attribute display_on_true on the current instance of the model is set to true 
+        if self.display_on_home and Product.objects.filter(display_on_home=True).count >= 3:
+            raise ValidationError('Only three products can appear on the home page.')
+
+    
     def __str__(self):
         return self.name
 

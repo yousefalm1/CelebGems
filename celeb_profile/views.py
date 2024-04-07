@@ -12,9 +12,11 @@ from .forms import CelebRequestForm, CelebProfileForm , CelebAddProductFrom, Edi
 def celeb_profile(request, user_id):
     # Retrieve the CelebProfile object with the given username
     celeb_profile = get_object_or_404(CelebProfile, user_id=user_id)
+
+    products_added = celeb_profile.products_added.all()
     
     # Pass the celeb_profile object to the template
-    return render(request, 'celeb_profile/celeb_profile_consumer.html', {'celeb_profile': celeb_profile})
+    return render(request, 'celeb_profile/celeb_profile_consumer.html', {'celeb_profile': celeb_profile,'products_added':products_added  })
 
 
 
