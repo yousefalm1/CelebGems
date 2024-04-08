@@ -7,6 +7,20 @@ from products.models import Product
 from .forms import CelebRequestForm, CelebProfileForm , CelebAddProductFrom, EditProductForm
 
 # Create your views here.
+def all_celebrities(request):
+    """ A View to show all celebrities """
+
+    celeb_profile = CelebProfile.objects.all()
+
+    template = 'celeb_profile/celebrities.html'
+
+    context = {
+        'celeb_profile': celeb_profile,
+    }
+
+    return render(request, template, context)
+
+
 
 
 def celeb_profile(request, user_id):
@@ -20,19 +34,6 @@ def celeb_profile(request, user_id):
     
     # Pass the celeb_profile object to the template
     return render(request, 'celeb_profile/celeb_profile_consumer.html', {'celeb_profile': celeb_profile,'products_added':products_added  })
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 def delete_product(request, product_id):
