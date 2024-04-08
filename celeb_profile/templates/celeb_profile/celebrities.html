@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<section>
+    <div class="container text-center pt-3">
+        <h1 class="text-white mb-5"><strong>Celebrities</strong></h1>
+
+        <div class="row">
+            {% for celeb in celeb_profile %}
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 rounded-0 shadow">
+                    {% if celeb.image %}
+                    <img src="{{ celeb.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                    {% else %}
+                    <img src="{% static 'placeholder_image.jpg' %}" class="card-img-top" alt="{{ product.name }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ celeb.profile_name }}</h5>
+                        <p class="card-text">{{ celeb.bio }}</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <div class="row align-items-center">
+
+                            <div class="col-12">
+                                <a href="{% url 'celeb_profile' user_id=celeb.user_id %}"
+                                    class="btn btn-dark w-100 rounded-0 text-warning">CELEB DETAILS</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</section>
+
+
+{% endblock %}
