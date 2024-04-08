@@ -33,21 +33,40 @@
     </div>
 
 
+    <div class="row mt-5">
+        <div class="col-12">
+            <h1 class="text-center text-muted mb-5">See other products {{ celeb_profile.profile_name }} has to offer
+            </h1>
+        </div>
+    </div>
+
     <div class="row">
         {% for product in products_added %}
-        <div class="col-md-4">
-            <div class="card mb-4">
-                <img src="{{ product.image_url }}" class="card-img-top" alt="{{ product.name }}">
+        <div class="col-md-4 mb-4">
+            <div class="card border-0 rounded-0 shadow">
+                {% if product.image %}
+                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                {% else %}
+                <img src="{% static 'placeholder_image.jpg' %}" class="card-img-top" alt="{{ product.name }}">
+                {% endif %}
                 <div class="card-body">
                     <h5 class="card-title">{{ product.name }}</h5>
                     <p class="card-text">{{ product.description }}</p>
-                    <a href="{% url 'product_detail' product.product_id%}">
-                        <button class="btn btn-primary">Go To Product</button>
-                    </a>
+                </div>
+                <div class="card-footer bg-transparent border-0">
+                    <div class="row align-items-center">
+                        <div class="col-6">
+                            <p class="mb-0">$ {{ product.price }}</p>
+                        </div>
+                        <div class="col-6">
+                            <a href="{}" class="btn btn-dark w-100 rounded-0 text-warning">PRODUCT DETAILS</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            {% endfor %}
         </div>
+        {% endfor %}
     </div>
+
 
     {% endblock %}

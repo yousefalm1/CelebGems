@@ -10,6 +10,9 @@ from .forms import CelebRequestForm, CelebProfileForm , CelebAddProductFrom, Edi
 
 
 def celeb_profile(request, user_id):
+    """
+    A view so all customers are able to see the celeb profile
+    """
     # Retrieve the CelebProfile object with the given username
     celeb_profile = get_object_or_404(CelebProfile, user_id=user_id)
 

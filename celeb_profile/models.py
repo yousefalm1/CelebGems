@@ -30,7 +30,7 @@ class CelebProfile(models.Model):
     display_on_home = models.BooleanField(default=False)
 
 
-    # Used help for this
+    # Used  for this
     def clean(self):
         # Check if more than three CelebProfiles have appear_on_home set to True
         if self.display_on_home and CelebProfile.objects.filter(display_on_home=True).count() >= 3:
