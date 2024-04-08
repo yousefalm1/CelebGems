@@ -8,15 +8,11 @@ from celeb_profile.models import CelebRequest
 def all_products(request):
     """ A view to show all products """
 
-    # For nav
-    has_approved_request = CelebRequest.objects.filter(user=request.user, approved=True).exists()
-    # For nav
 
     products = Product.objects.all()
 
     context = {
         'products': products,
-        'has_approved_request': has_approved_request
     }
 
     return render(request, 'products/products.html', context)
