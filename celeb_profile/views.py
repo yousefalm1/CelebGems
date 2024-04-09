@@ -1,14 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
-
-
 from .models import CelebRequest, CelebProfile
 from products.models import Product
 from .forms import CelebRequestForm, CelebProfileForm , CelebAddProductFrom, EditProductForm
 
-# Create your views here.
 def all_celebrities(request):
-    """ A View to show all celebrities """
+    """ 
+    A View to show all celebrities 
+    """
 
     celeb_profile = CelebProfile.objects.all()
 
@@ -19,9 +18,6 @@ def all_celebrities(request):
     }
 
     return render(request, template, context)
-
-
-
 
 def celeb_profile(request, user_id):
     """
@@ -35,9 +31,10 @@ def celeb_profile(request, user_id):
     # Pass the celeb_profile object to the template
     return render(request, 'celeb_profile/celeb_profile_consumer.html', {'celeb_profile': celeb_profile,'products_added':products_added  })
 
-
 def delete_product(request, product_id):
-    """ A view to delete the product in the celeb profile page """
+    """ 
+    A view to delete the product in the celeb profile page.
+    """
 
     product = get_object_or_404(Product, pk=product_id)
 
@@ -46,13 +43,18 @@ def delete_product(request, product_id):
         return redirect('delete_product_success')
 
 def delete_product_success(request):
-    """ A view to display a success page once the user """
+    """ 
+    A view to display a success page once the user.
+    """
 
     return render(request, 'celeb_profile/delete_product_success.html')
 
 # the product_id is to identify what product will be edited
 def edit_product(request, product_id):
-    """ A view to edit a product that a user clicked to edit on celeb profile """
+    """ 
+    A view to edit a product that a user clicked to edit on celeb profile 
+    """
+
     # gets the product based on the product_id
     product = get_object_or_404(Product, pk=product_id)
     
@@ -73,22 +75,30 @@ def edit_product(request, product_id):
 
 
 def edit_product_success(request, product_id):
-    """ A view to to show the success of editing a product"""
+    """ 
+    A view to to show the success of editing a product
+    """
 
     product = get_object_or_404(Product, pk=product_id)
     return render(request, 'celeb_profile/edit_product_success.html', {'product': product})
 
-
 def add_product(request):
-    # Checks if the incoming request is a POST 
+    """
+    A view to add a new product to a celebrity's profile.
+
+    If the incoming request is a POST, initializes a form instance with the data submitted in the POST request. 
+    Checks if the form is valid, saves the form data to create a new product, and associates it with the current user's CelebProfile.
+    Redirects to a success page upon successful addition of the product.
+
+    If the request method is not POST, initializes an empty form instance to display on the add product page.
+
+    """
     if request.method == 'POST':
-        #  initializes a form instance with the data submitted in the POST request
         form = CelebAddProductFrom(request.POST)
-        # Checks if form is valid and if the form is valid 
         if form.is_valid():
-            product = form.save() # saves form data to the product variable 
-            celeb_profile = request.user.celeb_profile #  retrieves the CelebProfile instance associated with the current user.
-            celeb_profile.products_added.add(product) # Adds the saved product to the products_added in the celeb profile 
+            product = form.save() 
+            celeb_profile = request.user.celeb_profile 
+            celeb_profile.products_added.add(product)
             return redirect('add_product_success') 
     else:
         form = CelebAddProductFrom()
@@ -96,7 +106,9 @@ def add_product(request):
 
 
 def add_product_success(request):
-    """ A view to show a success page once the user has added there product """
+    """ 
+    A view to show a success page once the user has added there product
+    """
 
     return render(request, 'celeb_profile/add_product_success.html')
 
@@ -133,12 +145,8 @@ def edit_celeb_profile_confirmation(request):
 
     return render(request, 'celeb_profile/edit_celeb_profile_confirmation.html')
 
-
-
-
 def celeb_profile_page(request,):
     """ A view to display the user's CelebProfile """
-
 
     # Check if a CelebProfile already exists for the current user
     existing_celeb_profile = CelebProfile.objects.filter(user=request.user).exists()
@@ -146,7 +154,6 @@ def celeb_profile_page(request,):
     if existing_celeb_profile:
         # If a CelebProfile exists, retrieve it
         celeb_profile = get_object_or_404(CelebProfile, user=request.user)
-
 
         products_added = celeb_profile.products_added.all()
 
@@ -178,7 +185,6 @@ def create_celeb_profile_page(request):
     return render(request, 'celeb_profile/create_celeb_profile.html', {'form':form})
 
 
-
 def request_celeb_profile_page(request):
     """ A view display the and handle the celeb profile request form """
 
@@ -198,7 +204,6 @@ def request_celeb_profile_page(request):
         form = CelebRequestForm()
     
     return render(request, 'celeb_profile/request_celeb_profile.html', {'form': form})
-
 
 
 def request_celeb_profile_submitted(request ):

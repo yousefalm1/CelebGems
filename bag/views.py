@@ -1,18 +1,13 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse
 from products.models import Product
 
-# Create your views here.
-
 def view_bag(request):
     """ A view that renders the contents in the users shopping bag """
 
     return render(request, 'bag/bag.html', {})
 
-
-
 def add_to_bag(request, product_id):
     """ Add a quantity of the product to the shopping bag """
-
 
     # Gets the quantity of the product the redirect_ulr and sets the size to None if there is a product size it get the product size
     quantity = int(request.POST.get('quantity'))
@@ -20,6 +15,7 @@ def add_to_bag(request, product_id):
     size = None
     if 'product_size' in request.POST:
         size = request.POST['product_size']
+
     # this retrieves the current bag of the session if no bag it it sets up an empty dict
     bag = request.session.get('bag', {})
 
@@ -99,7 +95,7 @@ def adjust_bag(request, product_id):
     return redirect(reverse('view_bag'))
 
 def remove_from_bag(request, product_id):
-    """Remove the item from the shopping bag"""
+    """ Remove the item from the shopping bag """
 
     try:
         size = None
@@ -116,7 +112,7 @@ def remove_from_bag(request, product_id):
                     bag.pop(str(product_id))
             else:
                 bag.pop(str(product_id))
-       
+                
         request.session['bag'] = bag
 
         return HttpResponse(status=200)

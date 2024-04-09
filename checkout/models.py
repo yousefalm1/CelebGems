@@ -1,16 +1,11 @@
 # Generate a order number
 import uuid
-
 from django.db import models
 from django.db.models import Sum
 from django.conf import settings
-
 from django_countries.fields import CountryField
-
 from products.models import Product   
 from profiles.models import UserProfile
-# Create your models here.
-
 
 class Order(models.Model):
     order_number = models.CharField(max_length=32, null=False, editable=False)
@@ -29,15 +24,12 @@ class Order(models.Model):
     order_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     grand_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
 
-
     def _generate_order_number(self):
         """ Generate a random order number using uuid """
 
         # generate a random string of 32 characters
         return uuid.uuid4().hex.upper()
     
-
-
     def update_total(self):
         """
         Update grand total each time a line is added
@@ -72,7 +64,6 @@ class Order(models.Model):
 
     def __str__(self):
         return self.order_number
-
 
 # Stores each order in a lime 
 class OrderLineItem(models.Model):

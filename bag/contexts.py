@@ -4,6 +4,15 @@ from django.shortcuts import get_object_or_404
 from products.models import Product
 
 def bag_contents(request):
+    """ 
+    Retrieves the contents of the shopping bag from the session and calculates the total cost, quantity, and delivery charges.
+
+    Iterates through each item in the shopping bag, including individual products and their sizes if applicable.
+    Calculates the total cost of all items, taking into account any applicable delivery charges based on the total cost.
+
+    Returns a dictionary containing information about the bag contents, including product details, total cost, delivery charges, and grand total.
+
+    """
 
     # Creates an empty list to store info about the products in the shopping bag
     bag_products = []

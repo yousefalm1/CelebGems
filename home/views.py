@@ -1,13 +1,11 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-
 from celeb_profile.models import CelebRequest, CelebProfile
 from products.models import Product
 
 def index(request):
     """ A view to return the index page """
 
-    
     celeb_profiles = CelebProfile.objects.filter(display_on_home=True)
     products = Product.objects.filter(display_on_home=True)
 
@@ -24,7 +22,6 @@ def index(request):
         'has_approved_request': has_approved_request,
         'products': products,
     }
-
 
     return render(request, template, context)
 

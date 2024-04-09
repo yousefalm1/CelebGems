@@ -1,6 +1,5 @@
 from django.contrib import admin
 from .models import Order, OrderLineItem
-# Register your models here.
 
 # tabularinline allows to display and edit related objects on the same page as the parent object in a table format
 class OrderLineItemAdminInline(admin.TabularInline):
@@ -28,7 +27,5 @@ class OrderAdmin(admin.ModelAdmin):
                     'grand_total',)
     
     ordering = ('-date',)
-
-
 
 admin.site.register(Order, OrderAdmin)

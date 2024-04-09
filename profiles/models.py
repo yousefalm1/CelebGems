@@ -1,21 +1,17 @@
 from django.db import models
-
 # this means that after a model instance is saved it is sent by django to the entire applications 
 from django.db.models.signals import post_save
 # To receive these signals
 from django.dispatch import receiver
-
 from django.contrib.auth.models import User
-
 from django_countries.fields import CountryField
-# Create your models here.
+
 class UserProfile(models.Model):
     """
     This is the user profile all users will have when the create an account 
     with allauth they will be able to fill in the info when they click the profile tab
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-
     full_name = models.CharField(max_length=50, null=False, blank=False)
     phone_number = models.CharField(max_length=20, null=False, blank=False)
     street_address1 = models.CharField(max_length=80, null=False, blank=False)
@@ -27,7 +23,6 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return self.user.username
-
 
 # Each time a user object is saved it will automatically either create a profile for them if the user has just been created 
 # Or just save the profile if the user already existed 
