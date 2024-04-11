@@ -1,14 +1,15 @@
 
 import os 
+import dj_database_url
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-(b9io)0@6%*%n-v59a@y8ffjrz#0wwzocsci*kz+0pgp6v7soo'
+SECRET_KEY = os.environ.get("SECRET_KEY") 
 
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", "False").lower == "true"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 
 
 INSTALLED_APPS = [
@@ -100,6 +101,12 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+}
+
+databases_url = os.environ.get("DATABASE_URL")
+
+DATABASES = {
+    'default': dj_database_url.parse("DATABASE_URL")
 }
 
 AUTH_PASSWORD_VALIDATORS = [

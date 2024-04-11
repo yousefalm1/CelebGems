@@ -20,7 +20,7 @@ class CelebRequest(models.Model):
         return f"Request from {self.user.username}"
 
 class CelebProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='celeb_profile',)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, default=1, related_name='celeb_profile',)
     profile_name = models.CharField(max_length=100)  # Add the profile name field
     bio = models.CharField(max_length=255)
     image = models.ImageField(null=True, blank=True)
