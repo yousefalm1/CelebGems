@@ -106,7 +106,7 @@ DATABASES = {
 databases_url = os.environ.get("DATABASE_URL")
 
 DATABASES = {
-    'default': dj_database_url.parse("DATABASE_URL")
+    'default': dj_database_url.parse("databases_url")
 }
 
 AUTH_PASSWORD_VALIDATORS = [
