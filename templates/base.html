@@ -43,7 +43,22 @@
     {% endblock %}
 
     <title> Celeb Gems {% block extra_title %}{% endblock %}</title>
+    <style>
+        /* CSS code to style the content block */
+        body {
+            background-color: black;
+            /* Set the background color of the whole page to black */
+            color: white;
+            /* Set the text color to white */
+        }
 
+        .content {
+            background-color: black;
+            /* Set the background color of the content block to black */
+            padding: 20px;
+            /* Add some padding for better readability */
+        }
+    </style>
 </head>
 
 <body>
@@ -158,6 +173,7 @@
     {% endblock %}
 
     {% block content %}
+
     {% endblock %}
 
     <!-- 

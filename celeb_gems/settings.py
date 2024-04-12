@@ -5,11 +5,11 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.environ.get("SECRET_KEY") 
+SECRET_KEY = 'pml5jny5$(rulqtgdprax5!4u&2_-)r++)!ojb4+_p1)mye*qx'
 
-DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+DEBUG = True
 
-ALLOWED_HOSTS = ['*', 'https://celebgems.onrender.com' ]
+ALLOWED_HOSTS = []
 
 
 INSTALLED_APPS = [
@@ -103,9 +103,8 @@ WSGI_APPLICATION = 'celeb_gems.wsgi.application'
 #     }
 # }
 
-
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
 
