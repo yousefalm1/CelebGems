@@ -7,7 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get("SECRET_KEY") 
 
-DEBUG = os.environ.get("DEBUG", "False").lower == "true"
+DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
 ALLOWED_HOSTS = ['*', 'https://celebgems.onrender.com' ]
 
@@ -96,20 +96,18 @@ LOGIN_REDIRECT_URL = '/'
 
 WSGI_APPLICATION = 'celeb_gems.wsgi.application'
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
-# Fetch the DATABASE_URL environment variable
-database_url = os.environ.get("DATABASE_URL")
-
-# Define the DATABASES configuration using the parsed database URL
-DATABASES = {
-    'default': dj_database_url.parse(database_url)
-}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
