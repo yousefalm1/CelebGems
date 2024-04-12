@@ -103,10 +103,12 @@ DATABASES = {
     }
 }
 
-databases_url = os.environ.get("DATABASE_URL")
+# Fetch the DATABASE_URL environment variable
+database_url = os.environ.get("DATABASE_URL")
 
+# Define the DATABASES configuration using the parsed database URL
 DATABASES = {
-    'default': dj_database_url.parse("databases_url")
+    'default': dj_database_url.parse(database_url)
 }
 
 AUTH_PASSWORD_VALIDATORS = [
