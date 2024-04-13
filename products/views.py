@@ -2,22 +2,22 @@ from django.shortcuts import render, get_object_or_404
 from .models import Product 
 from celeb_profile.models import CelebRequest
 
+
 def all_products(request):
     """ A view to show all products """
 
-
     query = request.GET.get('q')
     if query:
-        products = Product.objects.filter(title__icontains=query)
+        products = Product.objects.filter(name__icontains=query)
     else:
         products = Product.objects.all()
 
     context = {
         'products': products,
+        'query': query, 
     }
 
     return render(request, 'products/products.html', context)
-
 def product_detail(request, product_id):
     """ A view to show individual product details """
 
