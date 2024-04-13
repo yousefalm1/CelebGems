@@ -144,8 +144,11 @@
         {% for product in products %}
         <div class="col-md-4">
             <div class="card mb-4 rounded-0 border-0 p-3">
-                <img src="{{ product.image.url }}" alt="{{ product.name }}" />
-                <div class="card-body text-center">
+                {% if product.image %}
+                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                {% else %}
+                <img src="{% static 'placeholder_image.jpg' %}" class="card-img-top" alt="{{ product.name }}">
+                {% endif %} <div class="card-body text-center">
                     <h3 class="card-title">{{ product.name }}</h3>
                     <p class="card-text">{{ product.small_description}}</p>
                     <a href="" class="btn btn-dark">Go to Product</a>
