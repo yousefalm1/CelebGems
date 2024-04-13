@@ -11,7 +11,7 @@
         <div class="row">
             {% for product in products %}
             <div class="col-md-4 mb-4">
-                <div class="card border-0 rounded-0 shadow">
+                <div class="card border-0">
                     {% if product.image %}
                     <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
                     {% else %}

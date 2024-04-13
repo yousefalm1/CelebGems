@@ -97,30 +97,28 @@
                 {% endfor %}
 
                 <tr>
-                    <td colspan="5" class="pt-5 text-right">
+                    <td colspan="5" class="pt-5 text-right text-white">
                         <h6><strong>Bag Total: ${{ total|floatformat:2}}</strong></h6>
                         <h6>Delivery: ${{ delivery|floatformat:2 }}</h6>
                         <h4 class="mt-4"><strong>Grand Total: ${{ grand_total|floatformat:2}}</strong></h4>
                         {% if free_delivery_delta > 0 %}
                         <p class="mb-1 text-danger ">
-                            You could get free delivery by spending just <strong>{{ free_delivery_delta}}</strong> more!
+                            You could get free delivery by spending just <strong>${{ free_delivery_delta}}</strong>
+                            more!
                         </p>
                         {% endif %}
                     </td>
                 </tr>
                 <tr>
                     <td colspan="5" class="text-right">
-                        <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">
-                            <span class="icon">
-                                <i class="fas fa-chevron-left"></i>
-                            </span>
+                        <a href="{% url 'products' %}"
+                            class="btn btn-outline-secondary text-white rounded-pill btn-lg me-3">
+                            <i class="fas fa-chevron-left me-2"></i>
                             <span class="text-uppercase">Keep Shopping</span>
                         </a>
-                        <a href="{% url 'checkout' %}" class="btn btn-black rounded-0 btn-lg">
+                        <a href="{% url 'checkout' %}" class="btn btn-dark rounded-pill btn-lg">
                             <span class="text-uppercase">Secure Checkout</span>
-                            <span class="icon">
-                                <i class="fas fa-lock"></i>
-                            </span>
+                            <i class="fas fa-lock ms-2"></i>
                         </a>
                     </td>
                 </tr>

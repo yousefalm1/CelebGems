@@ -12,75 +12,76 @@
     <div class="row text-white">
         <div class="col-md-6">
             <div class="image-container">
-                <a href="{{ product.image.url }}" target="_blank">
-                    <img class="img-fluid" src="{{ product.image_url }}" alt="{{ product.name }}"">
+                {% if product.image %}
+                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                {% else %}
+                <img src="{% static 'placeholder_image.jpg' %}" class="card-img-top" alt="{{ product.name }}">
+                {% endif %}
                 </a>
             </div>
         </div>
         <div class=" col-md-6">
-                    <h2 class="my-5">{{ product.name }}</h2>
-                    <p class="my-5">{{ product.description }}</p>
-                    <button type="button" class="btn btn-danger text-center" disabled>${{ product.price }}</button>
-                    <div class="d-flex flex-column my-5">
-                        <form class="form" method="POST" action="{% url 'add_to_bag' product.product_id %}">
-                            {% csrf_token %}
-                            <div class="form-row">
-                                {% with product.has_sizes as s %}
-                                {% if s %}
-                                <div class="col-12">
-                                    <p><strong>Size:</strong></p>
-                                    <select class="form-control rounded-0 w-50" name="product_size"
-                                        id="id_product_size">
-                                        <option value="xs">XS</option>
-                                        <option value="s">S</option>
-                                        <option value="m">M</option>
-                                        <option value="l">L</option>
-                                        <option value="xl">XL</option>
-                                    </select>
-                                </div>
-                                {% endif %}
-                                <div class="col-12">
-                                    <p class="mt-3"><strong>Quantity:</strong></p>
-                                    <div class="form-group w-50">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <button class="decrement-qty btn btn-black rounded-0"
-                                                    data-item_id="{{ product.id }}" id="decrement-qty_{{ product.id }}">
-                                                    <span class="icon text-white">
-                                                        <i class="fas fa-minus"></i>
-                                                    </span>
-                                                </button>
-                                            </div>
-                                            <input class="form-control qty_input" type="number" name="quantity"
-                                                value="1" min="1" max="99" data-item_id="{{ product.id }}"
-                                                id="id_qty_{{ product.id }}">
-                                            <div class="input-group-append">
-                                                <button class="increment-qty btn btn-black rounded-0"
-                                                    data-item_id="{{ product.id }}" id="increment-qty_{{ product.id }}">
-                                                    <span class="icon text-white">
-                                                        <i class="fas fa-plus"></i>
-                                                    </span>
-                                                </button>
-                                            </div>
-                                        </div>
+            <h2 class="my-5">{{ product.name }}</h2>
+            <p class="my-5">{{ product.description }}</p>
+            <button type="button" class="btn btn-danger text-center" disabled>${{ product.price }}</button>
+            <div class="d-flex flex-column my-5">
+                <form class="form" method="POST" action="{% url 'add_to_bag' product.product_id %}">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        {% with product.has_sizes as s %}
+                        {% if s %}
+                        <div class="col-12">
+                            <p><strong>Size:</strong></p>
+                            <select class="form-control rounded-0 w-50" name="product_size" id="id_product_size">
+                                <option value="xs">XS</option>
+                                <option value="s">S</option>
+                                <option value="m">M</option>
+                                <option value="l">L</option>
+                                <option value="xl">XL</option>
+                            </select>
+                        </div>
+                        {% endif %}
+                        <div class="col-12">
+                            <p class="mt-3"><strong>Quantity:</strong></p>
+                            <div class="form-group w-50">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <button class="decrement-qty btn btn-black rounded-0"
+                                            data-item_id="{{ product.id }}" id="decrement-qty_{{ product.id }}">
+                                            <span class="icon text-white">
+                                                <i class="fas fa-minus"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                    <input class="form-control qty_input" type="number" name="quantity" value="1"
+                                        min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
+                                    <div class="input-group-append">
+                                        <button class="increment-qty btn btn-black rounded-0"
+                                            data-item_id="{{ product.id }}" id="increment-qty_{{ product.id }}">
+                                            <span class="icon text-white">
+                                                <i class="fas fa-plus"></i>
+                                            </span>
+                                        </button>
                                     </div>
                                 </div>
-
-
                             </div>
+                        </div>
+
+
                     </div>
             </div>
-            <div class="col-12">
-                <a href="{% url 'products' %}" class="btn btn-outline mty-5">
-                    <span class="text-uppercase">Keep shopping</span>
-                </a>
-                <input type="submit" class="btn btn-success mt-5 rounded-0" value="Add to Bag">
-            </div>
-            <input type="hidden" name="redirect_url" value="{{ request.path }}">
-            {% endwith %}
-            </form>
         </div>
+        <div class="col-12">
+            <a href="{% url 'products' %}" class="btn btn-outline mty-5">
+                <span class="text-uppercase">Keep shopping</span>
+            </a>
+            <input type="submit" class="btn btn-success mt-5 rounded-0" value="Add to Bag">
+        </div>
+        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+        {% endwith %}
+        </form>
     </div>
+</div>
 </div>
 </div>
 
@@ -135,27 +136,30 @@
                         {% for product in celeb_profile_products %}
                         <div class="col-md-4 mb-3">
                             <div class="card">
-                                <img class="img-fluid" alt="100%x280"
-                                    src="https://images.unsplash.com/photo-1532781914607-2031eca2f00d?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=7c625ea379640da3ef2e24f20df7ce8d">
-                                <div class="card-body">
-                                    <h4 class="card-title">{{ product.name }}</h4>
-                                    <p class="card-text">{{ product.description }}</p>
-                                    <span class="product-price">${{ product.price}}</span>
+                                {% if product.image %}
+                                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                                {% else %}
+                                <img src="{% static 'placeholder_image.jpg' %}" class="card-img-top"
+                                    alt="{{ product.name }}">
+                                {% endif %}
+                                <h4 class="card-title">{{ product.name }}</h4>
+                                <p class="card-text">{{ product.description }}</p>
+                                <span class="product-price">${{ product.price}}</span>
 
-                                    <button type="button" class="col-12 py-2">
-                                        <i class="fa fa-binoculars"> View</i>
-                                    </button>
-                                </div>
-
+                                <button type="button" class="col-12 py-2">
+                                    <i class="fa fa-binoculars"> View</i>
+                                </button>
                             </div>
-                        </div>
-                        {% endfor %}
-                    </div>
-                </div>
 
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
             </div>
+
         </div>
     </div>
+</div>
 </div>
 
 
