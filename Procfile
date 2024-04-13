@@ -1,1 +1,1 @@
-web: gunicorn celeb_gems.wsgi
+web: gunicorn celeb_gems.wsgi:application
