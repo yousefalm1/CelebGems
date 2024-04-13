@@ -8,7 +8,7 @@ def all_celebrities(request):
     """ 
     A View to show all celebrities 
     """
-
+    
     celeb_profile = CelebProfile.objects.all()
 
     template = 'celeb_profile/celebrities.html'
