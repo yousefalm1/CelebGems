@@ -5,7 +5,12 @@ from celeb_profile.models import CelebRequest
 def all_products(request):
     """ A view to show all products """
 
-    products = Product.objects.all()
+
+    query = request.GET.get('q')
+    if query:
+        products = Product.objects.filter(title__icontains=query)
+    else:
+        products = Product.objects.all()
 
     context = {
         'products': products,

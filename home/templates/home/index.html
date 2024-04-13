@@ -4,8 +4,21 @@
 
 
 
-
 {% block content %}
+<style>
+    .profile-image {
+        max-width: 300px;
+        /* Adjust the maximum width as needed */
+        max-height: 300px;
+        /* Adjust the maximum height as needed */
+        /* Other styles */
+    }
+
+    .image-container {
+        display: flex;
+        justify-content: center;
+    }
+</style>
 
 <!-- hero -->
 
@@ -98,7 +111,10 @@
         {% for celeb_profile in celeb_profiles %}
         <div class="col-md-4">
             <div class="card mb-4 rounded-0 border-0 p-3">
-                <img src="..." class="card-img-top" alt="...">
+                <div class="image-container">
+                    <img src="{% if celeb_profile.image %}{{ celeb_profile.image.url }}{% else %}placeholder.jpg{% endif %}"
+                        class="card-img-top profile-image" alt="Profile Image">
+                </div>
                 <div class="card-body text-center">
                     <h3 class="card-title">{{ celeb_profile.profile_name }}</h3>
                     <p class="card-text">{{ celeb_profile.bio}}</p>
