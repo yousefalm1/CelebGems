@@ -6,6 +6,7 @@ class Product(models.Model):
 
     name = models.CharField(max_length=254, blank=False)
     description = models.TextField(blank=False)
+    small_description = models.TextField(max_length=100, blank=False, default='')
     product_specifications = models.TextField(blank=False)
     availability_shipping_info = models.TextField(blank=False)
     has_sizes = models.BooleanField(default=False, null=True, blank=True)
@@ -14,7 +15,6 @@ class Product(models.Model):
     image = models.ImageField(null=True, blank=True)
     product_id = models.AutoField(primary_key=True)
     quantity_in_stock = models.PositiveIntegerField(default=0)
-    small_description = models.TextField(max_length=100, blank=False, default='')
     # 'celeb_profile.CelebProfile' this is the app and where the model is 
     celeb_profile = models.ForeignKey('celeb_profile.CelebProfile', on_delete=models.CASCADE, related_name='products', blank=True, null=True)
     display_on_home = models.BooleanField(default=False)

@@ -12,7 +12,7 @@ class CelebRequestForm(forms.ModelForm):
 class CelebProfileForm(forms.ModelForm):
     class Meta:
         model = CelebProfile
-        fields = ['profile_name', 'bio', 'image', 'image_url'] 
+        fields = ['profile_name', 'bio', 'small_bio', 'image', 'image_url'] 
 
 
 

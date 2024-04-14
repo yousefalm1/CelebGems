@@ -104,7 +104,7 @@
                         <div class="card-body text-center d-flex flex-column justify-content-between">
                             <div>
                                 <h3 class="card-title">{{ celeb_profile.profile_name }}</h3>
-                                <p class="card-text mb-3">{{ celeb_profile.bio}}</p>
+                                <p class="card-text mb-3">{{ celeb_profile.small_bio}}</p>
                             </div>
                             <a class="btn btn-dark w-100 rounded-0 text-warning"
                                 href="{% url 'celeb_profile' user_id=celeb_profile.user_id %}">VIEW PROFILE</a>

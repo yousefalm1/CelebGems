@@ -22,8 +22,9 @@ class CelebRequest(models.Model):
 class CelebProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, default=1, related_name='celeb_profile',)
     profile_name = models.CharField(max_length=100)  # Add the profile name field
-    bio = models.CharField(max_length=255)
-    image = models.ImageField(null=True, blank=True)
+    bio = models.CharField()
+    small_bio = models.TextField(max_length=100, blank=False, default='')
+    image = models.ImageField(null=False, blank=False)
     image_url = models.URLField(max_length=1024, null=True, blank=True) 
     products_added = models.ManyToManyField('products.Product', blank=True)
     # Displays celeb profile on homepage when clicked 
