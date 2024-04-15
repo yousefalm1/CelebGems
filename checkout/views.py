@@ -14,6 +14,10 @@ def checkout(request):
     
     Initializes an instance of the order form for the checkout process.
     """
+
+    stripe_public_key = settings.STRIPE_PUBLIC_KEY
+    stripe_secret_key = settings.STRIPE_SECRET_KEY
+
     bag = request.session.get('bag', {})
 
     if not bag:
@@ -25,7 +29,14 @@ def checkout(request):
     total = current_bag['grand_total']
     # Converts total to cents for Stripe
     stripe_total = round(total * 100)  # Stripe expects the total amount to be provided in cent 
+    stripe.api_key = stripe_secret_key
+    intent = stripe.PaymentIntent.create(
+        amount=stripe_total,
+        currency=settings.STRIPE_CURRENCY,
+    )
 
+    print(intent)
+    
     order_form = OrderForm()
     template = 'checkout/checkout.html'
     context = { 
