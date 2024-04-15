@@ -1,6 +1,10 @@
 from django.shortcuts import redirect, reverse, render
 from django.contrib import messages
+from django.conf import settings
 from .forms import OrderForm
+from bag.contexts import bag_contents
+import stripe
+
 
 def checkout(request):
     """
@@ -16,6 +20,12 @@ def checkout(request):
         messages.error(request, "There is nothing in your bag at the moment")
         return redirect(reverse,('products') )
     
+    # Retrieves bag contents and calculates total
+    current_bag = bag_contents(request)
+    total = current_bag['grand_total']
+    # Converts total to cents for Stripe
+    stripe_total = round(total * 100)  # Stripe expects the total amount to be provided in cent 
+
     order_form = OrderForm()
     template = 'checkout/checkout.html'
     context = { 
@@ -25,3 +35,5 @@ def checkout(request):
     }
 
     return render(request, template, context)
+
+
