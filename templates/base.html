@@ -78,9 +78,6 @@
                             <li>
                                 <a class="dropdown-item" href="{% url 'all_celebrities' %}">Celebrities</a>
                             </li>
-                            <li>
-                                <a class="dropdown-item" href="#">Categories</a>
-                            </li>
                         </ul>
                     </li>
 
@@ -89,7 +86,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Contact Us</a>
+                        <a class="nav-link text-white" href="{% url 'contact' %}">Contact Us</a>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -163,7 +160,7 @@
     {% block content %}
     {% endblock %}
 
-    <footer class="footer mt-4 text-bg-dark py-5">
+    <footer class="footer mt-4 text-bg-dark py-5 ">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">

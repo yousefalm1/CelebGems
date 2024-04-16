@@ -10,5 +10,5 @@ class CelebRequestAdmin(admin.ModelAdmin):
 
 @admin.register(CelebProfile)
 class CelebProfileAdmin(admin.ModelAdmin):
-    list_display = ('user', 'profile_name', 'bio') 
+    list_display = ('user', 'profile_name', 'bio', 'small_bio') 
     search_fields = ('user__username', 'profile_name')

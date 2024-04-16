@@ -1,8 +1,21 @@
 from django.urls import path
-from .views import request_celeb_profile_page, request_celeb_profile_submitted, request_already_submitted, celeb_profile_page, create_celeb_profile_page, edit_celeb_profile, edit_celeb_profile_confirmation, add_product, edit_product, edit_product_success, delete_product, add_product_success, celeb_profile, all_celebrities
-
+from .views import (
+    request_celeb_profile_page,
+    request_celeb_profile_submitted, 
+    request_already_submitted,
+    celeb_profile_page, 
+    create_celeb_profile_page, 
+    edit_celeb_profile, 
+    edit_celeb_profile_confirmation, 
+    add_product, 
+    edit_product, 
+    edit_product_success, 
+    delete_product, 
+    add_product_success, 
+    celeb_profile, 
+    all_celebrities
+) 
 urlpatterns = [
-
     path(
         'request-celeb-profile/',
         request_celeb_profile_page,
