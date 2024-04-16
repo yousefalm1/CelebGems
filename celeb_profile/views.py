@@ -8,6 +8,7 @@ from .forms import (
     CelebAddProductFrom,
     EditProductForm
 )
+
 def all_celebrities(request):
     """ 
     A View to show all celebrities 
@@ -22,6 +23,7 @@ def all_celebrities(request):
     }
 
     return render(request, template, context)
+
 
 def celeb_profile(request, user_id):
     """
@@ -49,6 +51,7 @@ def delete_product(request, product_id):
         product.delete()
         return redirect('delete_product_success')
 
+
 def delete_product_success(request):
     """ 
     A view to display a success page once the user.
@@ -56,30 +59,23 @@ def delete_product_success(request):
 
     return render(request, 'celeb_profile/delete_product_success.html')
 
-# the product_id is to identify what product will be edited
 def edit_product(request, product_id):
     """ 
     A view to edit a product that a user clicked to edit on celeb profile 
     """
 
-    # gets the product based on the product_id
     product = get_object_or_404(Product, pk=product_id)
     
-    # When the user clicks submit this will execute
     if request.method == 'POST':
-        # the instance=products is there to ensure that the form updates the 
-        # existing Product instance with the edited data instead of creating a new one 
         form = EditProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             form.save()
-            # the kwargs is so when the user submits the edit the product id is added to the <Int:> and passed into the success view to load the specific product in the success page
             return redirect(
                 reverse('edit_product_success', 
                         kwargs={'product_id': product_id})
             )
 
         
-    # this is executed first when the user clicks edit product and it will load the data on the product
     form = EditProductForm(instance=product)
     
     return render(
@@ -153,14 +149,12 @@ def edit_celeb_profile(request):
     else:
         form = CelebProfileForm(instance=celeb_profile)
 
-
     context = {
         'form': form,
     }
 
     return render(request, 'celeb_profile/edit_celeb_profile.html', context)
     
-
 
 def edit_celeb_profile_confirmation(request):
     """ A view to display the confirmation page """
@@ -232,7 +226,6 @@ def request_celeb_profile_page(request):
     return render(
         request, 'celeb_profile/request_celeb_profile.html', {'form': form}
     )
-
 
 def request_celeb_profile_submitted(request ):
     """A view to render the confirmation page after submitting the 
