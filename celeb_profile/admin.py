@@ -10,5 +10,5 @@ class CelebRequestAdmin(admin.ModelAdmin):
 
 @admin.register(CelebProfile)
 class CelebProfileAdmin(admin.ModelAdmin):
-    list_display = ('user', 'profile_name', 'bio')  # Specify which fields to display in the list view
+    list_display = ('user', 'profile_name', 'bio') 
     search_fields = ('user__username', 'profile_name')
