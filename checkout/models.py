@@ -7,9 +7,13 @@ from django_countries.fields import CountryField
 from products.models import Product   
 from profiles.models import UserProfile
 
+
 class Order(models.Model):
     order_number = models.CharField(max_length=32, null=False, editable=False)
-    user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL, null=True, blank=True, related_name='orders')
+    user_profile = models.ForeignKey(
+        UserProfile, on_delete=models.SET_NULL, null=True, blank=True,
+        related_name='orders'
+    )
     full_name = models.CharField(max_length=50, null=False, blank=False)
     email = models.EmailField(max_length=254, null=False, blank=False)
     phone_number = models.CharField(max_length=20, null=False, blank=False)
@@ -20,9 +24,15 @@ class Order(models.Model):
     street_address2 = models.CharField(max_length=80, null=True, blank=True)
     county = models.CharField(max_length=80, null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True)
-    delivery_cost = models.DecimalField(max_digits=6, decimal_places=2, null=False, default=0)
-    order_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
-    grand_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
+    delivery_cost = models.DecimalField(
+        max_digits=6, decimal_places=2, null=False, default=0
+    )
+    order_total = models.DecimalField(
+        max_digits=10, decimal_places=2, null=False, default=0
+    )
+    grand_total = models.DecimalField(
+        max_digits=10, decimal_places=2, null=False, default=0
+    )
 
     def _generate_order_number(self):
         """ Generate a random order number using uuid """
@@ -32,32 +42,24 @@ class Order(models.Model):
     
     def update_total(self):
         """
-        Update grand total each time a line is added
+        Update grand total each time a line item is added,
+        accounting for delivery costs.
         """
-        # Takes all the lineitems(Orders) in the OrderLineItem and aggregates to sum up all the lineitem_total field cross all line items related to the current order instance 
-        # The adds a new filed to the query set called lineitem_total__sum which we can get and set the order total to that 
-        self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum']
-
-        # Checks if the order total is below the free delivery threshold
+        self.order_total = self.lineitems.aggregate(
+            Sum('lineitem_total')
+        )['lineitem_total__sum']
         if self.order_total < settings.FREE_DELIVERY_THRESHOLD:
-            # Calculate delivery cost based on order total and STANDARD_DELIVERY_PERCENTAGE
             self.delivery_cost = self.order_total * settings.STANDARD_DELIVERY_PERCENTAGE / 100
         else:
-            # set delivery cost to 0 if order qualifies for free delivery
-            self.delivery_cost = 0 
-        
-        # Calculate grand total by adding order_total and delivery_cost
+            self.delivery_cost = 0
         self.grand_total = self.order_total + self.delivery_cost
-
-        # Save the updated order instance
         self.save()
+
 
     def save(self, *args, **kwargs):
         """
         Override the default save method to set the order number if it hasn't been set already.
         """
-        # Checks if the order number attribute of the current instance of the model is not set or empty if so 
-        # it generates a order number
         if not self.order_number:
             self.order_number = self._generate_order_number()
         super().save(*args, **kwargs)
@@ -65,12 +67,13 @@ class Order(models.Model):
     def __str__(self):
         return self.order_number
 
+
 # Stores each order in a lime 
 class OrderLineItem(models.Model):
-    Order = models.ForeignKey(Order, null=False, blank=False, on_delete=models.CASCADE, related_name="lineitems")
+    order = models.ForeignKey(Order, null=False, blank=False, on_delete=models.CASCADE, related_name="lineitems")
     product = models.ForeignKey(Product, null= False, blank= False, on_delete=models.CASCADE )
     product_size = models.CharField(max_length=2, null=True, blank= True ) #XS, S, M,
-    quantity = models.IntegerField
+    quantity = models.IntegerField(null=False, blank=False, default=0)
     lineitem_total = models.DecimalField(max_digits=6, decimal_places=2, null = False, blank=False, editable = False)
 
     def save(self, *args, **kwargs):

@@ -2,8 +2,12 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from .models import CelebRequest, CelebProfile
 from products.models import Product
-from .forms import CelebRequestForm, CelebProfileForm , CelebAddProductFrom, EditProductForm
-
+from .forms import (
+    CelebRequestForm,
+    CelebProfileForm,
+    CelebAddProductFrom,
+    EditProductForm
+)
 def all_celebrities(request):
     """ 
     A View to show all celebrities 
@@ -29,7 +33,10 @@ def celeb_profile(request, user_id):
     products_added = celeb_profile.products_added.all()
     
     # Pass the celeb_profile object to the template
-    return render(request, 'celeb_profile/celeb_profile_consumer.html', {'celeb_profile': celeb_profile,'products_added':products_added  })
+    return render(
+        request, 'celeb_profile/celeb_profile_consumer.html',
+        {'celeb_profile': celeb_profile,'products_added':products_added  }
+    )
 
 def delete_product(request, product_id):
     """ 
@@ -60,18 +67,25 @@ def edit_product(request, product_id):
     
     # When the user clicks submit this will execute
     if request.method == 'POST':
-        # the instance=products is there to ensure that the form updates the existing Product instance with the edited data instead of creating a new one 
+        # the instance=products is there to ensure that the form updates the 
+        # existing Product instance with the edited data instead of creating a new one 
         form = EditProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             form.save()
             # the kwargs is so when the user submits the edit the product id is added to the <Int:> and passed into the success view to load the specific product in the success page
-            return redirect(reverse('edit_product_success', kwargs={'product_id': product_id}))
+            return redirect(
+                reverse('edit_product_success', 
+                        kwargs={'product_id': product_id})
+            )
 
         
     # this is executed first when the user clicks edit product and it will load the data on the product
     form = EditProductForm(instance=product)
     
-    return render(request, 'celeb_profile/edit_product.html', {'form': form, 'product': product})
+    return render(
+        request, 'celeb_profile/edit_product.html', 
+        {'form': form, 'product': product}
+    )
 
 
 def edit_product_success(request, product_id):
@@ -80,17 +94,23 @@ def edit_product_success(request, product_id):
     """
 
     product = get_object_or_404(Product, pk=product_id)
-    return render(request, 'celeb_profile/edit_product_success.html', {'product': product})
+    return render(
+        request, 'celeb_profile/edit_product_success.html', {'product': product}
+    )
 
 def add_product(request):
     """
     A view to add a new product to a celebrity's profile.
 
-    If the incoming request is a POST, initializes a form instance with the data submitted in the POST request. 
-    Checks if the form is valid, saves the form data to create a new product, and associates it with the current user's CelebProfile.
+    If the incoming request is a POST, initializes a form instance with the data 
+    submitted in the POST request. 
+    Checks if the form is valid, saves the form data to create a new product, 
+    and associates it with the current user's CelebProfile.
+
     Redirects to a success page upon successful addition of the product.
 
-    If the request method is not POST, initializes an empty form instance to display on the add product page.
+    If the request method is not POST, initializes an empty form instance to 
+    display on the add product page.
 
     """
     if request.method == 'POST':
@@ -121,7 +141,9 @@ def edit_celeb_profile(request):
     # If the form is submitted (POST request )
     if request.method == 'POST':
         # Create a form with the pre data of the celeb profile 
-        form = CelebProfileForm(request.POST, request.FILES, instance=celeb_profile)
+        form = CelebProfileForm(
+            request.POST, request.FILES, instance=celeb_profile
+        )
         # Checks if the form is valid 
         if form.is_valid():
             # Save the form to celeb profile which updates it 
@@ -149,7 +171,9 @@ def celeb_profile_page(request,):
     """ A view to display the user's CelebProfile """
 
     # Check if a CelebProfile already exists for the current user
-    existing_celeb_profile = CelebProfile.objects.filter(user=request.user).exists()
+    existing_celeb_profile = CelebProfile.objects.filter(
+        user=request.user
+    ).exists()
 
     if existing_celeb_profile:
         # If a CelebProfile exists, retrieve it
@@ -182,7 +206,9 @@ def create_celeb_profile_page(request):
     else:
         form =CelebProfileForm()
 
-    return render(request, 'celeb_profile/create_celeb_profile.html', {'form':form})
+    return render(
+        request, 'celeb_profile/create_celeb_profile.html', {'form':form}
+    )
 
 
 def request_celeb_profile_page(request):
@@ -196,18 +222,22 @@ def request_celeb_profile_page(request):
     if request.method == 'POST':
         form = CelebRequestForm(request.POST)
         if form.is_valid():
-            celeb_request = form.save(commit=False) # creates a CelebRequest instance in memory without saving it to the database immediately. 
-            celeb_request.user = request.user # assigns the current user to the user field of the CelebRequest instance.
-            celeb_request.save() #  saves the modified CelebRequest instance to the database.
+            celeb_request = form.save(commit=False) 
+            celeb_request.user = request.user 
+            celeb_request.save() 
             return redirect('request_celeb_profile_submitted')
     else:
         form = CelebRequestForm()
     
-    return render(request, 'celeb_profile/request_celeb_profile.html', {'form': form})
+    return render(
+        request, 'celeb_profile/request_celeb_profile.html', {'form': form}
+    )
 
 
 def request_celeb_profile_submitted(request ):
-    """A view to render the confirmation page after submitting the CelebRequestForm."""
+    """A view to render the confirmation page after submitting the 
+    CelebRequestForm.
+    """
 
     submitted_user = request.user  # Get the user who submitted the request
 
@@ -215,7 +245,10 @@ def request_celeb_profile_submitted(request ):
     context = {
         'submitted_user': submitted_user,
     }
-    return render(request, 'celeb_profile/request_celeb_profile_form_submitted.html', context) 
+    return render(
+        request, 'celeb_profile/request_celeb_profile_form_submitted.html', 
+        context
+    ) 
 
 def request_already_submitted(request):
     """ A view to render the request already submitted """
