@@ -7,4 +7,10 @@ urlpatterns = [
         views.contact_page,
         name='contact'
     ),
+
+    path(
+        'success',
+        views.contact_us_success,
+        name='contact_success'
+    )
 ] 
