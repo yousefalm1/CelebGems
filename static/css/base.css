@@ -1,13 +1,8 @@
-/* Home Page */
+html,
 body {
-  min-height: 1000px;
-  background: linear-gradient(
-      to bottom right,
-      rgba(0, 0, 0, 0.8),
-      rgba(0, 0, 0, 0.8)
-    ),
-    url("/media/header-background.jpg") center center no-repeat;
-  background-size: cover;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .carousel-item img {
