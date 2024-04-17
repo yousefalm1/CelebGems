@@ -50,8 +50,6 @@
 </head>
 
 <body>
-
-
     <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <div class="container-fluid">
@@ -115,53 +113,34 @@
         </nav>
     </header>
 
-
-    <div class="bg-white text-center">
-        <h4 class="text-muted py-2">Free delivery on orders over ${{ free_delivery_threshold }}!</h4>
+    <div class="bg-light text-center pb-5 d-none d-md-block">
+        <h4 class="text-muted pb-5">Free delivery on orders over ${{ free_delivery_threshold }}!</h4>
     </div>
 
     {% if messages %}
     <div class="message-container"></div>
     {% endif %}
 
-    <div class="content">
-        {% block content %}
-        {% endblock %}
-    </div>
-    </div>
 
-    <footer class="footer mt-4 text-bg-dark py-5 fixed-bottom">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h5>Lorem</h5>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur autem assumenda velit
-                        sapiente illo cupiditate soluta non, delectus expedita itaque eius, et, facere quisquam odit.
-                        Exercitationem qui tempora repellendus quae.</p>
-                </div>
-                <div class="col-md-4">
-                    <h3>Quick Links</h3>
-                    <ul class="list-unstyled">
-                        <li><a href="">Home</a></li>
-                        <li><a href="">About Us</a></li>
-                        <li><a href="">Contact US</a></li>
-                        <li><a href="">Products</a></li>
-                        <li><a href="">Celebrities</a></li>
-                    </ul>
-                </div>
 
-                <div class="col-md-4">
-                    <h5>Connect With Us</h5>
-                    <div class="d-flex gap-3 ">
-                        <a href="#"><i class="fab fa-facebook fa-3x text-white"></i></a>
-                        <a href="#"><i class="fab fa-twitter fa-3x text-white"></i></a>
-                        <a href="#"><i class="fab fa-instagram fa-3x text-white"></i></a>
-                        <a href="#"><i class="fab fa-youtube fa-3x text-white"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <main>
+
+    </main>
+    {% block content %}
+    {% endblock %}
+
+
+
+    <footer class="container">
+        <p class="float-end"><a href="#">Back to top</a></p>
+        <p>&copy; 2017–2021 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
     </footer>
+    </main>
+
+
+
+
+
 
     {% block postloadjs %}
     {% endblock %}
