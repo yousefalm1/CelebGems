@@ -8,7 +8,7 @@
 
 {% block content %}
 <div class="overlay"></div>
-<div class="container text-white">
+<div class="container">
     <div class="row">
         <div class="col">
             <hr>
@@ -32,11 +32,7 @@
             <div class="row">
                 <div class="col-2 mb-1">
                     <a href="{% url 'product_detail'  product.product.product_id %}">
-                        {% if product.product.image %}
                         <img class="w-100" src="{{ product.product.image.url }}" alt="{{ product.product.name }}">
-                        {% else %}
-                        <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.product.name }}">
-                        {% endif %}
                     </a>
                 </div>
                 <div class="col-7">
@@ -51,7 +47,7 @@
             </div>
             {% endfor %}
             <hr class="my-0">
-            <div class=" mt-3 row text-white text-right">
+            <div class=" mt-3 row text-right">
                 <div class="col-7 offset-2">
                     <p class="my-0">Order Total:</p>
                     <p class="my-0">Delivery:</p>
@@ -69,44 +65,28 @@
             <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                 {% csrf_token %}
                 <fieldset class="rounded px-3 mb-5">
-                    <legend class="fieldset-label small text-white px-2 w-auto">Details</legend>
+                    <legend class="fieldset-label small px-2 w-auto">Details</legend>
                     {{ order_form.full_name | as_crispy_field }}
                     {{ order_form.email | as_crispy_field }}
-                </fieldset>
-                <fieldset class="text-white rounded px-3 mb-5">
-                    <legend class="fieldset-label small text-white px-2 w-auto">Delivery</legend>
                     {{ order_form.phone_number | as_crispy_field }}
+                </fieldset>
+                <fieldset class="rounded px-3 mb-5">
+                    <legend class="fieldset-label small  px-2 w-auto">Delivery</legend>
                     {{ order_form.country | as_crispy_field }}
                     {{ order_form.postcode | as_crispy_field }}
                     {{ order_form.town_or_city | as_crispy_field }}
                     {{ order_form.street_address1 | as_crispy_field }}
                     {{ order_form.street_address2 | as_crispy_field }}
                     {{ order_form.county | as_crispy_field }}
-                    <div class="form-check form-check-inline float-right mr-0">
-                        {% if user.is_authenticated %}
-                        <label class="form-check-label" for="id-save-info">Save this delivery information to my
-                            profile</label>
-                        <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info"
-                            checked>
-                        {% else %}
-                        <label class="form-check-label" for="id-save-info">
-                            <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or
-                            <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information
-                        </label>
-                        {% endif %}
-                    </div>
                 </fieldset>
                 <fieldset class="px-3">
-                    <legend class="fieldset-label small text-white px-2 w-auto">Payment</legend>
-                    <!-- A Stripe card element will go here -->
+                    <legend class="fieldset-label small px-2 w-auto">Payment</legend>
                     <div class="mb-3" id="card-element"></div>
-
-                    <!-- Used to display form errors -->
                     <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
                 </fieldset>
 
                 <div class="submit-button text-right mb-5">
-                    <a href="{% url 'view_bag' %}" class="btn btn-outline-secondary text-white rounded-pill me-3">
+                    <a href="{% url 'view_bag' %}" class="btn btn-outline-secondary rounded-pill me-3">
                         <i class="fas fa-chevron-left me-2"></i>
                         <span class="font-weight-bold">Adjust Bag</span>
                     </a>
@@ -121,7 +101,6 @@
                         <span>Your card will be charged <strong>${{ grand_total|floatformat:2 }}</strong></span>
                     </p>
                 </div>
-
             </form>
         </div>
     </div>
@@ -131,6 +110,6 @@
 {% block postloadjs %}
 {{ block.super }}
 {{ stripe_public_key|json_script:"id_stripe_public_key" }}
-{{ stripe_secret_key|json_script:"id_client_secret" }}
+{{ client_secret|json_script:"id_client_secret" }}
 <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}

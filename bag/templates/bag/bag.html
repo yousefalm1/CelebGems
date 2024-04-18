@@ -6,7 +6,7 @@
 
 
 <div class="containe mb-2">
-    <div class="row text-white">
+    <div class="row ">
         <div class="col">
             <hr>
             <h1>Shopping Bag</h1>
@@ -18,7 +18,7 @@
         {% if bag_products %}
         <div class="table-responsive rounded">
             <table class="table table-sm table-borderless ">
-                <thead class="text-white">
+                <thead class="">
                     <tr>
                         <th scope="col">Product Info</th>
                         <th scope="col"></th>
@@ -29,7 +29,7 @@
                 </thead>
 
                 {% for product in bag_products %}
-                <tr class="text-white">
+                <tr class="">
                     <td class="p-3 w-25">
                         <a href="{% url 'product_detail'  product.product.product_id %}">
                             {% if product.product.image %}
@@ -62,7 +62,7 @@
                                         <button class="decrement-qty btn btn-sm btn-black rounded-0"
                                             data-item_id="{{ product.product.product_id }}"
                                             id="decrement-qty_{{ product.product.product_id }}">
-                                            <span class=" text-white">
+                                            <span class="">
                                                 <i class="fas fa-minus fa-sm"></i>
                                             </span>
                                         </button>
@@ -75,7 +75,7 @@
                                         <button class="increment-qty btn btn-sm btn-black rounded-0"
                                             data-item_id="{{ product.product.product_id }}"
                                             id="increment-qty_{{ product.product.product_id }}">
-                                            <span class=" text-white">
+                                            <span class="">
                                                 <i class="fas fa-plus fa-sm"></i>
                                             </span>
                                         </button>
@@ -97,7 +97,7 @@
                 {% endfor %}
 
                 <tr>
-                    <td colspan="5" class="pt-5 text-right text-white">
+                    <td colspan="5" class="pt-5 text-right">
                         <h6><strong>Bag Total: ${{ total|floatformat:2}}</strong></h6>
                         <h6>Delivery: ${{ delivery|floatformat:2 }}</h6>
                         <h4 class="mt-4"><strong>Grand Total: ${{ grand_total|floatformat:2}}</strong></h4>
@@ -111,8 +111,7 @@
                 </tr>
                 <tr>
                     <td colspan="5" class="text-right">
-                        <a href="{% url 'products' %}"
-                            class="btn btn-outline-secondary text-white rounded-pill btn-lg me-3">
+                        <a href="{% url 'products' %}" class="btn btn-outline-secondary rounded-pill btn-lg me-3">
                             <i class="fas fa-chevron-left me-2"></i>
                             <span class="text-uppercase">Keep Shopping</span>
                         </a>
@@ -151,7 +150,6 @@
             var form = $(this).prev('.update-form');
             form.submit();
         });
-
         // Remove the product and reload on click
         // attaches click function to the remove-product when its clicked the code is executed
 
