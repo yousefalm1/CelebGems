@@ -23,9 +23,9 @@
                 <div class="card-body">
                     <h5 class="card-title">Profile Details</h5>
                     <ul class="list-group">
-                        <li class="list-group-item">Occupation: {{ celeb_profile.occupation }}</li>
+                        <li class="list-group-item">Occupation: {{ celeb_profile_request.occupation }}</li>
                         <li class="list-group-item">Social Media: <a href="{{ celeb_profile.social_media }}">
-                                {{celeb_profile.social_media }}</a></li>
+                                {{celeb_profile_request.social_media }}</a></li>
                     </ul>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                             <p class="mb-0">$ {{ product.price }}</p>
                         </div>
                         <div class="col-6">
-                            <a href="{}" class="btn btn-dark w-100 rounded-0 text-warning">PRODUCT DETAILS</a>
+                            <a href="{}" class="btn btn-dark w-100 rounded-0 text-warning">Product Details </a>
                         </div>
                     </div>
                 </div>
@@ -67,6 +67,7 @@
         </div>
         {% endfor %}
     </div>
+    <br><br>
 
 
     {% endblock %}

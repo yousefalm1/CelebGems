@@ -22,15 +22,16 @@
                 <div class="card-body">
                     <h5 class="card-title text-center text-muted">User Profile</h5>
                     <div class="mt-3">
-                        <p class="card-text"><strong>Full Name:</strong> {{ profile.full_name }}</p>
+                        <p class="card-text"><strong>Full Name:</strong> {{ profile.default_full_name }}</p>
                         <p class="card-text"><strong>Email:</strong> {{ email }}</p>
-                        <p class="card-text"><strong>Phone Number:</strong> {{ profile.phone_number }}</p>
-                        <p class="card-text"><strong>Country:</strong> {{ profile.country }}</p>
-                        <p class="card-text"><strong>Street Address:</strong> {{ profile.street_address1 }}</p>
-                        <p class="card-text"><strong>Street Address 2:</strong> {{ profile.street_address2 }}</p>
-                        <p class="card-text"><strong>Town or City:</strong> {{ profile.town_or_city }}</p>
-                        <p class="card-text"><strong>County:</strong> {{ profile.county}}</p>
-                        <p class="card-text"><strong>Postcode:</strong> {{ profile.postcode }}</p>
+                        <p class="card-text"><strong>Phone Number:</strong> {{ profile.default_phone_number }}</p>
+                        <p class="card-text"><strong>Country:</strong> {{ profile.default_country }}</p>
+                        <p class="card-text"><strong>Street Address:</strong> {{ profile.default_street_address1 }}</p>
+                        <p class="card-text"><strong>Street Address 2:</strong> {{ profile.default_street_address2 }}
+                        </p>
+                        <p class="card-text"><strong>Town or City:</strong> {{ profile.default_town_or_city }}</p>
+                        <p class="card-text"><strong>County:</strong> {{ profile.default_county}}</p>
+                        <p class="card-text"><strong>Postcode:</strong> {{ profile.default_postcode }}</p>
                     </div>
                     <a href="{% url 'edit_profile' %}" class="btn btn-primary mt-3">Edit Profile</a>
                 </div>
