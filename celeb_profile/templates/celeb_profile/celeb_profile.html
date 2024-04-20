@@ -34,13 +34,13 @@
         <hr>
         {% for product in products_added %}
         <div class="col-md-4 mb-4">
-            <div class="card">
-                <img src="{{ product.image_url }}" class="card-img-top" alt="{{ product.name }}">
-                <div class="card-body">
+            <div class="card h-100">
+                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                <div class="card-body d-flex flex-column">
                     <h5 class="card-title">{{ product.name }}</h5>
-                    <p class="card-text">{{ product.description }}</p>
-                    <div class="btn-group" role="group">
-                        <a href="{% url 'edit_product' product.product_id %}" class="btn btn-dark">Edit</a>
+                    <p class="card-text flex-grow-1">{{ product.description }}</p>
+                    <div class="btn-group mt-auto" role="group">
+                        <a href="{% url 'edit_product' product.product_id %}" class="btn mx-2 btn-dark">Edit</a>
                         <form action="{% url 'delete_product' product.product_id %}" method="POST">
                             {% csrf_token %}
                             <button class="btn btn-danger" type="submit">Delete</button>
@@ -52,4 +52,7 @@
         {% endfor %}
     </div>
 </div>
+
+<br>
+<br>
 {% endblock %}
