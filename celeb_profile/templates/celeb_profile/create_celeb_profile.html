@@ -5,7 +5,7 @@
 {% block content %}
 
 <div class="row">
-    <div class="col-12 text-center text-white my-5 px-5 ">
+    <div class="col-12 text-center my-5 px-5 ">
         <h1 class="">Create Your Celebrity Profile</h1>
         <hr>
         <p class="lead">Welcome to the beginning of your journey on our platform! To get started, you'll need to create
@@ -14,7 +14,7 @@
     </div>
 </div>
 
-<form class="text-white" method="POST">
+<form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form|crispy }}
     <button class="btn btn-success my-3" type="submit">Create Profile</button>

@@ -25,7 +25,7 @@ class CelebProfile(models.Model):
     profile_name = models.CharField(max_length=100) 
     bio = models.CharField()
     small_bio = models.TextField(max_length=100, default='')
-    image = models.ImageField(null=False, blank=False)
+    image = models.ImageField(upload_to='celeb_images/')
     products_added = models.ManyToManyField('products.Product', blank=True)
     # Displays celeb profile on homepage when clicked 
     display_on_home = models.BooleanField(default=False)

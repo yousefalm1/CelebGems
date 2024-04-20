@@ -16,7 +16,6 @@ class CelebProfileForm(forms.ModelForm):
         fields = ['profile_name', 'bio', 'small_bio', 'image'] 
 
 
-
 class CelebAddProductFrom(forms.ModelForm):
     class Meta:
         model = Product
