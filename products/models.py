@@ -14,7 +14,7 @@ class Product(models.Model):
     availability_shipping_info = models.TextField(blank=False)
     has_sizes = models.BooleanField(default=False, null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    image = models.ImageField(null=True, blank=True)
+    image = models.ImageField(upload_to='product_images/')
     product_id = models.AutoField(primary_key=True)
     quantity_in_stock = models.PositiveIntegerField(default=0)
     # 'celeb_profile.CelebProfile' this is the app and where the model is 

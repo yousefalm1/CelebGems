@@ -3,31 +3,34 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div class="container">
-    <div class="row justify-content-center my-5">
-        <div class="col-lg-10 text-center">
-            <h1 class="display-4">Add a Product to Your Profile</h1>
-            <hr class="bg-light">
-            <p class="lead">Fill out the form below to add a product to your profile. Once added, your product will be
-                visible to all users. Make sure to provide accurate information to attract potential buyers.</p>
-        </div>
-    </div>
+
+<div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-lg-10">
-            <form method="POST" class="needs-validation">
-                {% csrf_token %}
-                <div class="card bg-light mb-5">
-                    <div class="card-body">
-                        {{ form|crispy }}
-                    </div>
-                    <div class="card-footer">
-                        <button class="btn btn-success btn-block" type="submit">Add Product</button>
-                    </div>
+        <div class="col-lg-8">
+            <div class="card bg-light p-4">
+                <div class="card-body text-center">
+                    <h1 class="display-4 mb-4">Add a Product to Your Profile</h1>
+                    <hr class="bg-dark">
+                    <p class="lead">Fill out the form below to add a product to your profile. Once added, your product
+                        will be visible to all users. Make sure to provide accurate information to attract potential
+                        buyers.</p>
                 </div>
-                <br>
-                <br>
-            </form>
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mb-4">
+                            {{ form|crispy }}
+                        </div>
+                        <button class="btn btn-success btn-block" type="submit">Add Product</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+<br>
+<br>
+<br>
+<br>
+
 {% endblock %}

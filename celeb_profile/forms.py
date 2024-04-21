@@ -16,10 +16,10 @@ class CelebProfileForm(forms.ModelForm):
         fields = ['profile_name', 'bio', 'small_bio', 'image'] 
 
 
-class CelebAddProductFrom(forms.ModelForm):
+class CelebAddProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ['name', 'description','product_specifications',
+        fields = ['name', 'description','product_specifications','small_description',
                 'availability_shipping_info', 'price', 'quantity_in_stock',
                 'image']
 

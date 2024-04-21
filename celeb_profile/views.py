@@ -5,7 +5,7 @@ from products.models import Product
 from .forms import (
     CelebRequestForm,
     CelebProfileForm,
-    CelebAddProductFrom,
+    CelebAddProductForm,
     EditProductForm
 )
 
@@ -110,14 +110,14 @@ def add_product(request):
 
     """
     if request.method == 'POST':
-        form = CelebAddProductFrom(request.POST)
+        form = CelebAddProductForm(request.POST, request.FILES)
         if form.is_valid():
             product = form.save() 
             celeb_profile = request.user.celeb_profile 
             celeb_profile.products_added.add(product)
             return redirect('add_product_success') 
     else:
-        form = CelebAddProductFrom()
+        form = CelebAddProductForm()
     return render(request, 'celeb_profile/add_product.html', {'form': form})
 
 
@@ -246,6 +246,5 @@ def request_celeb_profile_submitted(request ):
 def request_already_submitted(request):
     """ A view to render the request already submitted """
     return render(request, 'celeb_profile/request_already_submitted.html')
-
 
 

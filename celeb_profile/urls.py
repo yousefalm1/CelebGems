@@ -13,7 +13,9 @@ from .views import (
     delete_product, 
     add_product_success, 
     celeb_profile, 
-    all_celebrities
+    all_celebrities,
+    delete_product_success
+
 ) 
 urlpatterns = [
     path(
@@ -94,6 +96,11 @@ urlpatterns = [
         name='delete_product'
     ),
     
+    path(
+        'delete-product-success/',
+        delete_product_success,
+        name='delete_product_success',
+    ),
 
     path(
         '', 

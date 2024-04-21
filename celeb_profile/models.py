@@ -23,8 +23,8 @@ class CelebProfile(models.Model):
         User, on_delete=models.CASCADE, default=1, related_name='celeb_profile',
     )
     profile_name = models.CharField(max_length=100) 
-    bio = models.CharField()
-    small_bio = models.TextField(max_length=100, default='')
+    bio = models.TextField()
+    small_bio = models.CharField(max_length=100, default='')
     image = models.ImageField(upload_to='celeb_images/')
     products_added = models.ManyToManyField('products.Product', blank=True)
     # Displays celeb profile on homepage when clicked 
