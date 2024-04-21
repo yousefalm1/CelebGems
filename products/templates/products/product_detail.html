@@ -7,7 +7,7 @@
 
 {% block content %}
 <div class="container-fluid">
-    <div class="row text-white">
+    <div class="row">
         <div class="col-md-6">
             <div class="image-container">
                 {% if product.image %}
@@ -38,13 +38,13 @@
                             </select>
                         </div>
                         {% endif %}
-                        <div class="col-12 mt-3 text-white">
+                        <div class="col-12 mt-3 ">
                             <label for="id_qty_{{ product.id }}"><strong>Quantity:</strong></label>
                             <div class="input-group w-50">
                                 <div class="input-group-prepend">
                                     <button class="decrement-qty btn btn-black rounded-0"
                                         data-item_id="{{ product.id }}" id="decrement-qty_{{ product.id }}">
-                                        <i class="fas fa-minus text-white"></i>
+                                        <i class="fas fa-minus"></i>
                                     </button>
                                 </div>
                                 <input class="form-control qty_input" type="number" name="quantity" value="1" min="1"
@@ -52,7 +52,7 @@
                                 <div class="input-group-append">
                                     <button class="increment-qty btn btn-black rounded-0"
                                         data-item_id="{{ product.id }}" id="increment-qty_{{ product.id }}">
-                                        <i class="fas fa-plus text-white"></i>
+                                        <i class="fas fa-plus"></i>
                                     </button>
                                 </div>
                             </div>
@@ -72,20 +72,20 @@
     </div>
     <div class="row my-5">
         <div class="col-12">
-            <h2 class="text-white">Product Specifications</h2>
-            <p class="lead text-white">{{ product.product_specifications }}</p>
+            <h2 class="">Product Specifications</h2>
+            <p class="lead ">{{ product.product_specifications }}</p>
         </div>
     </div>
     <div class="row my-5">
         <div class="col-12">
-            <h2 class="text-white">Availability and Shipping Information</h2>
+            <h2 class="">Availability and Shipping Information</h2>
             <hr class="bg-white">
-            <p class="lead text-white">{{ product.availability_shipping_info }}</p>
+            <p class="lead ">{{ product.availability_shipping_info }}</p>
         </div>
     </div>
     <div class="row">
         <div class="col-12">
-            <h2 class="text-white">Other products by <strong>{{ product.celeb_profile }}</strong></h2>
+            <h2 class="">Other products by <strong>{{ product.celeb_profile }}</strong></h2>
             <hr class="bg-white">
         </div>
     </div>

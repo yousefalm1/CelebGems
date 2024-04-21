@@ -4,20 +4,29 @@
 
 {% block content %}
 
-<div class="row">
-    <div class="col-12 text-center my-5 px-5 ">
-        <h1 class="">Request Celeb Profile</h1>
-        <hr>
-        <p class="lead">Thank you for considering CelebGems as a platform to showcase and sell your products. By
-            completing and submitting this form, our team will review your details to determine your eligibility as a
-            celebrity seller on CelebGems.</p>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card bg-light p-4">
+                <div class="card-body text-center">
+                    <h1 class="card-title mb-4">Request Celeb Profile</h1>
+                    <hr class="bg-dark">
+                    <p class="lead">Thank you for considering CelebGems as a platform to showcase and sell your
+                        products. By completing and submitting this form, our team will review your details to determine
+                        your eligibility as a celebrity seller on CelebGems.</p>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <button class="btn btn-success btn-block mt-4" type="submit">Submit Request</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-
-<form method="POST">
-    {% csrf_token %}
-    {{ form|crispy }}
-    <button class="btn btn-success my-3" type="submit">Submit Request</button>
-</form>
+<br>
+<br>
 
 {% endblock %}
