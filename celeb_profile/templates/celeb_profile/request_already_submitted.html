@@ -3,12 +3,12 @@
 
 
 {% block content %}
-<div class="row my-5 text-white">
+<div class="row my-5">
     <h1 class=" mb-3 text-center">You have already Submitted a Celebrity Profile Request </h1>
-    <hr style="height: 4px; background-color: white;">
-    <p class="text-center lead my-5"> Kindly await our team's review of your request before submitting another form/</p>
-    <a href="{% url 'home' %}">
-        <button class="btn btn-dark">Back to Home</button>
+    <hr>
+    <p class="text-center lead my-5"> Kindly await our team's review of your request before submitting another form</p>
+    <a href="{% url 'home' %}" class="text-decoration-none">
+        <button class="btn btn-dark d-block mx-auto">Back to Home</button>
     </a>
 </div>
 {% endblock %}

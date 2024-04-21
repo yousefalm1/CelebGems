@@ -3,15 +3,15 @@
 
 
 {% block content %}
-<div class="row my-5 text-white">
+<div class="row my-5">
     <h1 class=" mb-3 text-center">Celebrity Profile Request Submitted</h1>
-    <hr style="height: 4px; background-color: white;">
+    <hr>
     <p class="text-center lead my-5"> Thank you <strong> {{ submitted_user.username }}</strong>, for
         submitting
         your celebrity
         profile request! We will get back to you as soon as possible.</p>
-    <a href="{% url 'home' %}">
-        <button class="btn btn-dark">Back to Home</button>
+    <a href="{% url 'home' %}" class="text-decoration-none">
+        <button class="btn btn-dark center d-block mx-auto">Back to Home</button>
     </a>
 </div>
 {% endblock %}
