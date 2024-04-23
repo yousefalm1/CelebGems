@@ -41,7 +41,7 @@
         <div class="col-12 col-lg-6 ">
             <h5 class="card-title text-center text-mute mt-3">Order History </h5>
             <div class="order-history table-responsive">
-                <div class="table table-sm table-borderless text-white">
+                <div class="table table-sm table-borderless">
                     <thead>
                         <tr>
                             <th>Order Number</th>
@@ -61,10 +61,10 @@
                             <td>{{ order.date}}</td>
                             <td>
                                 <ul class="list-unstlyed ">
-                                    {% for item in order.lineitem.all %}
+                                    {% for product in order.lineitem.all %}
                                     <li class="small">
-                                        {% if item.product.has_sizes %}size {{item.product.size|upper }}
-                                        {% endif %}{{item.product.name}} x {{ item.quantity }}
+                                        {% if product.product.has_sizes %}size {{product.product.size|upper }}
+                                        {% endif %}{{product.product.name}} x {{ product.quantity }}
                                     </li>
                                     {% endfor %}
                                 </ul>
