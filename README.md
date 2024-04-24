@@ -171,3 +171,150 @@ The Business model for this is Commission-Based Model Celeb Gems would earn reve
    - Admins have the authority to hand-select three products to feature prominently on the home page.
    - Similar to the popular celeb section, admins can manage these featured products via the admin panel, ensuring control and precision in showcasing new offerings.
    - The selection of products for the home screen is exclusive to admin privileges, maintaining consistency and quality in the displayed content.
+
+## Products Page
+
+![Product](documentation/features/product.png)
+
+![Product Search](documentation/features/product-search.png)
+
+- The product page displays all available products from the database.
+- Users can utilize the search bar to find specific products. In the example above, a search for "ball" yielded relevant results, with the searched product prominently displayed among others.
+
+- Each product is showcased within a product card, featuring:
+  - Product image: Chosen by the celebrity associated with the product.
+  - Product name: Selected by the celebrity.
+  - Small bio: A brief description provided by the celebrity.
+  - "Product Details" button: Redirects users to the product detail page for comprehensive information about the selected product.
+
+## Product Details Page
+
+![Product Detail](documentation/features/product-details.png)
+
+- On the product detail page, users will find a comprehensive overview of the selected product:
+
+  - Product Image: Positioned in the top left corner, the product image offers a visual representation of the item.
+  - Product Name: Clearly displayed to identify the specific product.
+  - Description: A detailed description provides users with essential information about the product, highlighting its features and benefits.
+  - Price: Presented prominently in a red box to draw attention, the price showcases the value of the product.
+  - Size Selector: If applicable, users can select the desired size from a dropdown menu, ensuring a personalized fit.
+  - Quantity Selector: Users can easily adjust the quantity of the product by clicking the "+" or "-" buttons.
+  - Keep Shopping Button: This button redirects users back to the product page, allowing them to continue exploring additional items.
+  - Add to Cart Button: Users can seamlessly add the product to their shopping bag with a single click, facilitating a smooth purchasing process.
+  - Product Specifications: A dedicated section displays all relevant product specifications, as provided by the celebrity, ensuring transparency and clarity.
+  - Availability and Shipping Information: Users can review essential details regarding the availability and shipping options for the product, providing confidence in their purchasing
+
+## All Celebrities Page
+
+![Celeb page ](documentation/features/celeb-page.png)
+
+- Users are presented with an exhaustive compilation of celeb profiles available in the database, providing a comprehensive overview of the platform's celebrity roster.
+- Celeb Profile Cards:
+  Each celeb profile is elegantly encapsulated within its own card, offering users an engaging and informative snapshot of the respective celebrity.
+
+      - Profile Picture: Celebs personalize their profiles by selecting a distinctive profile picture, enhancing their visibility and appeal to users.
+      - Display Name: Celebs curate their public persona by choosing a display name that reflects their identity or brand.
+      - Small Bio: Celebs craft a concise yet captivating bio to offer users insight into their background, achievements, or interests, fostering a deeper connection with their fan base.
+      - Celeb Details Button: Users can effortlessly explore more about a particular celeb by clicking the Celeb Details button, seamlessly navigating to the celeb's dedicated profile page for a more in-depth exploration.
+
+## Celeb Detail Page
+
+## Contact Us Page
+
+![contact us page ](documentation/features/contact.png)
+
+- On the Contact Us page, users are presented with a form designed to facilitate direct communication with our staff.
+
+  - The central feature of the Contact Us page is a user-friendly form where users can compose and submit messages addressed to our staff.
+  - Users have the opportunity to convey their queries, feedback, or inquiries directly to our staff by composing a message within the designated form.
+  - Admin Panel Integration: Messages submitted through the Contact Us form are seamlessly routed to the admin panel, where our staff can efficiently review and manage incoming correspondence.
+
+## Request Celeb Profile (logged in users)
+
+![celeb profile request page ](documentation/features/request-celeb.png)
+
+- Users can access the "Request Celeb Profile" page by clicking the corresponding nav link in the navbar.
+- This link is visible only to logged-in users who do not already have an approved celeb profile.
+- Upon clicking the link, users are directed to the request form page.
+- The request form includes five fields:
+  - Occupation
+  - Reasons
+  - Social media
+  - Target audience
+  - Additional information
+- After completing the form, users can submit it and are redirected to a confirmation page.
+
+![celeb profile request confirmation page ](documentation/features/celeb-req-confirm.png)
+
+- After submission, users are redirected to a confirmation page to acknowledge the successful submission of their request.
+- The "Request Celeb Profile" nav link remains accessible in the navbar until the request is approved or declined.
+- If a user who has already submitted the request form attempts to access the request page again, they are redirected to a page notifying them that they have already submitted a request and to await further communication.
+
+![celeb profile already submitted  ](documentation/features/celeb-already-submited.png)
+
+- Upon submission, the admin receives the request form and can review, approve, or decline it.
+
+### Create Celeb Profile Page
+
+![Create celeb profile](documentation/features/create-celeb-profile.png)
+
+- Upon approval, users gain access to the "Celeb Profile" link in the navbar, redirecting them to the Celeb Profile page.
+- The Celeb Profile page prompts approved users to create their celeb profile by filling out a form.
+- The form requests the following information to be displayed on the celeb profile:
+  - Display name: The name chosen by the celeb to appear on their profile.
+  - Long bio: A detailed biography providing insight into the celeb's background, achievements, and interests.
+  - Short bio: A concise summary capturing the essence of the celeb's persona or brand.
+  - Image: An image chosen by the celeb to represent them on their profile.
+- After completing the form and submitting it, the celeb profile becomes visible to all users on the platform.
+
+### Celeb Personal Profile Page
+
+![Celeb Personal Page ](documentation/features/celeb-profile-personal.png)
+
+- After creating their celeb profile, users gain access to their own personal page, where they can manage various aspects of their profile.
+- This page serves as the central hub for celebs to oversee and control their profile information and products.
+- Celebs can view and manage their long and short bios, as well as the products they have added to their account.
+- Additionally, celebs have the option to edit their display profile and add new products to their profile.
+
+![Edit Celeb Profile  ](documentation/features/edit-celeb-profile.png)
+
+- Celebs can update their profile information by clicking the "Edit Celeb Profile" button, redirecting them to the edit celeb profile form.
+- he form pre-populates with the celeb's existing information, allowing them to make desired changes.
+- After submitting the form, the updated information automatically reflects on their profile, replacing the previous details.
+
+![Add Product Celeb Profile  ](documentation/features/edit-celeb-profile.png)
+
+- When celebs wish to add a product to their profile, they can click the "Add Product" button to access the add product form.
+- The add product form prompts celebs to input all necessary product details before submission.
+
+### Bag
+
+- Cart Total on Navbar: Whether users are logged in or not, the total amount of items in the cart is dynamically displayed on the navbar, ensuring easy access to their current cart status.
+- View Bag Button: Clicking on the bag icon in the navbar redirects users to their bag, allowing them to review and manage their selected items.
+
+![Bag](documentation/features/bag.png)
+Bag Page:
+
+- Users can view the following details for each item in their bag:
+  - Product information (name, image, etc.).
+  - Price per item.
+  - Quantity, with plus and minus buttons to adjust.
+  - "Update" link to apply quantity changes.
+  - "Delete" option to remove items from the bag.
+- At the bottom of the page, a "Grand Total" section displays the sum of all items in the bag, along with any applicable delivery fees. If no delivery fee is applicable, it shows as $0.00.
+- Once users are satisfied with their selection, they can proceed to checkout securely by clicking the "Secure Checkout" button.
+- Alternatively, users can continue shopping by clicking the "Keep Shopping" button, redirecting them to the all products page to explore further.
+
+### checkout (not logged in user)
+
+![Bag](documentation/features/checkout-not-logged.png)
+
+- Upon choosing to checkout, users are directed to the checkout page, where they have the option to proceed with a secure checkout.
+- The checkout page features two columns:
+  - The first column prompts users to fill out a form with their delivery address details.
+  - The second column presents the order summary, allowing users to review their selected items before finalizing the order.
+- Below the two columns, users encounter the Stripe payment box, where they input their card details for payment. Upon completion, they click the "Complete Order" button.
+- Upon clicking the "Complete Order" button, users are shown an orange overlay indicating that the payment is being processed.
+- After the order is successfully processed, users are redirected to the successful checkout page, which confirms the order and displays the delivery address provided by the user.
+
+![orange overlay](documentation/features/orange.png)
