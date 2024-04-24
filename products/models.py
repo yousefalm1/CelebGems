@@ -12,7 +12,12 @@ class Product(models.Model):
     )
     product_specifications = models.TextField(blank=False)
     availability_shipping_info = models.TextField(blank=False)
-    has_sizes = models.BooleanField(default=False, null=True, blank=True)
+
+    HAS_SIZES_CHOICES = [
+        (True, 'Yes'),
+        (False, 'No'),
+    ]
+    has_sizes = models.BooleanField(default=False, choices=HAS_SIZES_CHOICES, null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     image = models.ImageField(upload_to='product_images/')
     product_id = models.AutoField(primary_key=True)
