@@ -318,3 +318,23 @@ Bag Page:
 - After the order is successfully processed, users are redirected to the successful checkout page, which confirms the order and displays the delivery address provided by the user.
 
 ![orange overlay](documentation/features/orange.png)
+
+## Allauth
+
+### Login
+
+![login](documentation/features/login.png)
+
+### Sign Up
+
+![login](documentation/features/sign-up.png)
+
+### Sign Out
+
+![login](documentation/features/sign-out.png)
+
+### Forgot Password
+
+![login](documentation/features/login.png)
+
+#
