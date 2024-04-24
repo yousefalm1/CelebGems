@@ -20,7 +20,7 @@ class CelebAddProductForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = ['name', 'description','product_specifications','small_description',
-                'availability_shipping_info', 'price', 'quantity_in_stock',
+                'availability_shipping_info','has_sizes', 'price', 'quantity_in_stock',
                 'image']
 
 
