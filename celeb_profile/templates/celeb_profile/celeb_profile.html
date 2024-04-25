@@ -2,27 +2,30 @@
 {% load static %}
 
 {% block content %}
-
 <div class="container">
     <div class="row text-center">
-        <h1 class="lead my-5">This information will be displayed when the user clicks on your profile</h1>
-        <hr>
+        <h1 class="display-4 my-5">Welcome to Your Celeb Profile</h1>
     </div>
+    <hr>
+
     <div class="row">
-        <img src="{{celeb_profile.imgage.url }}" ">
+        <div class="col-md-4">
+            <img src="{{ celeb_profile.image.url }}" alt="{{ celeb_profile.profile_name }}"
+                class="img-fluid rounded-circle">
+        </div>
+        <div class="col-md-8 text-center">
+            <h2 class="my-4">{{ celeb_profile.profile_name }}</h2>
+            <h4 class="mb-3">Long Bio:</h4>
+            <p>{{ celeb_profile.bio }}</p>
 
-        <h1 class=" my-5">Celeb Profile for <strong>{{ celeb_profile.profile_name }}</strong></h1>
-        <h3 class="mb-2">Long Bio:</h3>
-        <p class="lead">{{ celeb_profile.bio }}</p>
-
-        <h3 class="mb-2">Short Bio:</h3>
-        <p class="lead">{{ celeb_profile.small_bio }}</p>
+            <h4 class="mb-3">Short Bio:</h4>
+            <p>{{ celeb_profile.small_bio }}</p>
+        </div>
     </div>
 
     <div class="row mt-5">
         <div class="col-md-6">
-            <a href="{% url 'edit_celeb_profile' %}" class="btn btn-dark btn-lg mb-3 ">Edit Celeb
-                Profile</a>
+            <a href="{% url 'edit_celeb_profile' %}" class="btn btn-dark btn-lg mb-3">Edit Celeb Profile</a>
         </div>
         <div class="col-md-6">
             <a href="{% url 'add_product' %}" class="btn btn-dark btn-lg">Add Product</a>
