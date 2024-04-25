@@ -25,3 +25,5 @@ def contact_us_success(request):
     template = {
         'contact/contact_us_success.html'
     }
+
+    return render( request, template,)

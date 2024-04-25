@@ -20,7 +20,7 @@
         <div class="col-md-6">
             <h2 class="my-5">{{ product.name }}</h2>
             <p class="my-5">{{ product.description }}</p>
-            <button type="button" class="btn btn-danger" disabled>${{ product.price }}</button>
+            <span class="text-danger">${{ product.price }}</span>
             <div class="d-flex flex-column my-5">
                 <form class="form" method="POST" action="{% url 'add_to_bag' product.product_id %}">
                     {% csrf_token %}
