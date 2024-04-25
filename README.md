@@ -482,3 +482,57 @@ When a user signs up a new profile is created
 | quantity_in_stock          | quantity_in_stock          | PositiveIntegerField | default=0                                                                                              |
 | celeb_profile              | celeb_profile              | ForeignKey           | 'celeb_profile.CelebProfile', on_delete=models.CASCADE, related_name='products', blank=True, null=True |
 | display_on_home            | display_on_home            | BooleanField         | default=False                                                                                          |
+
+## Deployment and Payment setup
+
+## Heroku Deployment
+
+1. Create a [Heroku](https://www.heroku.com/home) account if you don't already have one.
+
+2. Click on the "Create new app" button.
+
+![click create new app](documentation/heroku/heroku1.png)
+
+3. Choose a name for your app and region.
+
+![choose name](documentation/heroku/heroku2.png)
+
+4. Click on the "Create app" button.
+
+![click create app](documentation/heroku/heroku4.png)
+
+5. Go to settings tab
+
+![go to settings tab](documentation/heroku/heroku5.png)
+
+6. click revel config vars and add these vars make sure to make debug false when done.
+
+![click revel config](documentation/heroku/heroku6.png)
+
+### Create Database on ElephantSQL
+
+1. Go to [ElephantSQL](https://www.elephantsql.com/) and create a new account.
+
+2. Click create new instance
+
+![create new instance](documentation/deployment/sql1.png)
+
+3. Type in the name and click select region.
+
+![Type in name ](documentation/deployment/sql2.png)
+
+4. Select the region
+
+![Select the region](documentation/deployment/sql3.png)
+
+5. Click create new instance
+
+![create new instance](documentation/deployment/sql4.png)
+
+6. Back on the dashboard click the name of the instance
+
+![click on the instance](documentation/deployment/sql6.png)
+
+7, It will take you the dashboard for the instance created here is where the url is.
+
+![instance dashboard](documentation/deployment/sql5.png)
