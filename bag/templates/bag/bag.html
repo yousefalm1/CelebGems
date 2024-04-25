@@ -25,7 +25,7 @@
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody">
                         {% for product in bag_products %}
                         <tr>
                             <td>
@@ -38,8 +38,9 @@
                                         class="img-fluid" style="max-height: 100px;">
                                     {% endif %}
                                     <p><strong>{{ product.product.name }}</strong></p>
-                                    <p><strong>Size:</strong> {% if product.product.has_sizes %}{{ product.size|upper
-                                        }}{% else %}N/A{% endif %}</p>
+                                    <p><strong>Size:</strong>
+                                        {% if product.product.has_sizes %}{{ product.size|upper}}{% else %}N/A{% endif%}
+                                    </p>
                                 </a>
                             </td>
                             <td>${{ product.product.price }}</td>
@@ -50,9 +51,9 @@
                                     <div class="input-group">
                                         <button class="btn btn-sm btn-dark" type="button" data-action="decrement"
                                             data-item_id="{{ product.product.product_id }}">-</button>
-                                        <input class="form-control form-control-sm qty_input mx-1" type="number"
-                                            name="quantity" value="{{ product.quantity }}" min="1" max="99"
-                                            data-item_id="{{ product.product.product_id }}">
+                                        <input class="form-control form-control-sm qty_input mx-1" disabled
+                                            type="number" name="quantity" value="{{ product.quantity }}" min="1"
+                                            max="99" data-item_id="{{ product.product.product_id }}">
                                         <button class="btn btn-sm btn-dark" type="button" data-action="increment"
                                             data-item_id="{{ product.product.product_id }}">+</button>
                                     </div>
@@ -68,7 +69,7 @@
                             </td>
                         </tr>
                         {% endfor %}
-                    </tbody>
+                        </tbody>
                 </table>
             </div>
             <div class="text-right mt-4">
