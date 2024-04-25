@@ -373,3 +373,112 @@ Each issue is labeled to provide clarity and categorization:
 This is what a project board looks like at the end of the project everything in the done column.
 
 ![products Project board](documentation/features/product-board.png)
+
+---
+
+## Information Architecture
+
+- The begingign i created the ERD
+- Then used SQLIte to create the database in the early stages of the project
+- Then the database was migrated to PostgreSQL towards the end of the project
+
+### ERD
+
+### Data Modeling
+
+#### Profile Model
+
+When a user signs up a new profile is created
+
+| Name                    | Database Key            | Field Type    | Validation                                                                  |
+| ----------------------- | ----------------------- | ------------- | --------------------------------------------------------------------------- |
+| user                    | user                    | OneToOneField | User, on_delete=models.CASCADE, related_name='profile', verbose_name='User' |
+| default_phone_number    | default_phone_number    | CharField     | max_length=20, null=True, blank=True                                        |
+| default_street_address1 | default_street_address1 | CharField     | max_length=80, null=True, blank=True                                        |
+| default_street_address2 | default_street_address2 | CharField     | max_length=80, null=True, blank=True                                        |
+| default_town_or_city    | default_town_or_city    | CharField     | max_length=40, null=True, blank=True                                        |
+| default_county          | default_county          | CharField     | max_length=80, null=True, blank=True                                        |
+| default_postcode        | default_postcode        | CharField     | max_length=20, null=True, blank=True                                        |
+| default_country         | default_country         | CountryField  | blank_label='Country', null=True, blank=True                                |
+
+#### Celeb Request Model
+
+| Name            | Database Key    | Field Type      | Validation                                                              |
+| --------------- | --------------- | --------------- | ----------------------------------------------------------------------- |
+| user            | user            | OneToOneField   | User, on_delete=models.CASCADE, default=1, related_name='celeb_profile' |
+| profile_name    | profile_name    | CharField       | max_length=100                                                          |
+| bio             | bio             | TextField       |                                                                         |
+| small_bio       | small_bio       | CharField       | max_length=100, default=''                                              |
+| image           | image           | ImageField      | upload_to='celeb_images/'                                               |
+| products_added  | products_added  | ManyToManyField | 'products.Product', blank=True                                          |
+| display_on_home | display_on_home | BooleanField    | default=False                                                           |
+
+#### Celeb Profile Model
+
+| Name                   | Database Key           | Field Type   | Validation                                             |
+| ---------------------- | ---------------------- | ------------ | ------------------------------------------------------ |
+| user                   | user                   | ForeignKey   | User, on_delete=models.CASCADE, default=1, unique=True |
+| occupation             | occupation             | CharField    | max_length=100                                         |
+| reasons                | reasons                | TextField    |                                                        |
+| social_media           | social_media           | URLField     | max_length=200, blank=True, null=True                  |
+| target_audience        | target_audience        | CharField    | max_length=200, blank=True, null=True                  |
+| additional_information | additional_information | TextField    | blank=True, null=True                                  |
+| approved               | approved               | BooleanField | default=False                                          |
+
+#### Order Model
+
+| Name            | Database Key    | Field Type    | Validation                                                                           |
+| --------------- | --------------- | ------------- | ------------------------------------------------------------------------------------ |
+| order_number    | order_number    | CharField     | max_length=32, null=False, editable=False                                            |
+| user_profile    | user_profile    | ForeignKey    | UserProfile, on_delete=models.SET_NULL, null=True, blank=True, related_name='orders' |
+| full_name       | full_name       | CharField     | max_length=50, null=False, blank=False                                               |
+| email           | email           | EmailField    | max_length=254, null=False, blank=False                                              |
+| phone_number    | phone_number    | CharField     | max_length=20, null=False, blank=False                                               |
+| country         | country         | CountryField  | blank_label='Country \*', null=False, blank=False                                    |
+| postcode        | postcode        | CharField     | max_length=20, null=True, blank=True                                                 |
+| town_or_city    | town_or_city    | CharField     | max_length=40, null=False, blank=False                                               |
+| street_address1 | street_address1 | CharField     | max_length=80, null=False, blank=False                                               |
+| street_address2 | street_address2 | CharField     | max_length=80, null=True, blank=True                                                 |
+| county          | county          | CharField     | max_length=80, null=True, blank=True                                                 |
+| date            | date            | DateTimeField | auto_now_add=True                                                                    |
+| delivery_cost   | delivery_cost   | DecimalField  | max_digits=6, decimal_places=2, null=False, default=0                                |
+| order_total     | order_total     | DecimalField  | max_digits=10, decimal_places=2, null=False, default=0                               |
+| grand_total     | grand_total     | DecimalField  | max_digits=10, decimal_places=2, null=False, default=0                               |
+| original_bag    | original_bag    | TextField     | null=False, default=''                                                               |
+| stripe_pid      | stripe_pid      | CharField     | max_length=254, null=False, blank=False, default=''                                  |
+
+#### OrderLineItem Model
+
+| Name           | Database Key   | Field Type   | Validation                                                                         |
+| -------------- | -------------- | ------------ | ---------------------------------------------------------------------------------- |
+| order          | order          | ForeignKey   | Order, null=False, blank=False, on_delete=models.CASCADE, related_name="lineitems" |
+| product        | product        | ForeignKey   | Product, null=False, blank=False, on_delete=models.CASCADE                         |
+| product_size   | product_size   | CharField    | max_length=2, null=True, blank=True                                                |
+| quantity       | quantity       | IntegerField | null=False, blank=False, default=0                                                 |
+| lineitem_total | lineitem_total | DecimalField | max_digits=6, decimal_places=2, null=False, blank=False, editable=False            |
+
+#### Contact Model
+
+| Name    | Database Key | Field Type | Validation     |
+| ------- | ------------ | ---------- | -------------- |
+| Name    | Name         | CharField  | max_length=100 |
+| email   | email        | EmailField |                |
+| subject | subject      | CharField  | max_length=200 |
+| message | message      | TextField  |                |
+
+#### Product Model
+
+| Name                       | Database Key               | Field Type           | Validation                                                                                             |
+| -------------------------- | -------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------ |
+| name                       | name                       | CharField            | max_length=254, blank=False                                                                            |
+| description                | description                | TextField            | blank=False                                                                                            |
+| small_description          | small_description          | TextField            | max_length=100, blank=False, default=''                                                                |
+| product_specifications     | product_specifications     | TextField            | blank=False                                                                                            |
+| availability_shipping_info | availability_shipping_info | TextField            | blank=False                                                                                            |
+| has_sizes                  | has_sizes                  | BooleanField         | default=False, choices=[(True, 'Yes'), (False, 'No')], null=True, blank=True                           |
+| price                      | price                      | DecimalField         | max_digits=6, decimal_places=2                                                                         |
+| image                      | image                      | ImageField           | upload_to='product_images/'                                                                            |
+| product_id                 | product_id                 | AutoField            | primary_key=True                                                                                       |
+| quantity_in_stock          | quantity_in_stock          | PositiveIntegerField | default=0                                                                                              |
+| celeb_profile              | celeb_profile              | ForeignKey           | 'celeb_profile.CelebProfile', on_delete=models.CASCADE, related_name='products', blank=True, null=True |
+| display_on_home            | display_on_home            | BooleanField         | default=False                                                                                          |
