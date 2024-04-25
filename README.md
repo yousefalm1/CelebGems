@@ -292,7 +292,7 @@ The Business model for this is Commission-Based Model Celeb Gems would earn reve
 - Cart Total on Navbar: Whether users are logged in or not, the total amount of items in the cart is dynamically displayed on the navbar, ensuring easy access to their current cart status.
 - View Bag Button: Clicking on the bag icon in the navbar redirects users to their bag, allowing them to review and manage their selected items.
 
-![Bag](documentation/features/bag.png)
+![Bag](documentation/features/bag2.png)
 Bag Page:
 
 - Users can view the following details for each item in their bag:
@@ -300,7 +300,7 @@ Bag Page:
   - Price per item.
   - Quantity, with plus and minus buttons to adjust.
   - "Update" link to apply quantity changes.
-  - "Delete" option to remove items from the bag.
+  - "Delete" option to remove items from the bag. When they click it they will be given a pop up to confirm if they want to delete it.
 - At the bottom of the page, a "Grand Total" section displays the sum of all items in the bag, along with any applicable delivery fees. If no delivery fee is applicable, it shows as $0.00.
 - Once users are satisfied with their selection, they can proceed to checkout securely by clicking the "Secure Checkout" button.
 - Alternatively, users can continue shopping by clicking the "Keep Shopping" button, redirecting them to the all products page to explore further.
@@ -337,4 +337,39 @@ Bag Page:
 
 ![login](documentation/features/login.png)
 
-#
+---
+
+## Agile Methodology
+
+### GitHub Project Management
+
+![GitHub project main](documentation/features/github-all-projects.png)
+
+![All Project boards](documentation/features/all-boards.png)
+
+GitHub project management was employed to efficiently organize and track the progress of our project. Each feature had its dedicated project dashboard to streamline management and collaboration.
+
+![bag Project board](documentation/features/bag-board.png)
+
+#### Project Boards
+
+I utilized project boards with five columns, each serving a distinct purpose:
+
+- To Do: Tasks that are yet to be started are placed here.
+  Styling: This column remains empty as tasks are moved to the "Done" column upon completion, indicating styled elements.
+- In Progress: Tasks actively being worked on are displayed here. Once completed, they move to either the "Done" column or the "Styling" column for final adjustments.
+- Bugs: Any identified bugs are placed in this column for resolution. Once fixed, they are moved to the "Done" column, and the issue is closed.
+- Done: Completed tasks reside here, marking the culmination of work on each item.
+
+#### Issue Labels
+
+Each issue is labeled to provide clarity and categorization:
+
+- Backend: Indicates an issue related to backend development.
+- Frontend: Indicates an issue related to frontend development.
+- Bug: Marks an issue as a bug that needs to be addressed.
+- Must-Do: Identifies critical issues that must be completed promptly
+
+This is what a project board looks like at the end of the project everything in the done column.
+
+![products Project board](documentation/features/product-board.png)
