@@ -70,7 +70,8 @@
                             data-item_id="{{ product.product.product_id }}"><small>Update</small></a>
                         <a href="#" class="remove-product text-danger"
                             data-product_id="{{ product.product.product_id }}"
-                            data-product_size="{{ product.product.size }}"><small>Remove</small></a>
+                            data-product_size="{{ product.product.size }}"
+                            onclick="return confirmDelete()"><small>Remove</small></a>
                     </td>
                 </tr>
                 {% endfor %}
@@ -103,44 +104,53 @@
 {% block postloadjs %}
 {{ block.super }}
 {% include 'products/includes/quantity_input_script.html' %}
+
 <script type="text/javascript">
-    $(document).ready(function () {
-        // Update quantity on click
-        $('.update-link').click(function (e) {
-            e.preventDefault();
-            var form = $(this).closest('tr').find('form.update-form');
-            form.submit();
-        });
+    // Function to show confirmation dialog before deleting the item
+    function confirmDelete() {
+        // Display confirmation dialog
+        return confirm("Are you sure you want to remove this item from your shopping bag?");
+    }
 
-        // Remove product from bag
-        $('.remove-product').click(function (e) {
-            e.preventDefault();
-            var productId = $(this).data('product_id');
-            var productSize = $(this).data('product_size');
-            var csrfToken = "{{ csrf_token }}";
-            var url = `/bag/remove/${productId}/`;
-            var data = { 'csrfmiddlewaretoken': csrfToken, 'size': productSize };
+    // Update quantity on click
+    $('.update-link').click(function (e) {
+        e.preventDefault();
+        var form = $(this).closest('tr').find('form.update-form');
+        form.submit();
+    });
 
+    // Remove product from bag
+    $('.remove-product').click(function (e) {
+        e.preventDefault();
+        var productId = $(this).data('product_id');
+        var productSize = $(this).data('product_size');
+        var csrfToken = "{{ csrf_token }}";
+        var url = `/bag/remove/${productId}/`;
+        var data = { 'csrfmiddlewaretoken': csrfToken, 'size': productSize };
+
+        // Check if user confirmed deletion
+        if (confirmDelete()) {
+            // If confirmed, proceed with deletion
             $.post(url, data)
                 .done(function () {
                     location.reload();
                 });
-        });
+        }
+    });
 
-        // Increment and Decrement Quantity
-        $('.increment-qty, .decrement-qty').click(function (e) {
-            e.preventDefault();
-            var itemId = $(this).data('item_id');
-            var inputField = $('#id_qty_' + itemId);
-            var currentValue = parseInt(inputField.val());
-            var action = $(this).hasClass('increment-qty') ? 'increment' : 'decrement';
-            if (action === 'increment') {
-                inputField.val(currentValue + 1);
-            } else if (action === 'decrement' && currentValue > 1) {
-                inputField.val(currentValue - 1);
-            }
-            inputField.trigger('change'); // Trigger change event to update subtotal
-        });
+    // Increment and Decrement Quantity
+    $('.increment-qty, .decrement-qty').click(function (e) {
+        e.preventDefault();
+        var itemId = $(this).data('item_id');
+        var inputField = $('#id_qty_' + itemId);
+        var currentValue = parseInt(inputField.val());
+        var action = $(this).hasClass('increment-qty') ? 'increment' : 'decrement';
+        if (action === 'increment') {
+            inputField.val(currentValue + 1);
+        } else if (action === 'decrement' && currentValue > 1) {
+            inputField.val(currentValue - 1);
+        }
+        inputField.trigger('change'); // Trigger change event to update subtotal
     });
 </script>
 {% endblock %}
