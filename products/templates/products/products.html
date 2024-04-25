@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block content %}
 <section>
     <div class="container text-center pt-3">
@@ -17,7 +16,7 @@
                     {% endif %}
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">{{ product.name }}</h5>
-                        <p class="card-text">{{ product.description }}</p>
+                        <p class="card-text">{{ product.small_description }}</p>
                         <div class="mt-auto">
                             <div class="row align-items-center">
                                 <div class="col-12">
