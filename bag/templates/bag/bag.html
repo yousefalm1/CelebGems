@@ -38,8 +38,10 @@
                             {% endif %}
                         </a>
                         <p><strong>{{ product.product.name }}</strong></p>
-                        <p><strong>Size: </strong>{% if product.product.has_sizes %}{{ product.size|upper }}{% else
-                            %}N/A{% endif %}</p>
+                        <p>
+                            <strong>Size: </strong>
+                            {% if product.product.has_sizes %}{{ product.size|upper }}{%else%}N/A{% endif %}
+                        </p>
                     </td>
                     <td class="p-3">${{ product.product.price }}</td>
                     <td class="p-3">
@@ -54,7 +56,7 @@
                                 <input class="form-control form-control-sm qty_input text-center" type="number"
                                     name="quantity" value="{{ product.quantity }}" min="1" max="99"
                                     data-item_id="{{ product.product.product_id }}"
-                                    id="id_qty_{{ product.product.product_id }}">
+                                    id="id_qty_{{ product.product.product_id }}" disabled>
                                 <button class="increment-qty btn btn-sm btn-outline-dark"
                                     data-item_id="{{ product.product.product_id }}"
                                     id="increment-qty_{{ product.product.product_id }}"><i
