@@ -8,9 +8,6 @@ urlpatterns = [
         name='contact'
     ),
 
-    path(
-        'success',
-        views.contact_us_success,
-        name='contact_success'
-    )
+    path('contact/success/', views.contact_us_success, name='contact_us_success'),  # Define the URL pattern for the success page
+
 ] 

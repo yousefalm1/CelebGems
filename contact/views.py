@@ -20,10 +20,6 @@ def contact_page(request):
 
     return render(request, 'contact/contact.html', context)
 
-def contact_us_success(request):
-    
-    template = {
-        'contact/contact_us_success.html'
-    }
 
-    return render( request, template,)
+def contact_us_success(request):
+    return render(request, 'contact/contact_us_success.html')
