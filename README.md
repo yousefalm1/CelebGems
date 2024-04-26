@@ -483,7 +483,84 @@ When a user signs up a new profile is created
 | celeb_profile              | celeb_profile              | ForeignKey           | 'celeb_profile.CelebProfile', on_delete=models.CASCADE, related_name='products', blank=True, null=True |
 | display_on_home            | display_on_home            | BooleanField         | default=False                                                                                          |
 
-## Deployment and Payment setup
+# Deployment and Payment setup
+
+First step is to create a local copy of the GitHub repository by following one of these ways :
+
+- Download the Zip file:
+
+  1. Go to the Github repository for this project which is https://github.com/yousefalm1/CelebGems
+
+  2. Click the code button and download zip file
+
+  ![Download the zip](documentation/local-deployment/ld1.png)
+
+  3. Unzip the downloaded file and save it to a location on your computer.
+
+- Clone the repository
+
+  1. Open a code editor
+
+  2. Open a folder in VScode
+
+  3. Open the terminal
+
+  4. Run the clone command
+
+     git clone https://github.com/yousefalm1/CelebGems
+
+  5. Navigate to the Cloned Repository:
+
+  cd CelebGems
+
+### Local Deployment
+
+1. Clone the repository.
+
+   - `git clone https://github.com/yousefalm1/gym_management`
+
+2. Go to the `celeb_gems` directory.
+
+   cd celeb_gems
+
+3. Create a virtual environment.
+
+   - `python3 -m venv venv`
+
+   - `source venv/bin/activate`
+
+4. Install Dependencies
+
+   - `pip install -r requirements.txt`
+
+5. Create an env.py File
+
+   - `touch env.py`
+
+6. Add the following lines to `env.py`:
+
+   `import os `
+   `os.environ["DATABASE_URL"]="postgres://nbzrzyvr:GhcwzvgIAW67YjF6oUB-A0XpgFNjl_jr@flora.db.elephantsql.com/nbzrzyvr"`
+
+   `os.environ["CLOUDINARY_URL"]="cloudinary://675769358166127:kh040rA7PseSvEfOFcwIu2CyGVE@drjch7dpe"`
+
+7. Create Database Tables
+
+   - `python3 manage.py makemigrations`
+
+   - This command will analyze your Django models and create migration files in the migrations directory.
+
+8. Apply Migrations
+
+   - `python3 manage.py migrate`
+
+9. Create a Superuser
+
+   - `python3 manage.py createsuperuser`
+
+10. Run the Development Server
+
+11. Access the website by the link provided in terminal. Add `/admin/` at the end of the link to access the admin panel.
 
 ## Heroku Deployment
 
