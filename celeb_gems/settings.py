@@ -14,7 +14,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['celeb-gems-99c19655d59c.herokuapp.com', '*']
+ALLOWED_HOSTS = ['celeb-gems-99c19655d59c.herokuapp.com', '127.0.0.1', 'localhost']
 
 
 INSTALLED_APPS = [
@@ -172,8 +172,7 @@ else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_USE_TLS = True
     EMAIL_PORT = 587
-    EMAIL_HOST = 'smtp@gmail.com'
+    EMAIL_HOST = 'smtp.gmail.com' 
     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_PASS')
-    EMAIL_HOST_EMAIL = os.environ.get('EMAIL_HOST_USER')
-
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS') 
+    EMAIL_FROM = os.environ.get('EMAIL_HOST_USER') 
