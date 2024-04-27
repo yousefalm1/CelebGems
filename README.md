@@ -483,6 +483,73 @@ When a user signs up a new profile is created
 | celeb_profile              | celeb_profile              | ForeignKey           | 'celeb_profile.CelebProfile', on_delete=models.CASCADE, related_name='products', blank=True, null=True |
 | display_on_home            | display_on_home            | BooleanField         | default=False                                                                                          |
 
+# Testing
+
+## Sign up
+
+| User Actions                      | Expected Results          | Y/N |
+| --------------------------------- | ------------------------- | --- |
+| User clicks sign up button in nav | user goes go Sign up page | Y   |
+| User inputs correct info          |                           |
+|                                   |                           |
+|                                   |                           |
+|                                   |                           |
+|                                   |                           |
+|                                   |                           |
+|                                   |                           |
+|                                   |                           |
+|                                   |                           |
+
+---
+
+## Login
+
+| User Actions                              | Expected Results         | Y/N |
+| ----------------------------------------- | ------------------------ | --- |
+| User clicks login button in nav           | user goes go login page  | Y   |
+| User inputs correct info and clicks login | User goes to home screen | Y   |
+
+## Home Page
+
+| User Actions                                                                     | Expected Results                      | Y/N |
+| -------------------------------------------------------------------------------- | ------------------------------------- | --- |
+| User clicks all the buttons in carousel                                          | User goes to the correct page         | Y   |
+| User clicks the view profile button on the celebs on the popular celebs sections | User goes to there profile            | Y   |
+| User clicks product details button for the product in the latest product section | User goes to the product they clicked | Y   |
+
+## Products
+
+| User Actions                              | Expected Results                                 | Y/N |
+| ----------------------------------------- | ------------------------------------------------ | --- |
+| User clicks products link in navbar       | User goes to products page                       | Y   |
+| User clicks product details for a product | User goes to product page of the product clicked | Y   |
+| User sees clicks keep shopping button     | User goes to back to products page               | Y   |
+| User clicks + button                      | Quantity goes up                                 | Y   |
+| User clicks - button                      | Quantity goes down                               | Y   |
+| User clicks Add To Bag                    | Product is Added to Bag                          | Y   |
+
+## Celebrities
+
+| User Actions                                                          | Expected Results                      | Y/N |
+| --------------------------------------------------------------------- | ------------------------------------- | --- |
+| User clicks Celebrities link in the navbar                            | User goes to Celebrities page         | Y   |
+| User clicks celeb details button on one of the Celebrities            | User goes to the that celeb profile   | Y   |
+| User can see products listed by that celeb and clicks product details | User goes to that product detail page | Y   |
+
+## Contact Us
+
+| User Actions                                         | Expected Results                 | Y/N |
+| ---------------------------------------------------- | -------------------------------- | --- |
+| User clicks Contact Us link in the navbar            | User goes to Contact Us page     | Y   |
+| User inputs all correct info and clicks submit       | User goes to success page        | Y   |
+| Admin goes to admin and clicks contact messages link | Admin sees all the messages sent | Y   |
+
+## Bag
+
+| User Actions                              | Expected Results             | Y/N |
+| ----------------------------------------- | ---------------------------- | --- |
+| User clicks Contact Us link in the navbar | User goes to Contact Us page | Y   |
+
 # Deployment and Payment setup
 
 First step is to create a local copy of the GitHub repository by following one of these ways :

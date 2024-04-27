@@ -48,7 +48,7 @@
                                     </button>
                                 </div>
                                 <input class="form-control qty_input" type="number" name="quantity" value="1" min="1"
-                                    max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}" disabled>
+                                    max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
                                 <div class="input-group-append">
                                     <button class="increment-qty btn btn-black rounded-0"
                                         data-item_id="{{ product.id }}" id="increment-qty_{{ product.id }}">
@@ -82,57 +82,6 @@
             <hr class="bg-white">
             <p class="lead ">{{ product.availability_shipping_info }}</p>
         </div>
-        <!-- </div>
-    <div class="row">
-        <div class="col-12">
-            <h2 class="">Other products by <strong>{{ product.celeb_profile }}</strong></h2>
-            <hr class="bg-white">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12 text-center">
-            <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
-                <i class="fa fa-arrow-left"></i>
-            </a>
-            <a class="btn btn-primary mb-3" href="#carouselExampleIndicators2" role="button" data-slide="next">
-                <i class="fa fa-arrow-right"></i>
-            </a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="row">
-                            {% for product in celeb_profile_products %}
-                            <div class="col-md-4 mb-3">
-                                <div class="card">
-                                    {% if product.image %}
-                                    <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
-                                    {% else %}
-                                    <img src="{% static 'placeholder_image.jpg' %}" class="card-img-top"
-                                        alt="{{ product.name }}">
-                                    {% endif %}
-                                    <h4 class="card-title">{{ product.name }}</h4>
-                                    <p class="card-text">{{ product.description }}</p>
-                                    <span class="product-price">${{ product.price}}</span>
-                                    <a href="{% url 'product_detail' product.product_id %}"
-                                        class="btn btn-dark w-100 rounded-0 text-warning">PRODUCT DETAILS</a>
-                                </div>
-                            </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<br>
-<br>
-<br> -->
-
 
         <br>
         <br>

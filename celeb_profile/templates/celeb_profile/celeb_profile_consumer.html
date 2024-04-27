@@ -59,7 +59,8 @@
                             <p class="mb-0">$ {{ product.price }}</p>
                         </div>
                         <div class="col-6">
-                            <a href="{}" class="btn btn-dark w-100 rounded-0 text-warning">Product Details </a>
+                            <a href="{% url 'product_detail' product.product_id %}"
+                                class="btn btn-dark w-100 rounded-0 text-warning">Product Details </a>
                         </div>
                     </div>
                 </div>
