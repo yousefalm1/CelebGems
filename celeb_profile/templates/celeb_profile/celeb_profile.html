@@ -53,7 +53,8 @@
                         <a href="{% url 'edit_product' product.product_id %}" class="btn mx-2 btn-dark">Edit</a>
                         <form action="{% url 'delete_product' product.product_id %}" method="POST">
                             {% csrf_token %}
-                            <button class="btn btn-danger" type="submit">Delete</button>
+                            <button class="btn btn-danger" onclick="return confirmDelete()"
+                                type="submit">Delete</button>
                         </form>
                     </div>
                 </div>
@@ -65,4 +66,12 @@
 
 <br>
 <br>
+{% endblock %}
+{% block postloadjs %}
+<script type="text/javascript">
+    function confirmDelete() {
+        // Display confirmation dialog
+        return confirm("Are you sure you want to remove this product from your profile ?");
+    }
+</script>
 {% endblock %}
