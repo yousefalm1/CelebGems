@@ -26,6 +26,42 @@ Celeb Gems is a cutting-edge e-commerce platform that facilitates direct sales b
 
 # Wire Frames
 
+### Home Page
+
+![Home page wire frame](documentation/wireframes/home-wf.png)
+
+### Products
+
+![Products page wire frame](documentation/wireframes/all-products-wf.png)
+
+### Celebs
+
+![Celebs page wire frame](documentation/wireframes/all-products-wf.png)
+
+### Product Detail
+
+![Product Detail page wire frame](documentation/wireframes/product-detial-wf.png)
+
+### Celeb Detail
+
+![Celeb Detail page wire frame](documentation/wireframes/celeb-detial-wf.png)
+
+### Request Celeb Profile
+
+![Request Celeb Profile page wire frame](documentation/wireframes/requests-celeb-pf-wf.png)
+
+### My Profile
+
+![My Profile page wire frame](documentation/wireframes/my-profile-wf.png)
+
+### Celeb Profile
+
+![Celeb Profile page wire frame](documentation/wireframes/celeb-profile-wf.png)
+
+### Bag
+
+![Bag page wire frame](documentation/wireframes/bag-wf.png)
+
 ### User Stories
 
 ## User (Shopper)
