@@ -18,6 +18,14 @@ Celeb Gems is a cutting-edge e-commerce platform that facilitates direct sales b
 
 2. Celebrities and Influencers: CelebMarket also offers a platform for celebrities and influencers interested in monetizing their personal brand and engaging with their fan base. By joining CelebMarket, celebrities can create dedicated profiles to showcase their personal items for sale, share stories, and connect with fans globally. Whether you're a musician, actor, athlete, social media influencer, or public figure, CelebMarket provides a convenient and secure platform to leverage your influence and generate revenue by selling directly to your fans.
 
+# Design
+
+- The design for this site was
+
+---
+
+# Wire Frames
+
 ### User Stories
 
 ## User (Shopper)
@@ -485,20 +493,15 @@ When a user signs up a new profile is created
 
 # Testing
 
+## Manual Testing
+
 ## Sign up
 
-| User Actions                      | Expected Results          | Y/N |
-| --------------------------------- | ------------------------- | --- |
-| User clicks sign up button in nav | user goes go Sign up page | Y   |
-| User inputs correct info          |                           |
-|                                   |                           |
-|                                   |                           |
-|                                   |                           |
-|                                   |                           |
-|                                   |                           |
-|                                   |                           |
-|                                   |                           |
-|                                   |                           |
+| User Actions                                            | Expected Results                                                      | Y/N |
+| ------------------------------------------------------- | --------------------------------------------------------------------- | --- |
+| User clicks sign up button in nav                       | user goes go Sign up page                                             | Y   |
+| User inputs correct info and clicks sign up             | User is redirected to a verification page                             | Y   |
+| user verify the account through the email they provided | user clicks the link in the email and redirected to the login in page |
 
 ---
 
@@ -546,9 +549,61 @@ When a user signs up a new profile is created
 
 ## Bag
 
-| User Actions                              | Expected Results             | Y/N |
-| ----------------------------------------- | ---------------------------- | --- |
-| User clicks Contact Us link in the navbar | User goes to Contact Us page | Y   |
+| User Actions                                | Expected Results                                                  | Y/N |
+| ------------------------------------------- | ----------------------------------------------------------------- | --- |
+| User clicks the bag icon link in the navbar | User goes to the bag page where they see all the items in the bag | Y   |
+| User click the + in the qty input           | qty goes up                                                       | Y   |
+| User clicks the - in the qty input          | qty goes down                                                     | Y   |
+| Once user increases qty and clicks update   | The subtotal goes up and the bag total goes up                    | Y   |
+| User decreases the qty and clicks update    | subtotal of product goes down and the bag total goes down         | Y   |
+| User click remove link                      | User gets a pop on asking if they want to remove it               | Y   |
+| User clicks ok                              | Product is removed from bag                                       | Y   |
+| user clicks keep shopping button            | User is redirected to products page                               | Y   |
+| User clicks secure checkout                 | user is redirected to the checkout page                           | Y   |
+
+## Checkout
+
+| User Actions                                                                                                                               | Expected Results                                                                                                       | Y/N |
+| ------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------- | --- |
+| If user is logged in but have not saved profile details                                                                                    | User will only see email field pre filled                                                                              | Y   |
+| User inputs all fields and keeps the the save delivery box to profile clicked                                                              | User users info in profile will be updated to what was filled in                                                       | Y   |
+| User clicks the adjust bag button                                                                                                          | user goes back to the bag page to be able to edit bag                                                                  | Y   |
+| User inputs wrong card details                                                                                                             | User get a message in red stating you card number is invalid                                                           | Y   |
+| user input card details in this case 4242 4242 4242 4242 which is a correct test stripe card to test if it works and clicks complete order | user is shown a orange overlay showing the order is being processed and then redirected to the order confirmation page | Y   |
+
+## Request A Celeb Profile
+
+| User Actions                                                          | Expected Results                                                                   | Y/N |
+| --------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | --- |
+| User clicks my account and and then clicks request celeb profile link | user get redirected to the request celeb profile form page                         | Y   |
+| User inputs all required fields and clicks submit                     | User gets redirected to a success page stating that the profile has been submitted | Y   |
+| Once User reaches the submitted page and clicks the back home button  | User goes back to the home page                                                    | Y   |
+| Admin goes to the admin panel and clicks celeb requests               | Admin is able to see the request and approve or not approve it                     | Y   |
+
+## User Creates a celeb Profile
+
+| User Actions                                                                         | Expected Results                                                    | Y/N |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------- | --- |
+| Once user has profile approved and they click my account they will see celeb profile | When user clicks it they will be redirected to create celeb profile | Y   |
+| User input all info and clicks create profile                                        | User is redirected to there personal celeb profile page             | Y   |
+
+## Personal Celeb profile
+
+| User Actions                                                                                                                    | Expected Results                                                                                                                                                                                          | Y/N |
+| ------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |
+| User clicks my account and and then clicks celeb profile                                                                        | If user already created a celeb profile they will be able to see the profile display name, long bio, short bio, two buttons and a section where they can see the products they added to there own profile | Y   |
+| User clicks the edit profile button                                                                                             | User will be directed to a edit profile form                                                                                                                                                              |
+| User able to see and edit there celeb profile info and once they inputted the the new correct info and click edit celeb profile | User is redirected to a success page                                                                                                                                                                      | Y   |
+| In the success page user clicks back to celeb profile                                                                           | user goes back to there personal celeb profile                                                                                                                                                            | Y   |
+| User clicks the add product button                                                                                              | user is redirected to the add product form                                                                                                                                                                | Y   |
+| user inputs all the required info into the form and clicks Add product                                                          | User is redirected to a success page stating that they have added the product to the profile                                                                                                              | Y   |
+| in the success page user clicks back to celeb profile button                                                                    | User is redirected back to personal celeb profile and is able to see the products they added in the products you added section                                                                            | Y   |
+| User clicks edit on the product you added product                                                                               | user is redirected to the edit product form                                                                                                                                                               | Y   |
+| User sees all the product info and able to edit it then user clicks the edit product button                                     | User is redirected to the a success page to confirm to the user that the product has been updated                                                                                                         | Y   |
+| User clicks the back to celeb profile button                                                                                    | User is redirected back to the celeb profile page                                                                                                                                                         | Y   |
+| user clicks delete button on the product card in the celeb profile                                                              | User is shown a pop up to confirm if they want to delete the product                                                                                                                                      | Y   |
+| User clicks ok to delete on the pop up                                                                                          | User is redirected to a success page to give the user the confirmation that they deleted the product                                                                                                      | Y   |
+| User clicks back to celeb profile button                                                                                        | User is redirected back to the celeb profile page where the product they deleted will be gone                                                                                                             | Y   |
 
 # Deployment and Payment setup
 
