@@ -5,8 +5,8 @@ __pycache__/
 *.py[cod]
 node_modules/
 .github/
+env.py
 cloudinary_python.txt
 *.sqlite3
 __pycache__
 *.pyc
-env.py
