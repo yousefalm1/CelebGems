@@ -641,6 +641,147 @@ When a user signs up a new profile is created
 | User clicks ok to delete on the pop up                                                                                          | User is redirected to a success page to give the user the confirmation that they deleted the product                                                                                                      | Y   |
 | User clicks back to celeb profile button                                                                                        | User is redirected back to the celeb profile page where the product they deleted will be gone                                                                                                             | Y   |
 
+## Validation
+
+### HTML Validation:
+
+- Home page
+  ![Home page html validation ](documentation/html-validation%20/home-html.png)
+
+- Products Page
+  ![Products page html validation ](documentation/html-validation%20/products-html.png)
+
+- Celeb Page
+  ![Celeb page html validation ](documentation/html-validation%20/celeb-html.png)
+
+- Contact Us Page
+  ![Contact Us page html validation ](documentation/html-validation%20/products-html.png)
+
+- Celeb Details
+  ![Celeb Detail page html validation ](documentation/html-validation%20/celeb-detail-html.png)
+
+- Product Detail
+  ![Product Detail page html validation ](documentation/html-validation%20/proudct-detail-html.png)
+
+- My profile
+  ![My Profile page html validation ](documentation/html-validation%20/my-profile-html.png)
+
+- Celeb Profile
+  ![Celeb Profile page html validation ](documentation/html-validation%20/celeb-profile-html.png)
+
+- Edit Celeb Profile
+  ![Edit Celeb Profile page html validation ](documentation/html-validation%20/edit-celeb-profile-html.png)
+
+- Add product
+  ![Add Product to Celeb Profile page html validation ](documentation/html-validation%20/add-product.png)
+
+- Bag
+  ![ Bag page html validation ](documentation/html-validation%20/bag-html.png)
+
+- Checkout
+  ![ Checkout page html validation ](documentation/html-validation%20/checkout-html.png)
+
+- Order Confirmation
+  ![ Checkout page html validation ](documentation/html-validation%20/checkout-html.png)
+
+### Python Validation:
+
+- bag
+
+  - views
+    - ![ views validation ](documentation/python-syntax-checker/bag/views-bag.png)
+  - url
+    - ![ url validation ](documentation/python-syntax-checker/bag/url-bag.png)
+  - context
+    - ![ context validation ](documentation/python-syntax-checker/bag/context-bag.png)
+
+- Celeb Profile
+
+  - views
+    - ![ views validation ](documentation/python-syntax-checker/celeb-pf/views-cpf.png)
+  - url
+    - ![ url  validation ](documentation/python-syntax-checker/celeb-pf/url-spf.png)
+  - models
+    - ![ models  validation ](documentation/python-syntax-checker/celeb-pf/models-cpf.png)
+  - forms
+    - ![ form  validation ](documentation/python-syntax-checker/celeb-pf/forms-cpf.png)
+  - context
+    - ![ context  validation ](documentation/python-syntax-checker/celeb-pf/context-cpf.png)
+  - apps
+    - ![ apps  validation ](documentation/python-syntax-checker/celeb-pf/apps-cpf.png)
+  - admin
+    - ![ admin  validation ](documentation/python-syntax-checker/celeb-pf/admin-cpf.png)
+
+- Checkout
+
+  - views
+    - ![ views validation ](documentation/python-syntax-checker/checkout/views-checkout.png)
+  - url
+    - ![ url  validation ](documentation/python-syntax-checker/checkout/url-checkout.png)
+  - signals
+    - ![ signals  validation ](documentation/python-syntax-checker/checkout/signals-checkout.png)
+  - models
+    - ![ models  validation ](documentation/python-syntax-checker/checkout/models-checkout.png)
+  - forms
+    - ![ forms  validation ](documentation/python-syntax-checker/checkout/forms-checkout.png)
+  - apps
+    - ![ context  validation ](documentation/python-syntax-checker/checkout/apps-checkout.png)
+  - admin
+    - ![ admin  validation ](documentation/python-syntax-checker/checkout/admin-checkout.png)
+  - Webhook
+    - ![ webhook  validation ](documentation/python-syntax-checker/checkout/webhook-checkout.png)
+  - Webhook handler
+    - ![ webhook handler validation ](documentation/python-syntax-checker/checkout/webhook-handler-checkout.png)
+
+- Contact
+
+  - views
+    - ![ views validation ](documentation/python-syntax-checker/contact/views-contact.png)
+  - url
+    - ![ url  validation ](documentation/python-syntax-checker/contact/urls-contact.png)
+  - models
+    - ![ models  validation ](documentation/python-syntax-checker/contact/model-contact.png)
+  - forms
+    - ![ form  validation ](documentation/python-syntax-checker/contact/form-contact.png)
+  - app
+    - ![ context  validation ](documentation/python-syntax-checker/contact/app-contact.png)
+  - admin
+    - ![ apps  validation ](documentation/python-syntax-checker/contact/admin-contact.png)
+
+- Home
+
+  - views
+    - ![ views validation ](documentation/python-syntax-checker/home/views-home.png)
+  - url
+    - ![ url  validation ](documentation/python-syntax-checker/home/url-home.png)
+  - app
+    - ![ models  validation ](documentation/python-syntax-checker/home/app-home.png)
+
+- Products
+
+  - views
+    - ![ views validation ](documentation/python-syntax-checker/product/product-views.png)
+  - url
+    - ![ url  validation ](documentation/python-syntax-checker/product/url-product.png)
+  - models
+    - ![ models  validation ](documentation/python-syntax-checker/product/model-prodcut.png)
+  - apps
+    - ![ form  validation ](documentation/python-syntax-checker/product/apps-product.png)
+  - admin
+    - ![ context  validation ](documentation/python-syntax-checker/product/admin-product.png)
+
+- Profiles
+  - views
+    - ![ views validation ](documentation/python-syntax-checker/profiles/views-profile.png)
+  - url
+    - ![ url  validation ](documentation/python-syntax-checker/profiles/url-profiles.png)
+  - models
+    - ![ models  validation ](documentation/python-syntax-checker/profiles/model-profiles.png)
+  - form
+    - ![ form  validation ](documentation/python-syntax-checker/profiles/form-profile.png)
+  - apps
+    - ![ context  validation ](documentation/python-syntax-checker/profiles/apps-profile.png)
+
 # Deployment and Payment setup
 
 First step is to create a local copy of the GitHub repository by following one of these ways :

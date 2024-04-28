@@ -6,7 +6,7 @@ from django.core.exceptions import ValidationError
 class CelebRequest(models.Model):
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, default=1, unique=True
-    )  
+    )
     occupation = models.CharField(max_length=100)
     reasons = models.TextField()
     social_media = models.URLField(max_length=200, blank=True, null=True)
@@ -20,19 +20,24 @@ class CelebRequest(models.Model):
 
 class CelebProfile(models.Model):
     user = models.OneToOneField(
-        User, on_delete=models.CASCADE, default=1, related_name='celeb_profile',
+        User, on_delete=models.CASCADE, default=1,
+        related_name='celeb_profile',
     )
-    profile_name = models.CharField(max_length=100) 
+    profile_name = models.CharField(max_length=100)
     bio = models.TextField()
     small_bio = models.CharField(max_length=100, default='')
     image = models.ImageField(upload_to='celeb_images/')
     products_added = models.ManyToManyField('products.Product', blank=True)
-    # Displays celeb profile on homepage when clicked 
+    # Displays celeb profile on homepage when clicked
     display_on_home = models.BooleanField(default=False)
 
     # Used  for this
     def clean(self):
-        # Check if more than three CelebProfiles have appear_on_home set to True
+        """
+        Check if more than three CelebProfiles
+        have appear_on_home set to True
+        """
+
         if self.display_on_home and CelebProfile.objects.filter(
             display_on_home=True
         ).count() >= 3:
@@ -45,5 +50,4 @@ class CelebProfile(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.user.username 
-
+        return self.user.username

@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from .forms import contactMessageForm
 
+
 def contact_page(request):
     """
-    
+    A view to display the contact page and submit the form
     """
     if request.method == 'POST':
         form = contactMessageForm(request.POST)

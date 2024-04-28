@@ -4,6 +4,7 @@ from checkout.models import Order
 # from checkout import Order
 from .forms import UserProfileForm
 
+
 def profile(request):
     """
     View function for displaying the user's profile.
@@ -16,27 +17,19 @@ def profile(request):
     profile = get_object_or_404(UserProfile, user=request.user)
 
     orders = profile.orders.all()
-    form = UserProfileForm(instance=profile )
+    form = UserProfileForm(instance=profile)
     template = 'profiles/profile.html'
     context = {
-        'form' :form,
+        'form': form,
         'orders': orders,
     }
 
     return render(request, template, context)
 
+
 def edit_profile(request):
-    """
-    View function for editing user profile.
+    """View function for editing user profile."""
 
-    If the request method is POST, the function processes the form data submitted
-    by the user to update their profile information. If the form data is valid,
-    the profile is updated, and the user is redirected to their profile page.
-
-    If the request method is GET, the function renders the edit profile form with
-    the user's current profile information pre-filled.
-    """
-    
     if request.method == 'POST':
         form = UserProfileForm(request.POST, instance=request.user.userprofile)
         if form.is_valid():
@@ -44,13 +37,14 @@ def edit_profile(request):
             return redirect('profile')
     else:
         form = UserProfileForm(instance=request.user.userprofile)
-            
+
     template = 'profiles/edit_profile.html'
     context = {
         'form': form,
     }
 
     return render(request, template, context)
+
 
 def order_history(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)

@@ -1,5 +1,5 @@
 from django.db import models
-from celeb_profile.models import CelebProfile  
+from celeb_profile.models import CelebProfile
 from django.core.exceptions import ValidationError
 
 
@@ -17,21 +17,22 @@ class Product(models.Model):
         (True, 'Yes'),
         (False, 'No'),
     ]
-    has_sizes = models.BooleanField(default=False, choices=HAS_SIZES_CHOICES, null=True, blank=True)
+    has_sizes = models.BooleanField(
+        default=False, choices=HAS_SIZES_CHOICES, null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     image = models.ImageField(upload_to='product_images/')
     product_id = models.AutoField(primary_key=True)
     quantity_in_stock = models.PositiveIntegerField(default=0)
-    # 'celeb_profile.CelebProfile' this is the app and where the model is 
+    # 'celeb_profile.CelebProfile' this is the app and where the model is
     celeb_profile = models.ForeignKey(
-        'celeb_profile.CelebProfile', on_delete=models.CASCADE, 
+        'celeb_profile.CelebProfile', on_delete=models.CASCADE,
         related_name='products', blank=True, null=True
     )
     display_on_home = models.BooleanField(default=False)
-    
+
     def clean(self):
         """
-        Clean method to perform validation logic before 
+        Clean method to perform validation logic before
         saving the model instance.
         """
         if self.display_on_home:
@@ -45,7 +46,7 @@ class Product(models.Model):
 
     def save(self, *args, **kwargs):
         """
-        Save method to call the clean method and save 
+        Save method to call the clean method and save
         the model instance to the database.
         """
         self.full_clean()

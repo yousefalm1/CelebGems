@@ -82,14 +82,14 @@
             <hr class="bg-white">
             <p class="lead ">{{ product.availability_shipping_info }}</p>
         </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+{% endblock %}
 
-        <br>
-        <br>
-        <br>
-        {% endblock %}
-
-        {% block postloadjs%}
-        {{ block.super }}
-        {% include 'products/includes/quantity_input_script.html' %}
-
-        {% endblock %}
+{% block postloadjs%}
+{{ block.super }}
+{% include 'products/includes/quantity_input_script.html' %}
+{% endblock %}

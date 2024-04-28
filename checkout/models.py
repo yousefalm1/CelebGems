@@ -4,7 +4,7 @@ from django.db import models
 from django.db.models import Sum
 from django.conf import settings
 from django_countries.fields import CountryField
-from products.models import Product   
+from products.models import Product
 from profiles.models import UserProfile
 
 
@@ -34,14 +34,15 @@ class Order(models.Model):
         max_digits=10, decimal_places=2, null=False, default=0
     )
     original_bag = models.TextField(null=False, default='')
-    stripe_pid = models.CharField(max_length=254, null=False, blank=False, default='')
+    stripe_pid = models.CharField(
+        max_length=254, null=False, blank=False, default='')
 
     def _generate_order_number(self):
         """ Generate a random order number using uuid """
 
         # generate a random string of 32 characters
         return uuid.uuid4().hex.upper()
-    
+
     def update_total(self):
         """
         Update grand total each time a line item is added,
@@ -59,10 +60,9 @@ class Order(models.Model):
         self.grand_total = self.order_total + self.delivery_cost
         self.save()
 
-
     def save(self, *args, **kwargs):
         """
-        Override the default save method to set 
+        Override the default save method to set
         the order number if it hasn't been set already.
         """
         if not self.order_number:
@@ -73,29 +73,29 @@ class Order(models.Model):
         return self.order_number
 
 
-# Stores each order in a lime 
+# Stores each order in a lime
 class OrderLineItem(models.Model):
     order = models.ForeignKey(
-        Order, null=False, blank=False, on_delete=models.CASCADE, 
+        Order, null=False, blank=False, on_delete=models.CASCADE,
         related_name="lineitems"
     )
     product = models.ForeignKey(
-        Product, null= False, blank= False, on_delete=models.CASCADE 
+        Product, null=False, blank=False, on_delete=models.CASCADE
     )
-    product_size = models.CharField(max_length=2, null=True, blank= True ) 
+    product_size = models.CharField(max_length=2, null=True, blank=True)
     quantity = models.IntegerField(null=False, blank=False, default=0)
     lineitem_total = models.DecimalField(
-        max_digits=6, decimal_places=2, null = False, blank=False,
-        editable = False
+        max_digits=6, decimal_places=2, null=False, blank=False,
+        editable=False
     )
 
     def save(self, *args, **kwargs):
         """
-        Override the original save method to set the lineitem 
+        Override the original save method to set the lineitem
         total and update the order total .
         """
         self.lineitem_total = self.product.price * self.quantity
         super().save(*args, **kwargs)
-        
+
     def __str__(self):
         return self.order.order_number

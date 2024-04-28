@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from celeb_profile.models import CelebRequest, CelebProfile
 from products.models import Product
 
+
 def index(request):
     """ A view to return the index page """
 
@@ -16,7 +17,3 @@ def index(request):
     }
 
     return render(request, template, context)
-
-
-
-

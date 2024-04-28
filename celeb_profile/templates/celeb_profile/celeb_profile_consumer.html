@@ -51,7 +51,7 @@
                 {% endif %}
                 <div class="card-body">
                     <h5 class="card-title">{{ product.name }}</h5>
-                    <p class="card-text">{{ product.description }}</p>
+                    <p class="card-text">{{ product.small_description }}</p>
                 </div>
                 <div class="card-footer bg-transparent border-0">
                     <div class="row align-items-center">
@@ -68,7 +68,8 @@
         </div>
         {% endfor %}
     </div>
-    <br><br>
+</div>
+<br><br>
 
 
-    {% endblock %}
+{% endblock %}
