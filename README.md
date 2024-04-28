@@ -641,6 +641,21 @@ When a user signs up a new profile is created
 | User clicks ok to delete on the pop up                                                                                          | User is redirected to a success page to give the user the confirmation that they deleted the product                                                                                                      | Y   |
 | User clicks back to celeb profile button                                                                                        | User is redirected back to the celeb profile page where the product they deleted will be gone                                                                                                             | Y   |
 
+## Solved Bugs
+
+## Unsolved Bugs
+
+- Issue: Editing profiles displayed on the home screen from the admin panel requires a multi-step process.Description: When an administrator attempts to edit a profile that is currently selected to be displayed on the home screen, there is an inconvenience in the workflow. To make changes to the content of a displayed profile, the administrator must first deselect the "display on home" option, save the changes, then proceed to edit the profile content, re-enable the "display on home" option, and save again.Steps to Reproduce:
+  1. Access the admin panel.
+  2. Identify the profile displayed on the home screen that requires editing.
+  3. Attempt to edit the profile directly.
+  4. Encounter the need to first deselect and reselect the "display on home" option.
+  5. Make the required changes to the profile content.
+  6. Re-enable the "display on home" option.
+  7. Save the changes.
+
+---
+
 ## Validation
 
 ### HTML Validation:
@@ -782,6 +797,39 @@ When a user signs up a new profile is created
   - apps
     - ![ context  validation ](documentation/python-syntax-checker/profiles/apps-profile.png)
 
+### Light House
+
+- Home
+  - ![ home light house](documentation/lighthouse/home.png)
+- Products
+  - ![ product light house ](documentation/lighthouse/products.png)
+- Product detail
+  - ![ product detail light house ](documentation/lighthouse/product-detial.png)
+- Celebs
+  - ![ Celeb light house ](documentation/lighthouse/celebs.png)
+- Celeb Detail
+  - ![ product light house ](documentation/lighthouse/celeb-detial.png)
+- Bag
+  - ![ bag light house ](documentation/lighthouse/bag.png)
+- Contact
+  - ![ contact light house ](documentation/lighthouse/contact.png)
+- Celeb Profile
+  - ![ celeb profile light house ](documentation/lighthouse/celeb-pf.png)
+- Edit Celeb Profile
+  - ![ edit celeb profile light house ](documentation/lighthouse/edit-celeb-pf.png)
+- Add product
+  - ![ add product  light house ](documentation/lighthouse/add-product.png)
+- Profile
+  - ![profile light house ](documentation/lighthouse/profile.png)
+- checkout
+  - ![checkout light house ](documentation/lighthouse/checkout.png)
+- Order success
+  - ![ order success light house ](documentation/lighthouse/order-success.png)
+
+### Responsiveness
+
+- The responsiveness was checked manually using chrome dev tools and it passed
+
 # Deployment and Payment setup
 
 First step is to create a local copy of the GitHub repository by following one of these ways :
@@ -912,3 +960,14 @@ First step is to create a local copy of the GitHub repository by following one o
 7, It will take you the dashboard for the instance created here is where the url is.
 
 ![instance dashboard](documentation/deployment/sql5.png)
+
+---
+
+## Credits
+
+    Bootstrap
+    Django
+    Github
+    Unsplash
+    heroku
+    ElephantSQL
