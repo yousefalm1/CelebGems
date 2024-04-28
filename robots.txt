@@ -1,0 +1,4 @@
+user-agent: *
+Disallow: /profile/
+Disallow: /bag/
+sitemap: https://celeb-gems-99c19655d59c.herokuapp.com/sitemap.xml
