@@ -88,12 +88,6 @@ TEMPLATES = [
 ]
 
 
-# CLOUDINARY_STORAGE = {
-#     'CLOUD_NAME': 'drjch7dpe',
-#     'API_KEY': '675769358166127',
-#     'API_SECRET': 'kh040rA7PseSvEfOFcwIu2CyGVE',
-# }
-
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 

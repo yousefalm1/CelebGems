@@ -70,7 +70,7 @@ Celeb Gems is a cutting-edge e-commerce platform that facilitates direct sales b
 
 # Facebook mock up
 
-![Facebook mock up](documentation/mockup/facebook.png)
+![Facebook mock up](documentation//wireframes/facebook.png)
 
 # Wire Frames
 
@@ -703,6 +703,17 @@ When a user signs up a new profile is created
     - Solution: The bug was resolved by executing the following command in the terminal: `git rm --cached env.py`
     - This command removes env.py from Git's tracking without deleting the file from the local file system. It ensures that env.py is no longer included in future commits and is excluded from the repository.
     - Impact: By addressing this issue, sensitive information contained in env.py is now protected from exposure in the GitHub repository, enhancing the security of the website and ensuring best practices for managing environment configurations.
+
+3.  - Issue: The image fields in both the product model and celebrity profile model were not linked to Cloudinary. Therefore, when the DEBUG setting was set to False and the project was deployed, user-uploaded images did not appear because they were not stored on Cloudinary.
+    - Solution: In order to fix this i had to add at the top of the file
+
+          from cloudinary.models import CloudinaryField
+
+      and then replace the image old image field to this
+
+            image = CloudinaryField('image', default='placeholder')
+
+    - Impact: By fixing this bug and linking the image fields to Cloudinary, user-uploaded images began to appear correctly on the deployed project, replacing the placeholder text.
 
 ## Unsolved Bugs
 
