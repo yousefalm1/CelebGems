@@ -21,5 +21,15 @@ def index(request):
 
 def privacy(request):
     """A view to return the privacy page"""
-    
-    return render(request, 'home/privacy.html')
+
+    template = 'home/privacy.html'
+
+    return render(request, template)
+
+
+def terms(request):
+    """A view to return the terms page"""
+
+    template = 'home/terms.html'
+
+    return render(request, template)
