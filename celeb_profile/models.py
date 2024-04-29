@@ -23,6 +23,7 @@ class CelebProfile(models.Model):
         User, on_delete=models.CASCADE, default=1,
         related_name='celeb_profile',
     )
+    social_media = models.URLField(max_length=200, blank=True, null=True)
     profile_name = models.CharField(max_length=100)
     bio = models.TextField()
     small_bio = models.CharField(max_length=100, default='')

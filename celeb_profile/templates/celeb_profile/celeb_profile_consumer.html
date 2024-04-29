@@ -15,59 +15,49 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ celeb_profile.profile_name }}</h5>
                     <p class="card-text">{{ celeb_profile.bio }}</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Profile Details</h5>
-                    <ul class="list-group">
-                        <li class="list-group-item">Occupation: {{ celeb_profile_request.occupation }}</li>
-                        <li class="list-group-item">Social Media: <a href="{{ celeb_profile.social_media }}">
-                                {{celeb_profile_request.social_media }}</a></li>
-                    </ul>
+                    <p>Visit <a href="{{ celeb_profile.social_media }}">My Social Media</a> for more information.</p>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 
-    <div class="row mt-5">
-        <div class="col-12">
-            <h1 class="text-center text-muted mb-5">See other products {{ celeb_profile.profile_name }} has to offer
-            </h1>
-        </div>
+<div class="row mt-5">
+    <div class="col-12">
+        <h1 class="text-center text-muted mb-5">See other products {{ celeb_profile.profile_name }} has to offer
+        </h1>
     </div>
+</div>
 
-    <div class="row">
-        {% for product in products_added %}
-        <div class="col-md-4 mb-4">
-            <div class="card border-0 rounded-0 shadow">
-                {% if product.image %}
-                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
-                {% else %}
-                <img src="{% static 'placeholder_image.jpg' %}" class="card-img-top" alt="{{ product.name }}">
-                {% endif %}
-                <div class="card-body">
-                    <h5 class="card-title">{{ product.name }}</h5>
-                    <p class="card-text">{{ product.small_description }}</p>
-                </div>
-                <div class="card-footer bg-transparent border-0">
-                    <div class="row align-items-center">
-                        <div class="col-6">
-                            <p class="mb-0">$ {{ product.price }}</p>
-                        </div>
-                        <div class="col-6">
-                            <a href="{% url 'product_detail' product.product_id %}"
-                                class="btn btn-dark w-100 rounded-0 text-warning">Product Details </a>
-                        </div>
+<div class="row">
+    {% for product in products_added %}
+    <div class="col-md-4 mb-4">
+        <div class="card border-0 rounded-0 shadow">
+            {% if product.image %}
+            <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+            {% else %}
+            <img src="{% static 'placeholder_image.jpg' %}" class="card-img-top" alt="{{ product.name }}">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text">{{ product.small_bio }}</p>
+            </div>
+            <div class="card-footer bg-transparent border-0">
+                <div class="row align-items-center">
+                    <div class="col-6">
+                        <p class="mb-0">$ {{ product.price }}</p>
+                    </div>
+                    <div class="col-6">
+                        <a href="{% url 'product_detail' product.product_id %}"
+                            class="btn btn-dark w-100 rounded-0 text-warning">Product Details </a>
                     </div>
                 </div>
             </div>
         </div>
-        {% endfor %}
     </div>
+    {% endfor %}
+</div>
 </div>
 <br><br>
 

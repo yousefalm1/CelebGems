@@ -42,15 +42,25 @@ Celeb Gems is a cutting-edge e-commerce platform that facilitates direct sales b
 - User Experience and Service: Prioritizing a seamless browsing and purchasing journey.
 - Product Availability and Quality: Ensuring consistent availability of high-quality products endorsed by reputable celebrities.
 
-# Strategy Trade-Offs
-
-## UX
+# Marketing Strategies
 
 ### Target Audience
 
 1. Fans of Celebrities: CelebMarket caters to fans who are enthusiastic about connecting with their favorite celebrities on a deeper level. Whether you're a dedicated follower looking to own a piece of your favorite celebrity's wardrobe or a collector seeking exclusive memorabilia, CelebMarket provides a unique shopping experience tailored to your interests.
 
 2. Celebrities and Influencers: CelebMarket also offers a platform for celebrities and influencers interested in monetizing their personal brand and engaging with their fan base. By joining CelebMarket, celebrities can create dedicated profiles to showcase their personal items for sale, share stories, and connect with fans globally. Whether you're a musician, actor, athlete, social media influencer, or public figure, CelebMarket provides a convenient and secure platform to leverage your influence and generate revenue by selling directly to your fans.
+
+---
+
+### Future development
+
+- Live Order Tracking: Implement real-time order tracking functionality to keep customers informed about the status of their purchases.
+- Interactive Product Recommendations: Utilize machine learning algorithms to provide personalized product recommendations based on user behavior and preferences.
+- Direct Messaging to Celebrities: Enable fans to send messages or requests to celebrities, fostering a closer connection and increasing engagement.
+- Expanded Payment Gateways: Integrate multiple payment gateways beyond credit/debit cards, such as digital wallets (e.g., PayPal, Apple Pay, Google Pay), cryptocurrencies (e.g., Bitcoin, Ethereum), and buy-now-pay-later services (e.g., Afterpay, Klarna), to offer flexibility and convenience to customers globally.
+- Celeb Profile Ratings: Implement a user rating system where customers can rate celebrities based on their products, interaction, and overall experience. This feature enhances transparency and helps users make informed decisions.
+- Product Reviews: Enable customers to leave reviews and feedback on products purchased from celebrities' profiles, fostering credibility and trust within the community.
+- Customer Loyalty Program: Launch a tiered loyalty program where users earn points or rewards for every purchase or engagement, unlocking exclusive perks, discounts, and early access to products.
 
 # Design
 
@@ -690,8 +700,6 @@ When a user signs up a new profile is created
 
 2.  - Issue: env.py was being tracked by Git and appeared in the GitHub repository, potentially exposing sensitive information.
       Description: The presence of env.py in the GitHub repository posed a security risk by exposing sensitive environment configuration variables, such as API keys and database credentials.
-
-
     - Solution: The bug was resolved by executing the following command in the terminal: `git rm --cached env.py`
     - This command removes env.py from Git's tracking without deleting the file from the local file system. It ensures that env.py is no longer included in future commits and is excluded from the repository.
     - Impact: By addressing this issue, sensitive information contained in env.py is now protected from exposure in the GitHub repository, enhancing the security of the website and ensuring best practices for managing environment configurations.

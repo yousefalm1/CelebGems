@@ -13,7 +13,7 @@ class CelebRequestForm(forms.ModelForm):
 class CelebProfileForm(forms.ModelForm):
     class Meta:
         model = CelebProfile
-        fields = ['profile_name', 'bio', 'small_bio', 'image'] 
+        fields = ['profile_name', 'bio', 'small_bio', 'image', 'social_media'] 
 
 
 class CelebAddProductForm(forms.ModelForm):
