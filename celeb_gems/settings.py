@@ -13,13 +13,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DEBUG = False
-DEBUG_PROPAGATE_EXCEPTIONS =True
 
 ALLOWED_HOSTS = ['celeb-gems-99c19655d59c.herokuapp.com','127.0.0.1', 'localhost']
 
-
 INSTALLED_APPS = [
-    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.auth',

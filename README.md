@@ -42,7 +42,7 @@ Celeb Gems is a cutting-edge e-commerce platform that facilitates direct sales b
 - User Experience and Service: Prioritizing a seamless browsing and purchasing journey.
 - Product Availability and Quality: Ensuring consistent availability of high-quality products endorsed by reputable celebrities.
 
-# Marketing Strategies
+### Marketing Strategies
 
 ### Target Audience
 
