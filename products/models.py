@@ -1,6 +1,7 @@
 from django.db import models
 from celeb_profile.models import CelebProfile
 from django.core.exceptions import ValidationError
+from cloudinary.models import CloudinaryField
 
 
 class Product(models.Model):
@@ -20,7 +21,7 @@ class Product(models.Model):
     has_sizes = models.BooleanField(
         default=False, choices=HAS_SIZES_CHOICES, null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    image = models.ImageField(upload_to='product_images/')
+    image = CloudinaryField('image', default='placeholder')
     product_id = models.AutoField(primary_key=True)
     quantity_in_stock = models.PositiveIntegerField(default=0)
     # 'celeb_profile.CelebProfile' this is the app and where the model is

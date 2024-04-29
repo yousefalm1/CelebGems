@@ -1,5 +1,5 @@
 
-import os 
+import os
 from pathlib import Path
 import cloudinary
 import cloudinary_storage
@@ -14,16 +14,17 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['celeb-gems-99c19655d59c.herokuapp.com','127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['celeb-gems-99c19655d59c.herokuapp.com',
+                 '127.0.0.1', 'localhost']
 
 INSTALLED_APPS = [
     'django.contrib.staticfiles',
+    'cloudinary_storage',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'cloudinary_storage',
     'cloudinary',
 
     'allauth',
@@ -42,7 +43,7 @@ INSTALLED_APPS = [
 
 ]
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4' 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -71,9 +72,10 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request', 
+                'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
                 'bag.contexts.bag_contents',
                 'celeb_profile.context_processors.celeb_profile_status',
             ],
@@ -86,11 +88,11 @@ TEMPLATES = [
 ]
 
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'drjch7dpe',
-    'API_KEY': '675769358166127',
-    'API_SECRET': 'kh040rA7PseSvEfOFcwIu2CyGVE',
-}
+# CLOUDINARY_STORAGE = {
+#     'CLOUD_NAME': 'drjch7dpe',
+#     'API_KEY': '675769358166127',
+#     'API_SECRET': 'kh040rA7PseSvEfOFcwIu2CyGVE',
+# }
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
@@ -149,9 +151,8 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS =(os.path.join(BASE_DIR, 'static'),)
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -162,7 +163,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STANDARD_DELIVERY_PERCENTAGE = 10
 
-# Stripe 
+# Stripe
 FREE_DELIVERY_THRESHOLD = 50
 STANDARD_DELIVERY_PERCENTAGE = 10
 STRIPE_CURRENCY = 'usd'
@@ -178,9 +179,7 @@ else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_USE_TLS = True
     EMAIL_PORT = 587
-    EMAIL_HOST = 'smtp.gmail.com' 
+    EMAIL_HOST = 'smtp.gmail.com'
     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS') 
-    EMAIL_FROM = os.environ.get('EMAIL_HOST_USER') 
-
-    
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
+    EMAIL_FROM = os.environ.get('EMAIL_HOST_USER')

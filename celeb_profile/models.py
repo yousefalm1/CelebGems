@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.core.exceptions import ValidationError
+from cloudinary.models import CloudinaryField
 
 
 class CelebRequest(models.Model):
@@ -27,7 +28,9 @@ class CelebProfile(models.Model):
     profile_name = models.CharField(max_length=100)
     bio = models.TextField()
     small_bio = models.CharField(max_length=100, default='')
-    image = models.ImageField(upload_to='celeb_images/')
+
+    image = CloudinaryField('image', default='placeholder')
+
     products_added = models.ManyToManyField('products.Product', blank=True)
     # Displays celeb profile on homepage when clicked
     display_on_home = models.BooleanField(default=False)
