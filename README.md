@@ -10,6 +10,40 @@ Celeb Gems is a cutting-edge e-commerce platform that facilitates direct sales b
 
 ---
 
+# Business Model
+
+- Celeb Gems operates as a B2C (Business-to-Consumer) and B2B (Business-to-Business) e-commerce platform. The primary focus is on facilitating direct transactions between celebrities and consumers (B2C), as well as providing a platform for celebrities to engage in business-to-business transactions by managing their profiles and selling products (B2B).
+
+### What Celeb Gems want to offer Users
+
+- Offer users exclusive access to products listed by their favorite celebrities.
+- Provide a platform for celebrities to monetize their influence by showcasing and selling products to their fanbase.
+- Foster a dynamic marketplace that merges celebrity culture with e-commerce, creating a unique shopping experience.
+
+### Customer Persona: The "Celeb Gems" Shopper
+
+- The "Celeb Gems" e-commerce platform caters to a diverse audience of consumers, primarily aged 18 and above, who are enthusiastic about celebrity culture and seek exclusive products by their favorite stars. Our customers value a seamless shopping experience, extensive product selection, and exceptional service.
+
+  - Demographics: Primarily adults aged 18 and above, with a broad demographic range.
+  - Needs and Wants: Desire for unique and exclusive products from the celebrities, seeking a user-friendly platform to discover and purchase these items.
+  - Behavioral Traits: Active online shoppers who are engaged with celebrity culture and value authenticity and quality in their purchases.
+  - Goals: Access to celebrity products, seamless browsing and purchasing experience
+
+### Store Personnel Persona: The "Celeb Gems" Merchant
+
+- The "Celeb Gems" platform targets both small and large celebrities interested in leveraging there celebrity influence to sell products online. Our store personnel benefit from robust functionality that supports their growth and efficiency in managing their online presence and sales.
+  - Demographics: Celebrities seeking to capitalize on there celebrity status
+  - Needs and Wants: Able to add products to there profile and be able to edit there profile whenever they need too.
+  - Goals: Enhance brand visibility,
+
+### Strategy Trade-Offs
+
+- Wide Variety of Product Offerings: Offering an extensive range of products celebrities has listed across multiple categories and price points.
+- User Experience and Service: Prioritizing a seamless browsing and purchasing journey.
+- Product Availability and Quality: Ensuring consistent availability of high-quality products endorsed by reputable celebrities.
+
+# Strategy Trade-Offs
+
 ## UX
 
 ### Target Audience
@@ -23,6 +57,10 @@ Celeb Gems is a cutting-edge e-commerce platform that facilitates direct sales b
 - The design for this site was
 
 ---
+
+# Facebook mock up
+
+![Facebook mock up](documentation/mockup/facebook.png)
 
 # Wire Frames
 
@@ -642,6 +680,21 @@ When a user signs up a new profile is created
 | User clicks back to celeb profile button                                                                                        | User is redirected back to the celeb profile page where the product they deleted will be gone                                                                                                             | Y   |
 
 ## Solved Bugs
+
+1.  - Issue: Deployment with DEBUG=False resulted in a server error (HTTP 500) due to static files not being collected.
+      Description: The Django project encountered a server error upon deployment with DEBUG=False, indicating that static files were not being properly collected and served. This issue prevented the website from functioning correctly in a production environment.
+    - Solution: Adjusted the order of installed apps in the Django settings file to resolve static files collection during deployment.
+
+    - Impact: Resolving the static files collection issue enabled successful deployment of the Django project with DEBUG=False.
+      By addressing this issue, static files are now correctly served in the production environment, ensuring smooth website functionality and proper handling of static assets.
+
+2.  - Issue: env.py was being tracked by Git and appeared in the GitHub repository, potentially exposing sensitive information.
+      Description: The presence of env.py in the GitHub repository posed a security risk by exposing sensitive environment configuration variables, such as API keys and database credentials.
+
+
+    - Solution: The bug was resolved by executing the following command in the terminal: `git rm --cached env.py`
+    - This command removes env.py from Git's tracking without deleting the file from the local file system. It ensures that env.py is no longer included in future commits and is excluded from the repository.
+    - Impact: By addressing this issue, sensitive information contained in env.py is now protected from exposure in the GitHub repository, enhancing the security of the website and ensuring best practices for managing environment configurations.
 
 ## Unsolved Bugs
 
