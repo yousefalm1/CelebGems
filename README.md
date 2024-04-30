@@ -1,8 +1,12 @@
 # Celeb Gems
 
+![Request Celeb Profile page wire frame](documentation/deployment/main.png)
+
 **Deployed website: [Link to website](https://celeb-gems-99c19655d59c.herokuapp.com/)**
 
 **Card number for payment testing: 4242424242424242**
+
+**Admin Panel Username: admin | Password: admin**
 
 ## About
 
@@ -361,7 +365,7 @@ The Business model for this is Commission-Based Model Celeb Gems would earn reve
 
 ### Celeb Personal Profile Page
 
-![Celeb Personal Page ](documentation/features/celeb-profile-personal.png)
+![Celeb Personal Page ](documentation/features/celeb-profile-perosnal2.png)
 
 - After creating their celeb profile, users gain access to their own personal page, where they can manage various aspects of their profile.
 - This page serves as the central hub for celebs to oversee and control their profile information and products.
@@ -374,7 +378,7 @@ The Business model for this is Commission-Based Model Celeb Gems would earn reve
 - he form pre-populates with the celeb's existing information, allowing them to make desired changes.
 - After submitting the form, the updated information automatically reflects on their profile, replacing the previous details.
 
-![Add Product Celeb Profile  ](documentation/features/edit-celeb-profile.png)
+![Add Product Celeb Profile  ](documentation/features/add-product.png)
 
 - When celebs wish to add a product to their profile, they can click the "Add Product" button to access the add product form.
 - The add product form prompts celebs to input all necessary product details before submission.
@@ -410,6 +414,13 @@ Bag Page:
 - After the order is successfully processed, users are redirected to the successful checkout page, which confirms the order and displays the delivery address provided by the user.
 
 ![orange overlay](documentation/features/orange.png)
+
+### checkout (Logged in user)
+
+- For users who have previously saved a delivery address during checkout by selecting the "Save Delivery Address" checkbox, their saved address will be automatically displayed when they revisit the checkout page. This feature is designed to streamline the checkout process, providing convenience and saving time for returning users.
+- Users have the flexibility to edit their saved delivery address if they wish to update it with a new address. This ensures that users can easily manage their delivery preferences without having to re-enter all the information, enhancing the overall user experience during checkout.
+
+![Checkout logged in](documentation/features/checkout-loggged.png)
 
 ## Allauth
 
@@ -715,16 +726,24 @@ When a user signs up a new profile is created
 
     - Impact: By fixing this bug and linking the image fields to Cloudinary, user-uploaded images began to appear correctly on the deployed project, replacing the placeholder text.
 
+4.  - Issue: The carousel images were not loading from the media files when the project was deployed.
+    - Solution: To address this issue, I attempted to resolve it by configuring static and media files properly. However, due to time constraints and the unsuccessful attempt, I opted to upload the images to Cloudinary. I then used the URLs provided by Cloudinary to load the images into the carousel.
+    - Impact: This solution allowed me to deploy the finished project successfully with DEBUG mode turned off. However, there is a noticeable impact on image loading time because the images are fetched dynamically from Cloudinary. While this approach is not the most efficient, it was necessary to ensure the deployment of the project within the given time constraints.
+
 ## Unsolved Bugs
 
-- Issue: Editing profiles displayed on the home screen from the admin panel requires a multi-step process.Description: When an administrator attempts to edit a profile that is currently selected to be displayed on the home screen, there is an inconvenience in the workflow. To make changes to the content of a displayed profile, the administrator must first deselect the "display on home" option, save the changes, then proceed to edit the profile content, re-enable the "display on home" option, and save again.Steps to Reproduce:
-  1. Access the admin panel.
-  2. Identify the profile displayed on the home screen that requires editing.
-  3. Attempt to edit the profile directly.
-  4. Encounter the need to first deselect and reselect the "display on home" option.
-  5. Make the required changes to the profile content.
-  6. Re-enable the "display on home" option.
-  7. Save the changes.
+1.  - Issue: When an admin adds a product to the database via the admin panel and assigns it to a user (celebrity), the product is not automatically linked to the celebrity's profile. Consequently, the admin needs to navigate to the celebrity's profile separately to associate the added product, which adds unnecessary complexity and potential for oversight.
+
+    - On the other hand, when a logged-in celebrity adds a product directly to their profile, it seamlessly appears within their profile without the need for manual linking, ensuring a smoother and more efficient product management experience for celebrities on the platform.
+
+2.  - Issue: Editing profiles displayed on the home screen from the admin panel requires a multi-step process.Description: When an administrator attempts to edit a profile that is currently selected to be displayed on the home screen, there is an inconvenience in the workflow. To make changes to the content of a displayed profile, the administrator must first deselect the "display on home" option, save the changes, then proceed to edit the profile content, re-enable the "display on home" option, and save again.Steps to Reproduce:
+3.  Access the admin panel.
+4.  Identify the profile displayed on the home screen that requires editing.
+5.  Attempt to edit the profile directly.
+6.  Encounter the need to first deselect and reselect the "display on home" option.
+7.  Make the required changes to the profile content.
+8.  Re-enable the "display on home" option.
+9.  Save the changes.
 
 ---
 

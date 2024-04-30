@@ -137,7 +137,7 @@ def edit_celeb_profile_confirmation(request):
 
     return render(
         request, 'celeb_profile/edit_celeb_profile_confirmation.html'
-        )
+    )
 
 
 def celeb_profile_page(request,):
