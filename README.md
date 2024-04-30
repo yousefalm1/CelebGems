@@ -481,11 +481,13 @@ This is what a project board looks like at the end of the project everything in 
 
 ## Information Architecture
 
-- The begingign i created the ERD
+- The beginning i created the ERD
 - Then used SQLIte to create the database in the early stages of the project
 - Then the database was migrated to PostgreSQL towards the end of the project
 
 ### ERD
+
+![ERD](documentation/wireframes/erd.png)
 
 ### Data Modeling
 
@@ -729,6 +731,9 @@ When a user signs up a new profile is created
 4.  - Issue: The carousel images were not loading from the media files when the project was deployed.
     - Solution: To address this issue, I attempted to resolve it by configuring static and media files properly. However, due to time constraints and the unsuccessful attempt, I opted to upload the images to Cloudinary. I then used the URLs provided by Cloudinary to load the images into the carousel.
     - Impact: This solution allowed me to deploy the finished project successfully with DEBUG mode turned off. However, there is a noticeable impact on image loading time because the images are fetched dynamically from Cloudinary. While this approach is not the most efficient, it was necessary to ensure the deployment of the project within the given time constraints.
+
+5.  - Issue: The env.py file, containing sensitive information like the secret key, was inadvertently pushed to the repository, posing a security risk. Recognizing this error during a session with my mentor.
+    - Solution: I took immediate action. I updated the secret key to mitigate any potential exposure from past commits and documented this incident in the README to emphasize the importance of safeguarding sensitive data. This proactive approach ensures the security and integrity of our project moving forward.
 
 ## Unsolved Bugs
 
@@ -1056,9 +1061,12 @@ First step is to create a local copy of the GitHub repository by following one o
 
 ## Credits
 
-    Bootstrap
+    Boutique Ado Walkthrough project for help with the add to bad and checkout part of the code
+    Bootstrap - For the overall project
+    MDB- For the carousel on the home screen
     Django
-    Github
-    Unsplash
-    heroku
+    Github - For help with managing the project
+    Unsplash - For the Images
+    heroku - For being able to easily deploy my project
     ElephantSQL
+    My mentor - For advising me thought the project and always being there when i had any questions.
