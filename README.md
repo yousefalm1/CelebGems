@@ -66,15 +66,23 @@ Celeb Gems is a cutting-edge e-commerce platform that facilitates direct sales b
 - Product Reviews: Enable customers to leave reviews and feedback on products purchased from celebrities' profiles, fostering credibility and trust within the community.
 - Customer Loyalty Program: Launch a tiered loyalty program where users earn points or rewards for every purchase or engagement, unlocking exclusive perks, discounts, and early access to products.
 
+---
+
 # Design
 
-- The design for this site was
+The design of this project incorporates a minimalist color scheme, primarily using shades of gray and white. This choice was made to enhance readability, maintain simplicity, and provide a clean aesthetic. The combination of these neutral tones creates a sleek and modern interface, ensuring a pleasant user experience.
 
----
+Key elements such as buttons on cards feature contrasting orange text, adding a vibrant touch that draws attention to interactive elements. This color contrast not only enhances visual interest but also facilitates intuitive navigation and calls to action within the application. By emphasizing certain elements with color, the design achieves a harmonious balance between functionality and visual appeal. This approach underscores the project's commitment to user-centric design principles.
+
+![white](documentation//design/white.png)
+
+![orange](documentation/design/orange.png)
+
+![grey](documentation//design/grey.png)
 
 # Facebook mock up
 
-![Facebook mock up](documentation//wireframes/facebook.png)
+![Facebook mock up](documentation/wireframes/facebook.png)
 
 # Wire Frames
 
