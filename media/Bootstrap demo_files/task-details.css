@@ -1,0 +1,18 @@
+.task-title {
+  font-family: "Burka-Bold", sans-serif !important;
+  font-size: 23px !important;
+  color: #000 !important;
+}
+
+.task-detail-text {
+  font-family: "Burka-Reg", sans-serif !important;
+  font-size: 17px !important;
+  color: #000 !important;
+}
+
+.task-details-bg {
+  background-color: #ecfd94 !important;
+  border-radius: 20px !important;
+  border: none !important;
+  font-family: "Burka-Reg", sans-serif !important;
+}

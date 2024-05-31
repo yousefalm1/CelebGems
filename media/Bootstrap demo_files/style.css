@@ -1,0 +1,225 @@
+@font-face {
+  font-family: "Burka-Reg";
+  src: url(./font/burka-reg.otf) format("opentype");
+}
+@font-face {
+  font-family: "Burka-Bold";
+  src: url(./font/burka-bold.otf) format("opentype");
+}
+
+.font-bold {
+  font-family: "Burka-Bold", sans-serif;
+}
+
+.font-regular {
+  font-family: "Burka-Reg", sans-serif;
+}
+
+.font-grey {
+  color: #9f9f9f !important;
+}
+.font-black {
+  color: #221f20;
+}
+.font-main {
+  color: #d3fb00;
+}
+
+.color-main {
+  color: #d3fb00;
+}
+
+.bg-main {
+  background-color: #d3fb00;
+}
+
+.dashboard-card-title {
+  font-size: 28px !important;
+  font-family: "Burka-Bold", sans-serif !important;
+}
+
+.sidebar-links-text {
+  font-family: "Burka-Reg", sans-serif !important;
+  font-size: 12pt !important;
+  margin-left: 0.5rem !important;
+  color: rgb(237, 237, 237) !important;
+  letter-spacing: 0.5pt !important;
+}
+.balance-text {
+  font-family: "Burka-Reg", sans-serif !important;
+  font-size: 17px !important;
+}
+
+.inside-dashboard-card {
+  font-size: 14px !important;
+  font-family: "Burka-Reg", sans-serif !important;
+}
+
+.blob-text {
+  font-family: "Burka-Reg", sans-serif !important;
+  font-size: 9px !important;
+  color: #000000 !important;
+}
+
+.welcome-text {
+  font-family: "Burka-Bold", sans-serif !important;
+  font-size: 17px !important;
+}
+
+.driver-card {
+  font-size: 12px !important;
+  font-family: "Burka-Reg", sans-serif !important;
+  font: bolder !important;
+}
+
+.login-btn {
+  font-family: "Burka-Bold", sans-serif;
+  font-size: 20px;
+  background-color: #d3fb00 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.login-btn:hover {
+  color: #d3fb00 !important;
+  background-color: #221f20 !important;
+  border: none !important;
+}
+
+/* NAV */
+
+.nav-dropdown-links {
+  font-size: 12pt !important;
+  color: white !important;
+  background-color: black !important;
+  font-family: "Burka-Reg", sans-serif !important;
+}
+
+.nav-dropdown-links:hover {
+  color: #d3fb00 !important;
+  background-color: black !important;
+}
+
+@media (max-width: 997px) {
+  .nav-dropdown-links {
+    font-size: 9pt !important;
+  }
+}
+
+.profile-dropdown {
+  font-size: 14px !important;
+  color: #d3fb00 !important;
+  background-color: #000000 !important;
+  font-family: "Burka-Reg", sans-serif !important;
+}
+
+.main-btn {
+  font-size: 9pt !important;
+  font-family: "Burka-reg", sans-serif !important;
+  color: #000000 !important;
+  background-color: #d3fb00 !important;
+  box-shadow: none !important;
+}
+
+.main-btn:hover {
+  font-size: 9pt !important;
+  font-family: "Burka-reg", sans-serif !important;
+  color: #d3fb00 !important;
+  background-color: #0000 !important;
+  box-shadow: none !important;
+}
+.custom-icon {
+  color: #d3fb00 !important;
+}
+
+/* Balance Text  */
+.balance-text {
+  font-family: "Burka-Reg", sans-serif !important;
+  font-size: 17pt !important;
+  color: white !important;
+}
+
+.money-text {
+  font-family: "Burka-Reg", sans-serif !important;
+  font-size: 17pt !important;
+  color: #d3fb00 !important;
+}
+
+@media (max-width: 997px) {
+  .balance-text {
+    font-size: 12pt !important;
+  }
+  .money-text {
+    font-size: 12pt !important;
+  }
+}
+
+/* nav button */
+
+.nav-btn {
+  font-size: 9pt !important;
+  font-family: "Burka-reg", sans-serif !important;
+  color: #000000 !important;
+  background-color: #d3fb00 !important;
+  box-shadow: none !important;
+}
+
+.nav-btn:hover {
+  font-size: 9pt !important;
+  font-family: "Burka-reg", sans-serif !important;
+  color: #d3fb00 !important;
+  background-color: #0000 !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 997px) {
+  .nav-btn {
+    font-size: 7pt !important;
+  }
+}
+
+.nav-btn:hover {
+  font-size: 7pt !important;
+}
+/* Logo  */
+
+.logo {
+  width: 60px;
+}
+
+@media (max-width: 997px) {
+  .logo {
+    width: 40px;
+  }
+}
+
+/* Card */
+
+.back-card-title {
+  font-family: "Burka-Bold", sans-serif !important;
+  font-size: 18pt !important;
+  color: #fff !important;
+}
+
+.back-card {
+  background-color: #9f9f9f !important;
+  border-radius: 40px !important;
+  border: none !important;
+}
+
+.card-bg {
+  background-color: #ecfd94 !important;
+  border: none !important;
+  text-align: center !important;
+  border-radius: 24px !important;
+}
+
+.drivers-card {
+  font-size: 8pt !important;
+}
+
+/* login/reg logo */
+
+.logo-login-reg {
+  max-width: 9rem;
+  height: auto;
+}

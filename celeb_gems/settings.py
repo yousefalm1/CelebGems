@@ -1,10 +1,10 @@
 
-import os
-from pathlib import Path
-import cloudinary
-import cloudinary_storage
-
 import dj_database_url
+import cloudinary_storage
+import cloudinary
+from pathlib import Path
+import os
+
 if os.path.isfile('env.py'):
     import env
 
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'checkout',
     'profiles',
     'contact',
+    'newsletter',
 
     'crispy_forms',
 
@@ -156,6 +157,11 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STANDARD_DELIVERY_PERCENTAGE = 10
+
+# Mail Chimp
+MAILCHIMP_API_KEY = os.getenv('MAILCHIMP_API_KEY', '')
+MAILCHIMP_DATA_CENTER = os.getenv('MAILCHIMP_DATA_CENTER', '')
+MAILCHIMP_AUDIENCE_ID = os.getenv('MAILCHIMP_AUDIENCE_ID', '')
 
 # Stripe
 FREE_DELIVERY_THRESHOLD = 50
