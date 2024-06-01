@@ -1,5 +1,4 @@
-import os
-import logging
+
 import mailchimp_marketing as MailchimpMarketing
 from mailchimp_marketing.api_client import ApiClientError
 from django.conf import settings
@@ -7,8 +6,6 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import NewsletterSignupForm
 from django.core.mail import EmailMultiAlternatives
-
-logger = logging.getLogger(__name__)
 
 
 def newsletter_signup(request):
@@ -44,14 +41,9 @@ def newsletter_signup(request):
                 msg.send()
 
             except ApiClientError as error:
-                logger.error(f"Mailchimp API error: {error.text}")
                 messages.error(
-                    request, 'An error occurred with Mailchimp. Please try again later.')
-            except Exception as e:
-                logger.error(f"Unexpected error: {str(e)}")
-                messages.error(
-                    request, 'An unexpected error occurred. Please try again later.')
-            return redirect('newsletter_signup')
+                    request, 'An error occurred. Please try again later.')
+                return redirect('newsletter_signup')
     else:
         form = NewsletterSignupForm()
 
