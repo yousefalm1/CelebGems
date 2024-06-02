@@ -43,10 +43,6 @@ def newsletter_signup(request):
                 messages.error(
                     request, 'An error occurred while subscribing. Please try again later.')
                 print(f'Mailchimp API error: {error.text}')  # Basic logging
-            except Exception as e:
-                messages.error(
-                    request, 'An unexpected error occurred. Please try again later.')
-                print(f'Unexpected error: {str(e)}')  # Basic logging
             return redirect('newsletter_signup')
     else:
         form = NewsletterSignupForm()
