@@ -5,6 +5,10 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import NewsletterSignupForm
 from django.core.mail import EmailMultiAlternatives
+import logging
+
+# Set up logging
+logger = logging.getLogger(__name__)
 
 
 def newsletter_signup(request):
@@ -40,13 +44,26 @@ def newsletter_signup(request):
                 msg.send()
 
             except ApiClientError as error:
-                messages.error(
-                    request, 'An error occurred while subscribing. Please try again later.')
-                print(f'Mailchimp API error: {error.text}')  # Basic logging
+                logger.error(f'Mailchimp API error: {error.text}')
+                if error.status_code == 400:
+                    messages.error(
+                        request, 'Invalid email address or already subscribed.')
+                elif error.status_code == 401:
+                    messages.error(
+                        request, 'Unauthorized. Please check your API key and data center.')
+                elif error.status_code == 403:
+                    messages.error(
+                        request, 'Forbidden. You do not have permission to perform this action.')
+                elif error.status_code == 404:
+                    messages.error(
+                        request, 'Resource not found. Please check your audience ID.')
+                else:
+                    messages.error(
+                        request, 'An unexpected error occurred. Please try again later.')
             except Exception as e:
+                logger.error(f'Unexpected error: {str(e)}')
                 messages.error(
                     request, 'An unexpected error occurred. Please try again later.')
-                print(f'Unexpected error: {str(e)}')  # Basic logging
             return redirect('newsletter_signup')
     else:
         form = NewsletterSignupForm()

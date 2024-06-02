@@ -1,26 +1,13 @@
 {% extends "base.html" %} {% block content %}
+
 <div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <div class="card shadow-lg">
-        <div class="card-body">
-          <h1 class="card-title text-center mb-4">
-            Sign Up for our Newsletters
-          </h1>
-          <form method="post" class="pt-3">
-            {% csrf_token %} {{ form.as_p }}
-            <div class="d-grid gap-2">
-              <button type="submit" class="btn btn-primary btn-lg">
-                Sign Up
-              </button>
-            </div>
-          </form>
-          {% for message in messages %}
-          <div class="alert alert-info mt-3" role="alert">{{ message }}</div>
-          {% endfor %}
-        </div>
-      </div>
-    </div>
-  </div>
+  <h1>Sign Up for our Newsletters</h1>
+  <form method="post" class="pt-5">
+    {% csrf_token %} {{ form.as_p }}
+    <button type="submit">Sign Up</button>
+  </form>
+  {% for message in messages %}
+  <p>{{ message }}</p>
+  {% endfor %}
 </div>
 {% endblock %}
