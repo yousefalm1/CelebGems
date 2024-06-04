@@ -8,6 +8,27 @@
 
 **Admin Panel Username: admin | Password: admin**
 
+## Updated Addition
+
+Based on the the feedback i forgot to add the newsletter signup form to the website.
+
+- The way it was done was by using the Mailchimp API to add the user to the newsletter list.
+- Then once they user successfully subscribed to the newsletter, they will be sent a confirmation email through django's email backend using EmailMultiAlternatives.
+
+This is what process looks like:
+
+1. User goes to the newsletter signup page.
+   ![newsletter signup](documentation/newsletter/newsletter-1.png)
+2. User enters their email address and clicks on the "sign up" button.
+3. User is redirected back to the newsletter signup page and shown a message saying that they have successfully subscribed to the newsletter.
+   ![newsletter signup](documentation/newsletter/newsletter-2.png)
+4. if User is already subscribed to the newsletter or they enter an invalid email address, they will be shown a message saying that they have entered an invalid email address or already subscribed.
+   ![newsletter signup](documentation/newsletter/newsletter-4.png)
+5. When the user successfully subscribes to the newsletter, they will be sent a confirmation email through django's email backend using EmailMultiAlternatives.
+   ![newsletter signup](documentation/newsletter/newsletter-3.png)
+6. Once they recieved the email the user will be shown in the mailchimp dashboard.
+   ![newsletter signup](documentation/newsletter/mailchimp.png)
+
 ## About
 
 Celeb Gems is a cutting-edge e-commerce platform that facilitates direct sales between celebrities and their fans. Our platform serves as a bridge, allowing fans to purchase authentic items directly from their favorite celebrities. Whether you're a fan looking for exclusive merchandise or a celebrity eager to monetize your personal brand, CelebMarket offers a seamless marketplace for both buyers and sellers.
